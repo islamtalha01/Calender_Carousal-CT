@@ -59,7 +59,7 @@ function AddEvent () {
 
 return (
   <Row style={{margin:'20px',justifyContent:'center'}}>
-       <Collapse accordion items={items} style={{width: "1000px"}} expandIconPosition='end' />
+       <Collapse accordion items={items} style={{width:'800px'}} expandIconPosition='end' />
   </Row>
   
 )
