@@ -3,7 +3,7 @@ import type { CollapseProps } from 'antd';
 import { Collapse,Row,Button } from 'antd';
 // import { SettingOutlined } from '@ant-design/icons';
 import CurrentDay from '../CurrentDay/CurrentDay';
-
+import DateCard from '../DateCard/DateCard';
 const text = `
   Hi
 `;
@@ -25,7 +25,7 @@ const items: CollapseProps['items'] = [
   {
     key: '1',
     label: 'Date',
-    children: <p>{text}</p>,
+    children: <DateCard/>,
     extra:genExtra()
     
   },
