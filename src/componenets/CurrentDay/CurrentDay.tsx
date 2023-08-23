@@ -1,5 +1,5 @@
 
-// type Props = {}
+
 
 const CurrentDay = () => {
   return (
