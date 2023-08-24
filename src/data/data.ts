@@ -30,27 +30,7 @@ const dummyData: CardData[] = [
     day: 10,
     dayName: "Wednesday",
   },
-  {
-    id: 1,
-    title: "Card 1",
-    month: "January",
-    day: 15,
-    dayName: "Monday",
-  },
-  {
-    id: 2,
-    title: "Card 2",
-    month: "February",
-    day: 28,
-    dayName: "Tuesday",
-  },
-  {
-    id: 3,
-    title: "Card 3",
-    month: "March",
-    day: 10,
-    dayName: "Wednesday",
-  },
+  
   // Add more data as needed
 ];
 
