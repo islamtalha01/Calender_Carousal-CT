@@ -1,12 +1,12 @@
 import './App.css'
-import AddEvent from './componenets/AddEvent/AddEvent'
+import CalenderContainer from './containers/CalenderContainer'
 
 function App() {
  
 
   return (
     <>
-      <AddEvent/>
+      <CalenderContainer/>
     </>
   )
 }
