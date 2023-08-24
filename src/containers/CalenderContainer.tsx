@@ -1,7 +1,7 @@
 import CurrentDay from "../componenets/CurrentDay/CurrentDay";
 import type { CollapseProps } from "antd";
 import { Collapse, Button } from "antd";
-import AddEventCarousal from "../componenets/AddEventCarousal/AddEventCarousal";
+import AddEventCarousal from "../componenets/CalendarCarousal/CalendarCarousal";
 const text = `hi`;
 
 const genExtra = () => <CurrentDay />;
