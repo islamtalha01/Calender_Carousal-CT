@@ -1,12 +1,15 @@
-import React from "react";
-import { Card, Row,Col, Typography } from "antd";
 import dummyData from "../../data/data";
-const DateCard: React.FC = () => {
-//   const { Meta } = Card;
-const { Text,Title} = Typography;
+
+import { Card, Row,Col, Typography } from "antd";
+
+
+export default function DateCardList() {
+    const { Text,Title} = Typography;
   return (
-    <Row gutter={[10,10]} >
+    <>
+      <Row gutter={[10, 10]}>
       
+
         {dummyData.map((data) => (
            <Col>
             <Card
@@ -29,8 +32,8 @@ const { Text,Title} = Typography;
            </Col>
          
         ))}
-      
-    </Row>
+    
+      </Row>
+    </>
   );
-};
-export default DateCard;
+}
