@@ -1,5 +1,5 @@
 // Define a TypeScript interface for your data
-interface CardData {
+export interface CardData {
   id: number;
   title: string;
   month: string;
