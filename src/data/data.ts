@@ -1,37 +1,55 @@
 // Define a TypeScript interface for your data
 export interface CardData {
   id: number;
-  title: string;
   month: string;
-  day: number;
-  dayName: string;
+  date: number;
+  day: string;
 }
 
 // Dummy data
 const dummyData: CardData[] = [
   {
     id: 1,
-    title: "Card 1",
     month: "January",
-    day: 15,
-    dayName: "Monday",
+    date: 15,
+    day: "Monday",
   },
   {
     id: 2,
-    title: "Card 2",
     month: "February",
-    day: 28,
-    dayName: "Tuesday",
+    date: 28,
+    day: "Tuesday",
   },
   {
     id: 3,
-    title: "Card 3",
     month: "March",
-    day: 10,
-    dayName: "Wednesday",
+    date: 10,
+    day: "Wednesday",
   },
-  
-  // Add more data as needed
+  {
+    id: 4,
+    month: "April",
+    date: 20,
+    day: "Thursday",
+  },
+  {
+    id: 5,
+    month: "May",
+    date: 5,
+    day: "Friday",
+  },
+  {
+    id: 6,
+    month: "June",
+    date: 30,
+    day: "Saturday",
+  },
+  {
+    id: 7,
+    month: "July",
+    date: 25,
+    day: "Sunday",
+  },
 ];
 
 export default dummyData;

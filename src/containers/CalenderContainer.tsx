@@ -1,38 +1,32 @@
 import CurrentDay from "../componenets/CurrentDay/CurrentDay";
 import type { CollapseProps } from "antd";
-import { Collapse, Button } from "antd";
+import { Collapse } from "antd";
+
 import AddEventCarousal from "../componenets/CalendarCarousal/CalendarCarousal";
+import DurationComponent from "../componenets/DurationComponent/DurationComponent";
+import CurrentTime from "../componenets/CurrentTime/CurrentTime";
 const text = `hi`;
 
 const genExtra = () => <CurrentDay />;
-const Duration = () => (
-  <>
-    <Button type="primary" shape="circle">
-      +
-    </Button>
-    <p>2:00</p>
-    <Button type="primary" shape="circle">
-      -
-    </Button>
-  </>
-);
 const items: CollapseProps["items"] = [
   {
     key: "1",
-    label: "This is panel header 1",
+    label: "Date",
     children: <AddEventCarousal/>,
     extra: genExtra(),
   },
   {
     key: "2",
-    label: "This is panel header 2",
+    label: "Time",
     children: <p>{text}</p>,
+    extra:<CurrentTime/>
+    
   },
   {
     key: "3",
-    label: "This is panel header 3",
+    label: "Duration",
     children: <p>{text}</p>,
-    extra: Duration(),
+    extra: <DurationComponent/>,
   },
 ];
 export default function CalenderContainer() {

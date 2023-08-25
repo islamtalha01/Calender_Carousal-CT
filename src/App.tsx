@@ -1,12 +1,15 @@
 import './App.css'
 import CalenderContainer from './containers/CalenderContainer'
-
+import { ConfigProvider } from "antd";
 function App() {
  
 
   return (
     <>
-      <CalenderContainer/>
+    <ConfigProvider >
+    <CalenderContainer/>
+    </ConfigProvider>
+      
     </>
   )
 }
