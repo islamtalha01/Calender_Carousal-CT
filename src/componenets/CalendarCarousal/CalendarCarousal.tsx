@@ -1,34 +1,42 @@
+import { Carousel, Row,Col,theme} from "antd";
+import dummyData from "../../data/data";
+import DateCard from "../DateCard/DateCard";
+import { Date } from "../CalendarCarousal/calender.types"
+import { Dayjs } from "dayjs"
+const {useToken}=theme
 
-import {Carousel,Row,Col} from "antd"
-import dummyData from '../../data/data'
-import DateCard from '../DateCard/DateCard'
-// type CardData={
-//     id: number;
-//     title: string;
-//     month: string;
-//     day: number;
-//     dayName: string;
-//   }
-  
-
-export default function AddEventCarousal() {
+type CardCarouselProps = {
+  dates: Array<Date>
+  onClick: (newDate: Dayjs) => void
+}
+export default function CalendarCarousal() {
+ 
+  const {token}=useToken()
   return (
-   <Carousel
-   style={{maxWidth:"100vh",}}
-   slidesPerRow={3}
-   >
-   
-   {dummyData.map((data)=>(
-    <Row>
-    <Col >
-   <DateCard id={data.id} title={data.title} month={data.month} day={data.day} dayName={data.dayName} />
-   </Col>
-    </Row>
-
-
-   ))}
-
-
-   </Carousel>
-  )
+    <Carousel arrows={true}  style={{ maxWidth: "100vw" }} slidesPerRow={3}>
+      
+        {dummyData.map((data) => (
+        <Row>
+        <Col 
+         style={{
+          paddingLeft: token.paddingXS,
+          paddingRight: token.paddingXS,
+        }}>
+        <DateCard
+              id={data.id}
+              
+              month={data.month}
+              date={data.date}
+              day={data.day}
+            />
+        
+        </Col>
+        </Row>   
+            
+         
+          
+        ))}
+      
+    </Carousel>
+  );
 }

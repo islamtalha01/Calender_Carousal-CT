@@ -1,29 +1,58 @@
-import { Card, Typography } from "antd";
+import { Card, Typography, theme } from "antd";
+
 type CardData = {
   id: number;
-  title: string;
   month: string;
-  day: number;
-  dayName: string;
+  date: number;
+  day: string;
 };
+
 export default function DateCard(props: CardData) {
   const { Text, Title } = Typography;
-
-  return (
+  const { useToken } = theme;
+  const { token } = useToken();
+  const headStyle:React.CSSProperties={
+  backgroundColor: "#f96458",
+  fontSize: token.fontSizeLG,
+  fontWeight: 500,
+  height: '25px',
+  }
+  const bodyStyle: React.CSSProperties = {
+    color: token.colorTextSecondary,
    
-        <Card
-          key={props.id}
-          title={props.month}
-          style={{width:"200px"}}
-          headStyle={{
-            backgroundColor: "#F96458",
-            color: "white",
-            textAlign: "center",
-          }}
-        >
-          <Title level={5}>{props.day}</Title>
+  };
+  return (
+    
+     <Card
+      key={props.id}
+      title={props.month}
+      style={{ width: "150px", textAlign:"center", }}
+      size="small"
+      headStyle={headStyle}
+      bodyStyle={bodyStyle}
+    >
+      <Title
+        style={{
+          fontWeight: "500",
+          color: token.colorTextSecondary,
+          margin: token.marginXS,
+          fontSize: token.fontSizeHeading1,
+         
+        }}
+      >
+        {props.date}
+      </Title>
 
-          <Text style={{ fontSize: "20px" }}>{props.dayName}</Text>
-        </Card>
-  )
+      <Text
+        style={{
+          color: token.colorTextSecondary,
+          fontSize: token.fontSizeLG,
+        }}
+      >
+        {props.day}
+      </Text>
+    </Card>
+    
+   
+  );
 }
