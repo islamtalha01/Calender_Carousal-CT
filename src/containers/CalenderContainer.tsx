@@ -4,7 +4,8 @@ import { Collapse } from "antd";
 
 import AddEventCarousal from "../componenets/CalendarCarousal/CalendarCarousal";
 import DurationComponent from "../componenets/DurationComponent/DurationComponent";
-import CurrentTime from "../componenets/CurrentTime/CurrentTime";
+// import CurrentTime from "../componenets/TimeComponent/TImeComponent";
+import TimeComponent from "../componenets/TimeComponent/TImeComponent";
 const text = `hi`;
 
 const genExtra = () => <CurrentDay />;
@@ -18,8 +19,8 @@ const items: CollapseProps["items"] = [
   {
     key: "2",
     label: "Time",
-    children: <p>{text}</p>,
-    extra:<CurrentTime/>
+    children: <TimeComponent/>,
+    extra:null
     
   },
   {

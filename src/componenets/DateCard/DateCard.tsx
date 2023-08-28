@@ -12,7 +12,7 @@ export default function DateCard(props: DateCardProps) {
   const { useToken } = theme;
   const { token } = useToken();
   const headStyle:React.CSSProperties={
-  backgroundColor: "#f96458",
+    backgroundColor: props.closed ? token.colorBgContainerDisabled : "#f96458",
   fontSize: token.fontSizeLG,
   fontWeight: 500,
   height: '25px',

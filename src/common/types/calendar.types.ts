@@ -1,6 +1,6 @@
 import { Dayjs } from "dayjs"
 
-export type Date = {
+export type Dates = {
     date: Dayjs
   
     /** @default false*/
