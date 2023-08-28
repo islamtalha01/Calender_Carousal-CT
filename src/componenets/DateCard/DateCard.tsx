@@ -1,13 +1,13 @@
 import { Card, Typography, theme } from "antd";
+import { Dayjs } from "dayjs"
 
-type CardData = {
-  id: number;
-  month: string;
-  date: number;
-  day: string;
-};
+type DateCardProps = {
+  date: Dayjs
+  closed: boolean
+  onClick?: (newDate: Dayjs) => void
+}
 
-export default function DateCard(props: CardData) {
+export default function DateCard(props: DateCardProps) {
   const { Text, Title } = Typography;
   const { useToken } = theme;
   const { token } = useToken();
@@ -24,8 +24,8 @@ export default function DateCard(props: CardData) {
   return (
     
      <Card
-      key={props.id}
-      title={props.month}
+     hoverable={props.closed ? false : true}
+      title={props.date.format("MMMM")}
       style={{ width: "150px", textAlign:"center", }}
       size="small"
       headStyle={headStyle}
@@ -40,7 +40,7 @@ export default function DateCard(props: CardData) {
          
         }}
       >
-        {props.date}
+        {props.date.date()}
       </Title>
 
       <Text
@@ -49,7 +49,7 @@ export default function DateCard(props: CardData) {
           fontSize: token.fontSizeLG,
         }}
       >
-        {props.day}
+        {props.date.format("dddd")}
       </Text>
     </Card>
     

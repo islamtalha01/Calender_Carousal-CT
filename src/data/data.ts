@@ -1,55 +1,16 @@
-// Define a TypeScript interface for your data
-export interface CardData {
-  id: number;
-  month: string;
-  date: number;
-  day: string;
-}
-
-// Dummy data
-const dummyData: CardData[] = [
-  {
-    id: 1,
-    month: "January",
-    date: 15,
-    day: "Monday",
-  },
-  {
-    id: 2,
-    month: "February",
-    date: 28,
-    day: "Tuesday",
-  },
-  {
-    id: 3,
-    month: "March",
-    date: 10,
-    day: "Wednesday",
-  },
-  {
-    id: 4,
-    month: "April",
-    date: 20,
-    day: "Thursday",
-  },
-  {
-    id: 5,
-    month: "May",
-    date: 5,
-    day: "Friday",
-  },
-  {
-    id: 6,
-    month: "June",
-    date: 30,
-    day: "Saturday",
-  },
-  {
-    id: 7,
-    month: "July",
-    date: 25,
-    day: "Sunday",
-  },
+import dayjs from 'dayjs';
+import { ClosedDate } from "../common/types/calendar.types"
+const closedDatesArray: ClosedDate[] = [
+  "Monday",                            // String representing day name
+  "Tuesday",                           // String representing day name
+  dayjs('2023-01-01'),                 // Dayjs object representing a date
+  dayjs('2023-01-02'),                 // Dayjs object representing a date
+  "Wednesday",                         // String representing day name
+  dayjs('2023-01-03'),                 // Dayjs object representing a date
+  "Thursday",                          // String representing day name
+  dayjs('2023-01-04'),                 // Dayjs object representing a date
+  "Friday",                            // String representing day name
+  dayjs('2023-01-05')                  // Dayjs object representing a date
 ];
 
-export default dummyData;
+export default closedDatesArray;
