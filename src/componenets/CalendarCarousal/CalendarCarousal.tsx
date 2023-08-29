@@ -7,11 +7,11 @@ const { useToken } = theme;
 
 type CalenderCarouselProps = {
   dates: Array<DateType>;
-  
+  onClick:(date:Dayjs)=>void
 };
-export default function CalendarCarousal({dates}:CalenderCarouselProps) {
+export default function CalendarCarousal({dates,onClick}:CalenderCarouselProps) {
   const { token } = useToken();
-  const{setDate}=useCalendar()
+  // const{setDate}=useCalendar()
   return (
     <Carousel arrows={true} style={{ maxWidth: "100vw" }} slidesPerRow={3}>
       {dates.map((data) => (
@@ -22,7 +22,7 @@ export default function CalendarCarousal({dates}:CalenderCarouselProps) {
               paddingRight: token.paddingXS,
             }}
           >
-            <DateCard date={data.date} closed={data.closed} onClick={setDate}/>
+            <DateCard date={data.date} closed={data.closed} onClick={onClick}/>
           </Col>
         </Row>
       ))}
