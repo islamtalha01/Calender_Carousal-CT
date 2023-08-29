@@ -1,43 +1,62 @@
-import React,{ useState,useContext,ReactNode, Children} from "react";
+import { useState,useContext,createContext,ReactNode} from "react";
 import { getDatesList } from "../utils/Date.utils";
 import { ConfigProvider } from "antd";
 import { DateType,selectedSlot } from "../common/types/calendar.types";
 import { Dayjs } from "dayjs";
+
+import closedDatesArray from "../../src/data/data";
+const datesData= getDatesList(10,closedDatesArray)
 type CalendarContext={
      dates:Array<DateType>,
      setDate:(date:Dayjs)=>void,
      setTime:(time:Dayjs)=>void,
+     selected:selectedSlot,
 }
 type CalendarProviderprop=
 {
-    dates:Array<DateType>,
+   
     children:ReactNode,
    
 }
-export const CalendarContext=React.createContext<CalendarContext | null>(null)
 
-export default function  CalendarProvider({dates,children}:CalendarProviderprop)
+const CalendarContext=createContext<CalendarContext | undefined>( undefined)
+
+export function  CalendarProvider({children}:CalendarProviderprop)
 {
     
-    const [selectedSlot,setselectedSlot]=useState<selectedSlot>({
+    const [selected,setSelectedSlot]=useState<selectedSlot>({
         date:null,time:null,duration:0,
     })
-    const setDate=(date:Dayjs):void=>
+    const setDate=(date:Dayjs)=>
     {
-         setselectedSlot({...selectedSlot,date})
+         setSelectedSlot({...selected,date})
+         console.log(selected)
     }
-    const setTime=(time:Dayjs):void=>
+    const setTime=(time:Dayjs)=>
     {
-         setselectedSlot({...selectedSlot,time})
+         setSelectedSlot({...selected,time})
     }
+    const ContextValues:CalendarContext={setDate,setTime,dates:datesData,selected}
    
 
     return(
         <ConfigProvider>
-            <CalendarContext.Provider value={{setDate,setTime,dates}}>
+            <CalendarContext.Provider value={ContextValues}>
             {children}
         </CalendarContext.Provider>
         </ConfigProvider>
        
     )
 }
+const useCalendar = () => {
+    const context = useContext(CalendarContext)
+    console.log(context)
+ 
+    if (!context) {
+      throw new Error("Calendarprovider must wrap the component in which useCalendar is used")
+    }
+    return context
+  }
+  
+export default useCalendar
+  

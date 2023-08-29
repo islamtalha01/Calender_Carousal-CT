@@ -1,19 +1,16 @@
 import './App.css'
 import CalenderContainer from './containers/CalenderContainer'
-import CalendarProvider from './hooks/useCalendar'
-import { getDatesList } from "../src/utils/Date.utils";
-import closedDatesArray from "../src/data/data";
+import useCalendar from './hooks/useCalendar'
 
 function App() {
- 
-  const dateData= getDatesList(10,closedDatesArray)
   
+    const{dates,setTime}=useCalendar()
 
   return (
     <>
-    <CalendarProvider dates={dateData}>
-    <CalenderContainer/>
-    </CalendarProvider>
+    
+    <CalenderContainer dates={dates}  setTime={setTime}/>
+   
     
     
       

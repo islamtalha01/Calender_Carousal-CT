@@ -1,15 +1,34 @@
 import React, { useState } from 'react';
-import type { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import { TimePicker } from 'antd';
+import dayjs from 'dayjs';
+type TimeComponentProps={
+  
+  onclick:(time:Dayjs)=>void
+}
+export default function TimeComponent(props:TimeComponentProps) {
+ 
 
-const TimeComponent: React.FC = () => {
-  const [value, setValue] = useState<Dayjs | null>(null);
-
-  const onChange = (time: Dayjs|null) => {
-    setValue(time);
+  const onChange = () => {
+  
   };
 
-  return <TimePicker value={value} onChange={onChange} />;
+  return( <TimePicker value={null} onChange={onChange} />)
 };
 
-export default TimeComponent
+
+// const [activeKey, setActiveKey] = useState<string | Array<string>>(
+//   activePanels || ["1", "2"]
+// )
+
+// const handleDateChange = (date: Dayjs) => {
+//   setDate(date)
+//   setActiveKey(["2"])
+// }
+
+// const handleTimeChange = (time: Dayjs | null) => {
+//   /* istanbul ignore next -- @preserve */
+//   if (time) setTime(time)
+//   /* istanbul ignore next -- @preserve */
+//   setActiveKey([])
+// }
