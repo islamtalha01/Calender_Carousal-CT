@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs"
-import { ClosedDate, Dates } from '../common/types/calendar.types'
+import { ClosedDate, DateType } from '../common/types/calendar.types'
 import isToday from "dayjs/plugin/isToday"
 dayjs.extend(isToday)
 
@@ -25,8 +25,8 @@ function isDateClosed(date:Dayjs,ClosedDates?:Array<ClosedDate>):boolean
  * @param {Array<ClosedDate> | undefined} closedDates - An array of closed dates (day names or specific dates).
  * @returns {Array<Dates>} An array of IDate objects representing dates and their closure status.
  */
-const getDatesList = (amountOfDays: number, closedDates?: Array<ClosedDate>): Array<Dates> => {
-  const dateList: Array<Dates> = []
+const getDatesList = (amountOfDays: number, closedDates?: Array<ClosedDate>): Array<DateType> => {
+  const dateList: Array<DateType> = []
   const today = dayjs(new Date())
 
   for (let i = 0; i < amountOfDays; i++) {

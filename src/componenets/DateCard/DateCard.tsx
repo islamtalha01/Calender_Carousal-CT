@@ -3,7 +3,7 @@ import { Dayjs } from "dayjs"
 
 type DateCardProps = {
   date: Dayjs
-  closed: boolean
+  closed?: boolean
   onClick?: (newDate: Dayjs) => void
 }
 

@@ -1,11 +1,10 @@
 import CurrentDay from "../componenets/CurrentDay/CurrentDay";
 import type { CollapseProps } from "antd";
 import { Collapse } from "antd";
-
-import AddEventCarousal from "../componenets/CalendarCarousal/CalendarCarousal";
+import CalendarCarousal from "../componenets/CalendarCarousal";
 import DurationComponent from "../componenets/DurationComponent/DurationComponent";
-// import CurrentTime from "../componenets/TimeComponent/TImeComponent";
 import TimeComponent from "../componenets/TimeComponent/TImeComponent";
+
 const text = `hi`;
 
 const genExtra = () => <CurrentDay />;
@@ -13,7 +12,7 @@ const items: CollapseProps["items"] = [
   {
     key: "1",
     label: "Date",
-    children: <AddEventCarousal/>,
+    children: <CalendarCarousal/>,
     extra: genExtra(),
   },
   {

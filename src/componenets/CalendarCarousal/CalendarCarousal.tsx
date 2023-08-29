@@ -1,13 +1,13 @@
 import { Carousel, Row,Col,theme} from "antd";
 // import dummyData from "../../data/data";
 import DateCard from "../DateCard/DateCard";
-import { Dates } from "../../common/types/calendar.types"
-// import { Dayjs } from "dayjs"
+import { DateType } from "../../common/types/calendar.types"
+
 const {useToken}=theme
 import { getDatesList } from "../../utils/Date.utils";
 import closedDatesArray from "../../data/data";
 
-const datesList:Array<Dates>=getDatesList(10,closedDatesArray)
+const datesList:Array<DateType>=getDatesList(10,closedDatesArray)
 // type CardCarouselProps = {
 
 //   dates: Array<Date>
