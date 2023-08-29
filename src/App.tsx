@@ -1,14 +1,18 @@
 import './App.css'
 import CalenderContainer from './containers/CalenderContainer'
-import { ConfigProvider } from "antd";
+import useCalendar from './hooks/useCalendar'
+
 function App() {
- 
+  
+    const{dates,setTime}=useCalendar()
 
   return (
     <>
-    <ConfigProvider >
-    <CalenderContainer/>
-    </ConfigProvider>
+    
+    <CalenderContainer dates={dates}  setTime={setTime}/>
+   
+    
+    
       
     </>
   )

@@ -1,10 +1,10 @@
 import { Dayjs } from "dayjs"
 
-export type Dates = {
+export type DateType = {
     date: Dayjs
   
     /** @default false*/
-    closed: boolean
+    closed?: boolean
   }
 
 /**@description Represents a closed date. It Can Either be (string) or a date (Dayjs) */

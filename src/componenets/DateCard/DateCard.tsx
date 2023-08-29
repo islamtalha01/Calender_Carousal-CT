@@ -1,10 +1,10 @@
 import { Card, Typography, theme } from "antd";
 import { Dayjs } from "dayjs"
-
+// import useCalendar from "../../hooks/useCalendar";
 type DateCardProps = {
   date: Dayjs
-  closed: boolean
-  onClick?: (newDate: Dayjs) => void
+  closed?: boolean
+  onClick: (newDate: Dayjs) => void
 }
 
 export default function DateCard(props: DateCardProps) {
@@ -21,6 +21,15 @@ export default function DateCard(props: DateCardProps) {
     color: token.colorTextSecondary,
    
   };
+  const handleCardClick=():void=>
+  {
+     if(!props.closed&&props.onClick)
+     {
+      props.onClick(props.date)
+
+      
+     }
+  }
   return (
     
      <Card
@@ -30,6 +39,7 @@ export default function DateCard(props: DateCardProps) {
       size="small"
       headStyle={headStyle}
       bodyStyle={bodyStyle}
+      onClick={handleCardClick}
     >
       <Title
         style={{

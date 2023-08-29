@@ -1,9 +1,8 @@
-
-
-
+import useCalendar from "../../hooks"
 const CurrentDay = () => {
+  const{selected}=useCalendar()
   return (
-    <div>Today</div>
+    <div>{selected.date?.format('DD/MM/YYYY')}</div>
   )
 }
 export default CurrentDay

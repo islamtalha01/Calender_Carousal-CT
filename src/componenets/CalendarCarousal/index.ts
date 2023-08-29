@@ -1,3 +1,3 @@
-import AddEventCarousal from "./CalendarCarousal";
+import CalendarCarousal from "./CalendarCarousal"
  
-export default AddEventCarousal
+export default CalendarCarousal
