@@ -42,4 +42,11 @@ export type Formats = {
    start: number
    end: number
  }
+
+ export type DurationRange={
+  min:number,
+  max:number
+ }
+
+ 
  
