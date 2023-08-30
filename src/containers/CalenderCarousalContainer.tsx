@@ -18,14 +18,20 @@ const text = `hi`;
 
 const genExtra = () => <CurrentDay />;
 
-export default function CalenderContainer({dates,setTime}:CalenderCarouselProps) {
+export default function CalenderCarousalContainer({dates,setTime}:CalenderCarouselProps) {
   const {setDate}=useCalendar()
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
      ["1", "2"]
   )
-  const handleClick=(date:Dayjs)=>
+  const handleCardClick=(date:Dayjs)=>
 {
   setDate(date);
+  setActiveKey(["2"])
+  
+}
+const handleTimePick=(time:Dayjs)=>
+{
+  setDate(time);
   setActiveKey(["2"])
   
 }
@@ -33,13 +39,13 @@ export default function CalenderContainer({dates,setTime}:CalenderCarouselProps)
     {
       key: "1",
       label: "Date",
-      children: <CalendarCarousal dates={dates} onClick={handleClick} />,
+      children: <CalendarCarousal dates={dates} onClick={handleCardClick} />,
       extra: genExtra(),
     },
     {
       key: "2",
       label: "Time",
-      children: <TimeComponent onclick={setTime}/>,
+      children: <TimeComponent onclick={handleTimePick}/>,
       extra:null
       
     },

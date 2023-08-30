@@ -1,5 +1,5 @@
 import './App.css'
-import CalenderContainer from './containers/CalenderContainer'
+import CalenderCarousalContainer from './containers/CalenderCarousalContainer'
 import useCalendar from './hooks/useCalendar'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
     
-    <CalenderContainer dates={dates}  setTime={setTime}/>
+    <CalenderCarousalContainer dates={dates}  setTime={setTime}/>
    
     
     

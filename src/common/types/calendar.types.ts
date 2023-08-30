@@ -34,3 +34,12 @@ export type Formats = {
     clock: "12h" | "24h"
   }
   
+  /**@description Represents disabled time range in hours
+  * @property {number} start - Start of the range (first disabled hour)
+  * @property {number} end - End of the range (last disabled hour)
+  */
+ export type ClosedHoursRange = {
+   start: number
+   end: number
+ }
+ 
