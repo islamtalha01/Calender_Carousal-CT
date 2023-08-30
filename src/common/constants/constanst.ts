@@ -31,3 +31,6 @@ export const FORMATS: Formats = {
   time: TIME_FORMAT,
   clock: CLOCK_FORMAT,
 }
+
+export const MIN_Duration:Number= 30
+export const MAX_Duration:Number= 30

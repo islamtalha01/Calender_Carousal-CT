@@ -1,4 +1,4 @@
-import CurrentDay from "../componenets/CurrentDay/CurrentDay";
+
 import { CollapseProps,Typography,theme } from "antd";
 import { Collapse } from "antd";
 import CalendarCarousal from "../componenets/CalendarCarousal";
@@ -20,7 +20,7 @@ type CalenderCarouselProps = {
 
 const text = `hi`;
 
-const genExtra = () => <CurrentDay />;
+// const genExtra = () => <CurrentDay />;
 
 export default function CalenderCarousalContainer({dates,setTime}:CalenderCarouselProps) {
   const  {token}=useToken() 
@@ -40,12 +40,16 @@ const handleTimePick=(time:Dayjs | null)=>
   setActiveKey([])
   
 }
+const setDuration=():void=>
+{
+   let value:number =get
+}
   const items: CollapseProps["items"] = [
     {
       key: "1",
       label: "Date",
       children: <CalendarCarousal dates={dates} onClick={handleDateSelect}/>,
-      extra: genExtra(),
+      extra: <div>{selected.date?.format('DD/MM/YYYY')}</div>,
     },
     {
       key: "2",

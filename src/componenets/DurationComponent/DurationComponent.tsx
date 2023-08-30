@@ -1,8 +1,13 @@
 import {Button,Typography,Space} from 'antd'
 const {Text}=Typography
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons"
+type Durationprops ={
+  value:number,
+  onClickDecrement:(value:number)=>void,
+  onclickIncrement:(value:number)=>void,
 
-export default function DurationComponent() {
+}
+export default function DurationComponent({value,onClickDecrement,onclickIncrement}:Durationprops) {
   return (
 <>
   <Space align='center'>
