@@ -9,7 +9,7 @@ const datesData= getDatesList(10,closedDatesArray)
 type CalendarContext={
      dates:Array<DateType>,
      setDate:(date:Dayjs)=>void,
-     setTime:(time:Dayjs)=>void,
+     setTime:(time:Dayjs |null)=>void,
      selected:selectedSlot,
 }
 type CalendarProviderprop=
@@ -32,7 +32,7 @@ export function  CalendarProvider({children}:CalendarProviderprop)
          setSelectedSlot({...selected,date})
          console.log(selected)
     }
-    const setTime=(time:Dayjs)=>
+    const setTime=(time:Dayjs | null)=>
     {
          setSelectedSlot({...selected,time})
     }
