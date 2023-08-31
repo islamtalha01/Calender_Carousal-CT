@@ -1,7 +1,16 @@
 import { MAX_Duration,MIN_Duration } from "../common/constants/constanst"
 import { DurationRange } from "../common/types/calendar.types"
 
-export function getDuration({min,max}:DurationRange)
+export const getavgDuration=(min:number,max:number):number=>
 {
-    
+   min=min? min:MIN_Duration;
+   max=max? max:MAX_Duration;
+   return Math.floor((min + max) / 2)
+}
+export const formatDuration=(value:number)=>
+{
+    const hours:number=Math.floor((value/60))
+    const min:number=Math.floor(value%60)
+
+    return `${hours}:${min}`
 }

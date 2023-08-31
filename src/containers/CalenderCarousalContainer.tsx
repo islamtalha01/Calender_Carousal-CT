@@ -9,7 +9,8 @@ import { useState } from "react";
 import useCalendar from "../hooks";
 import { getFormattedTime } from "../utils/Time.utils";
 import {Dayjs} from "dayjs";
-import { FORMATS } from "../common/constants/constanst";
+import { FORMATS, MAX_Duration, MIN_Duration } from "../common/constants/constanst";
+import { getavgDuration,formatDuration } from "../utils/Duration.utils";
 const{Text}=Typography
 const {useToken}=theme
 type CalenderCarouselProps = {
@@ -24,7 +25,7 @@ const text = `hi`;
 
 export default function CalenderCarousalContainer({dates,setTime}:CalenderCarouselProps) {
   const  {token}=useToken() 
-  const {setDate,selected}=useCalendar()
+  const {setDate,selected,setDuration}=useCalendar()
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
      ["1", "2"]
   )
@@ -40,9 +41,37 @@ const handleTimePick=(time:Dayjs | null)=>
   setActiveKey([])
   
 }
-const setDuration=():void=>
+const offsetValue:number=2
+const onclickIncrement=(offsetValue:number):void=>
 {
-   let value:number =get
+  console.log("hi")
+  const durationslot=selected.duration+offsetValue;
+  const threshold=MAX_Duration
+  if(durationslot<threshold)
+  {
+    setDuration(durationslot)
+    
+  }
+   else{
+    setDuration(selected.duration)
+   }
+  
+  
+   
+
+}
+const onclickDecrement=(offsetValue:number):void=>
+{
+  const durationslot=selected.duration-offsetValue;
+  const threshold=MIN_Duration
+  if(durationslot<threshold)
+  {
+    setDuration(durationslot)
+    
+  }
+   else{
+    setDuration(selected.duration)
+   }
 }
   const items: CollapseProps["items"] = [
     {
@@ -65,7 +94,7 @@ const setDuration=():void=>
       key: "3",
       label: "Duration",
       children: <p>{text}</p>,
-      extra: <DurationComponent/>,
+      extra: <DurationComponent value={formatDuration(selected.duration)} onclickIncrement={()=>onclickIncrement(offsetValue)} onClickDecrement={()=>onclickDecrement(offsetValue)}/>,
     },
   ];
   return <Collapse activeKey={activeKey} items={items} expandIconPosition="end" />;
