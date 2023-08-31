@@ -1,19 +1,34 @@
 import { Carousel, Row, Col, theme } from "antd";
+import { useEffect, useRef } from "react";
 import { Dayjs } from "dayjs";
 import DateCard from "../DateCard/DateCard";
-import { DateType } from "../../common/types/calendar.types"
-import useCalendar from "../../hooks";
+import { DateType } from "../../common/types/calendar.types";
+import { CarouselRef } from "antd/es/carousel";
+import { useCalendar, useCarousalScroll } from "../../hooks";
+
 const { useToken } = theme;
 
 type CalenderCarouselProps = {
   dates: Array<DateType>;
-  onClick:(date:Dayjs)=>void
+  onClick: (date: Dayjs) => void;
 };
-export default function CalendarCarousal({dates,onClick}:CalenderCarouselProps) {
+export default function CalendarCarousal({
+  dates,
+  onClick,
+}: CalenderCarouselProps) {
   const { token } = useToken();
-  // const{setDate}=useCalendar()
+
+  const carouselRef = useRef<CarouselRef>(null);
+  useCarousalScroll(carouselRef);
+
   return (
-    <Carousel arrows={true} style={{ maxWidth: "100vw" }} slidesPerRow={3}>
+    <Carousel
+      ref={carouselRef}
+      infinite={false}
+      arrows={true}
+      style={{ maxWidth: "100vw" }}
+      slidesPerRow={3}
+    >
       {dates.map((data) => (
         <Row>
           <Col
@@ -22,7 +37,7 @@ export default function CalendarCarousal({dates,onClick}:CalenderCarouselProps) 
               paddingRight: token.paddingXS,
             }}
           >
-            <DateCard date={data.date} closed={data.closed} onClick={onClick}/>
+            <DateCard date={data.date} closed={data.closed} onClick={onClick} />
           </Col>
         </Row>
       ))}

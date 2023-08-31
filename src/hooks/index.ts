@@ -1,3 +1,3 @@
 import useCalendar from "./useCalendar";
-
-export default useCalendar
+import useCarousalScroll from "./useCarousalScroll";
+export  {useCalendar,useCarousalScroll}
