@@ -24,7 +24,7 @@ export default function DurationComponent({value,onClickDecrement,onclickIncreme
   <Text>
     {value}
   </Text>
-  <Button type="default" shape="circle" icon={<MinusOutlined/>}>
+  <Button type="default" shape="circle" icon={<MinusOutlined/>} onClick={onClickDecrement}>
     
   </Button>
   </Space>

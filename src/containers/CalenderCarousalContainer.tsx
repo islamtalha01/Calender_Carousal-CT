@@ -27,7 +27,7 @@ export default function CalenderCarousalContainer({dates,setTime}:CalenderCarous
   const  {token}=useToken() 
   const {setDate,selected,setDuration}=useCalendar()
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
-     ["1", "2"]
+     ["1"]
   )
   const handleDateSelect=(date:Dayjs)=>
 {
@@ -41,13 +41,13 @@ const handleTimePick=(time:Dayjs | null)=>
   setActiveKey([])
   
 }
-const offsetValue:number=2
+const offsetValue:number=1
 const onclickIncrement=(offsetValue:number):void=>
 {
   console.log("hi")
   const durationslot=selected.duration+offsetValue;
   const threshold=MAX_Duration
-  if(durationslot<threshold)
+  if(durationslot<=threshold)
   {
     setDuration(durationslot)
     
@@ -64,10 +64,10 @@ const onclickDecrement=(offsetValue:number):void=>
 {
   const durationslot=selected.duration-offsetValue;
   const threshold=MIN_Duration
-  if(durationslot<threshold)
+  if(durationslot>=threshold)
   {
     setDuration(durationslot)
-    
+    console.log("decrement")
   }
    else{
     setDuration(selected.duration)
@@ -97,5 +97,5 @@ const onclickDecrement=(offsetValue:number):void=>
       extra: <DurationComponent value={formatDuration(selected.duration)} onclickIncrement={()=>onclickIncrement(offsetValue)} onClickDecrement={()=>onclickDecrement(offsetValue)}/>,
     },
   ];
-  return <Collapse activeKey={activeKey} items={items} expandIconPosition="end" />;
+  return <Collapse   ghost activeKey={activeKey} items={items} expandIconPosition="end" />;
 }
