@@ -1,5 +1,6 @@
 import { useState,useContext,createContext,ReactNode} from "react";
 import { getDatesList } from "../utils/Date.utils";
+import { formatDuration, getavgDuration } from "../utils/Duration.utils";
 import { ConfigProvider } from "antd";
 import { DateType,selectedSlot } from "../common/types/calendar.types";
 import { Dayjs } from "dayjs";
@@ -11,6 +12,7 @@ type CalendarContext={
      setDate:(date:Dayjs)=>void,
      setTime:(time:Dayjs |null)=>void,
      selected:selectedSlot,
+     setDuration:(value:number)=>void,
 }
 type CalendarProviderprop=
 {
@@ -23,9 +25,10 @@ const CalendarContext=createContext<CalendarContext | undefined>( undefined)
 
 export function  CalendarProvider({children}:CalendarProviderprop)
 {
-    
+   
+   
     const [selected,setSelectedSlot]=useState<selectedSlot>({
-        date:null,time:null,duration:0,
+        date:null,time:null,duration:getavgDuration(30,60)
     })
     const setDate=(date:Dayjs)=>
     {
@@ -36,7 +39,11 @@ export function  CalendarProvider({children}:CalendarProviderprop)
     {
          setSelectedSlot({...selected,time})
     }
-    const ContextValues:CalendarContext={setDate,setTime,dates:datesData,selected}
+    const setDuration=(duration:number)=>
+    {
+        setSelectedSlot({...selected,duration})
+    }
+    const ContextValues:CalendarContext={setDate,setTime,dates:datesData,selected,setDuration}
    
 
     return(
