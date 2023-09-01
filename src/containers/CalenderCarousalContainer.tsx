@@ -72,7 +72,7 @@ export default function CalenderCarousalContainer({
       key: "2",
       label: "Time",
       
-      children: <TimeComponent onclick={handleTimePick} />,
+      children: <TimeComponent onclick={handleTimePick} compute={()=>getDisabledTime(closedHrs)}/>,
       extra: (
         <Text style={{ fontSize: token.fontSizeLG }}>
           {getFormattedTime(selected?.time, FORMATS.time)}

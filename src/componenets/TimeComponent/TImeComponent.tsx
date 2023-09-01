@@ -6,11 +6,12 @@ import { closedHours } from "../../common/types/calendar.types";
 import { getDisabledTime } from "../../utils/Time.utils";
 type TimeComponentProps = {
   onclick: (time: Dayjs | null) => void;
+  compute?:()=>{disabledHours?: () => number[];}
   
 };
-export default function TimeComponent({ onclick }: TimeComponentProps) {
+export default function TimeComponent({ onclick,compute }: TimeComponentProps) {
   const closedHrs:closedHours={start:5,end:6}
-  return <TimePicker onChange={onclick} style={{ minWidth: "100%" }} disabledTime={()=>getDisabledTime(closedHrs) } />;
+  return <TimePicker onChange={onclick} style={{ minWidth: "100%" }} disabledTime={compute} />;
 }
 
 {
