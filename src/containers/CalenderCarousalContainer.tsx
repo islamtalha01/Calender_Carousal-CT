@@ -3,17 +3,13 @@ import { Collapse } from "antd";
 import CalendarCarousal from "../componenets/CalendarCarousal";
 import DurationComponent from "../componenets/DurationComponent/DurationComponent";
 import TimeComponent from "../componenets/TimeComponent/TImeComponent";
-import { DateType,closedHours } from "../common/types/calendar.types";
+import { DateType, closedHours } from "../common/types/calendar.types";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
-import { getFormattedTime,getDisabledTime } from "../utils/Time.utils";
+import { getFormattedTime, getDisabledTime } from "../utils/Time.utils";
 
 import { Dayjs } from "dayjs";
-import {
-  FORMATS,
-  MAX_Duration,
-  MIN_Duration,
-} from "../common/constants/constanst";
+import { FORMATS } from "../common/constants/constanst";
 import { formatDuration } from "../utils/Duration.utils";
 const { Text } = Typography;
 const { useToken } = theme;
@@ -22,15 +18,15 @@ type CalenderCarouselContainerProps = {
   setTime: (time: Dayjs | null) => void;
 };
 
-const closedHrs:closedHours={start:5,end:6}
-
+const closedHrs: closedHours = { start: 5, end: 6 };
 
 export default function CalenderCarousalContainer({
   dates,
   setTime,
 }: CalenderCarouselContainerProps) {
   const { token } = useToken();
-  const { setDate, selected, setDuration,onclickIncrement,onclickDecrement } = useCalendar();
+  const { setDate, selected, onclickIncrement, onclickDecrement } =
+    useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(["1"]);
   const handleDateSelect = (date: Dayjs) => {
     setDate(date);
@@ -41,8 +37,7 @@ export default function CalenderCarousalContainer({
     setActiveKey([]);
   };
   const offsetValue: number = 1;
-  
-  
+
   const items: CollapseProps["items"] = [
     {
       key: "1",
@@ -51,11 +46,15 @@ export default function CalenderCarousalContainer({
       extra: <div>{selected.date?.format("DD/MM/YYYY")}</div>,
     },
     {
-      
       key: "2",
       label: "Time",
-      
-      children: <TimeComponent onclick={handleTimePick} compute={()=>getDisabledTime(closedHrs)}/>,
+
+      children: (
+        <TimeComponent
+          onclick={handleTimePick}
+          compute={() => getDisabledTime(closedHrs)}
+        />
+      ),
       extra: (
         <Text style={{ fontSize: token.fontSizeLG }}>
           {getFormattedTime(selected?.time, FORMATS.time)}
@@ -65,7 +64,7 @@ export default function CalenderCarousalContainer({
     {
       key: "3",
       label: "Duration",
-      children:null,
+      children: null,
       extra: (
         <DurationComponent
           value={formatDuration(selected.duration)}
