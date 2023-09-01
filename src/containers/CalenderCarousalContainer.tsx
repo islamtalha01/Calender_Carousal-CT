@@ -7,6 +7,7 @@ import { DateType,closedHours } from "../common/types/calendar.types";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
 import { getFormattedTime,getDisabledTime } from "../utils/Time.utils";
+
 import { Dayjs } from "dayjs";
 import {
   FORMATS,
@@ -16,20 +17,20 @@ import {
 import { formatDuration } from "../utils/Duration.utils";
 const { Text } = Typography;
 const { useToken } = theme;
-type CalenderCarouselProps = {
+type CalenderCarouselContainerProps = {
   dates: Array<DateType>;
   setTime: (time: Dayjs | null) => void;
 };
-// const min:number=5;const max:number=9
+
 const closedHrs:closedHours={start:5,end:6}
 
 
 export default function CalenderCarousalContainer({
   dates,
   setTime,
-}: CalenderCarouselProps) {
+}: CalenderCarouselContainerProps) {
   const { token } = useToken();
-  const { setDate, selected, setDuration } = useCalendar();
+  const { setDate, selected, setDuration,onclickIncrement,onclickDecrement } = useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(["1"]);
   const handleDateSelect = (date: Dayjs) => {
     setDate(date);
@@ -40,26 +41,8 @@ export default function CalenderCarousalContainer({
     setActiveKey([]);
   };
   const offsetValue: number = 1;
-  const onclickIncrement = (offsetValue: number): void => {
-    console.log("hi");
-    const durationslot = selected.duration + offsetValue;
-    const threshold = MAX_Duration;
-    if (durationslot <= threshold) {
-      setDuration(durationslot);
-    } else {
-      setDuration(selected.duration);
-    }
-  };
-  const onclickDecrement = (offsetValue: number): void => {
-    const durationslot = selected.duration - offsetValue;
-    const threshold = MIN_Duration;
-    if (durationslot >= threshold) {
-      setDuration(durationslot);
-      console.log("decrement");
-    } else {
-      setDuration(selected.duration);
-    }
-  };
+  
+  
   const items: CollapseProps["items"] = [
     {
       key: "1",

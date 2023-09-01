@@ -12,23 +12,11 @@ function inLineStyles()
     height: '25px',
   };
 
-  
-  return{headStyle}
+  const bodyStyle: React.CSSProperties = {
+    color: token.colorTextSecondary,
+  };
+  return{headStyle,bodyStyle}
 }
 
 
 export default inLineStyles;
-
-// import { createStyles } from 'antd-style';
-
-// const inLineStyles = createStyles(({ token, css }) => ({
-//   // 支持 css object 的写法
-//   headStyle: {
-
-//   color: token.colorText,
-//   fontSize: token.fontSizeLG,
-//   fontWeight: '500',
-//   height: '25',
-//   },
-// })) as any
-// export default inLineStyles
