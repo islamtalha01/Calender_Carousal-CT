@@ -1,6 +1,7 @@
 import { Card, Typography, theme } from "antd";
 import { Dayjs } from "dayjs";
 // import useCalendar from "../../hooks/useCalendar";
+import inLineStyles from "./inLineStyles";
 type DateCardProps = {
   date: Dayjs;
   closed?: boolean;
@@ -11,12 +12,14 @@ export default function DateCard(props: DateCardProps) {
   const { Text, Title } = Typography;
   const { useToken } = theme;
   const { token } = useToken();
-  const headStyle: React.CSSProperties = {
-    backgroundColor: props.closed ? token.colorBgContainerDisabled : "#f96458",
-    fontSize: token.fontSizeLG,
-    fontWeight: 500,
-    height: "25px",
-  };
+  const{headStyle}=inLineStyles()
+  // const {styles}=inLineStyles()
+  // const headStyle: React.CSSProperties = {
+  //   backgroundColor: props.closed ? token.colorBgContainerDisabled : "#f96458",
+  //   fontSize: token.fontSizeLG,
+  //   fontWeight: 500,
+  //   height: "25px",
+  // };
   const bodyStyle: React.CSSProperties = {
     color: token.colorTextSecondary,
   };

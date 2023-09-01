@@ -1,5 +1,5 @@
 import { MAX_Duration,MIN_Duration } from "../common/constants/constanst"
-import { DurationRange } from "../common/types/calendar.types"
+import { DurationRange,closedHours } from "../common/types/calendar.types"
 
 export const getavgDuration=(min:number,max:number):number=>
 {
@@ -10,7 +10,7 @@ export const getavgDuration=(min:number,max:number):number=>
 export const formatDuration=(value:number)=>
 {
     const hours:number=Math.floor((value/60))
-    const min:number=Math.floor(value%60)
+    const min:number=value%60
     const formatedHours=hours.toString().padStart(1, "0")
     const formatedMin=min.toString().padStart(2, "0")
 
