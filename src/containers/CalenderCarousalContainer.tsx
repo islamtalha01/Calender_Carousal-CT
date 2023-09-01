@@ -3,10 +3,10 @@ import { Collapse } from "antd";
 import CalendarCarousal from "../componenets/CalendarCarousal";
 import DurationComponent from "../componenets/DurationComponent/DurationComponent";
 import TimeComponent from "../componenets/TimeComponent/TImeComponent";
-import { DateType } from "../common/types/calendar.types";
+import { DateType,closedHours } from "../common/types/calendar.types";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
-import { getFormattedTime } from "../utils/Time.utils";
+import { getFormattedTime,getDisabledTime } from "../utils/Time.utils";
 import { Dayjs } from "dayjs";
 import {
   FORMATS,
@@ -20,8 +20,9 @@ type CalenderCarouselProps = {
   dates: Array<DateType>;
   setTime: (time: Dayjs | null) => void;
 };
+// const min:number=5;const max:number=9
+const closedHrs:closedHours={start:5,end:6}
 
-const text = `hi`;
 
 export default function CalenderCarousalContainer({
   dates,
@@ -67,8 +68,10 @@ export default function CalenderCarousalContainer({
       extra: <div>{selected.date?.format("DD/MM/YYYY")}</div>,
     },
     {
+      
       key: "2",
       label: "Time",
+      
       children: <TimeComponent onclick={handleTimePick} />,
       extra: (
         <Text style={{ fontSize: token.fontSizeLG }}>
@@ -79,7 +82,7 @@ export default function CalenderCarousalContainer({
     {
       key: "3",
       label: "Duration",
-      children: <p>{text}</p>,
+      children:null,
       extra: (
         <DurationComponent
           value={formatDuration(selected.duration)}

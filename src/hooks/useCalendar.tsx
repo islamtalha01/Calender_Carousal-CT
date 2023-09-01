@@ -54,7 +54,7 @@ export function CalendarProvider({ children }: CalendarProviderprop) {
 }
 const useCalendar = () => {
   const context = useContext(CalendarContext);
-  console.log(context);
+//   console.log(context);
 
   if (!context) {
     throw new Error(

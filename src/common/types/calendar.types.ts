@@ -38,7 +38,7 @@ export type Formats = {
   * @property {number} start - Start of the range (first disabled hour)
   * @property {number} end - End of the range (last disabled hour)
   */
- export type ClosedHoursRange = {
+ export type closedHours = {
    start: number
    end: number
  }
