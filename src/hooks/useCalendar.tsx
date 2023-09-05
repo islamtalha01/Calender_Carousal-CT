@@ -34,6 +34,8 @@ type CalendarProviderprop = {
   // cards?: CardBreakpoint
   unavailableDates?: Array<ClosedDate>
   unavailableHours?: closedHours
+
+  // theme?: CalendarTheme
 };
 
 const CalendarContext = createContext<CalendarContext | undefined>(undefined);
@@ -83,6 +85,7 @@ export function CalendarProvider({ children,datesList,intervalSize,formats,minDu
     setDuration,
     onclickIncrement:onclickIncrement,
     onclickDecrement:onclickDecrement,
+
   //   intervalSize?: ,
   //   formats?: ,
   //   minDuration?: ,
