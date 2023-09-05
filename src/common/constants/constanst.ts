@@ -1,4 +1,4 @@
-import { ClosedDate, Formats, closedHours } from "../types/calendar.types"
+import { ClosedDate, Formats, closedHours,CardBreakpoint } from "../types/calendar.types"
 import dayjs from "dayjs"
 /**
  * @constant
@@ -42,3 +42,11 @@ export const ClosedDates:ClosedDate[]=[
   dayjs('2023-01-02')                  // Dayjs object representing a date
 ];
 export const closedHrs:closedHours = { start: 2, end: 4 };
+export const CARD_BREAKPOINT: CardBreakpoint = {
+  xs: 1,
+  sm: 4,
+  md: 6,
+  lg: 8,
+  xl: 10,
+  xxl: 14,
+}

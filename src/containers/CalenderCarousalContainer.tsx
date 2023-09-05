@@ -11,13 +11,15 @@ import { getFormattedTime, getDisabledTime } from "../utils/Time.utils";
 import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
 import { formatDuration } from "../utils/Duration.utils";
+import useBreakpoint from "antd/es/grid/hooks/useBreakpoint"
+
 const { Text } = Typography;
 const { useToken } = theme;
 type CalenderCarouselContainerProps = {
   dates: Array<DateType>;
   setTime: (time: Dayjs | null) => void;
   activePanels?: string | Array<string>;
-  CalendarCarousalComponenet?: React.ReactNode;
+  CalendarCarousalComponent?: React.ReactNode;
   timeComponent?: React.ReactNode;
   durationComponent?: React.ReactNode;
 };
@@ -27,17 +29,19 @@ const closedHrs: closedHours = { start: 11, end: 12 };
 export default function CalenderCarousalContainer({
   dates,
   setTime,
-  CalendarCarousalComponenet,
+  CalendarCarousalComponent,
   timeComponent,
   durationComponent,
- 
+  activePanels
 
 
-}: CalenderCarouselContainerProps) {
+}:CalenderCarouselContainerProps) {
   const { token } = useToken();
   const { setDate, selected, onclickIncrement, onclickDecrement } =
     useCalendar();
-  const [activeKey, setActiveKey] = useState<string | Array<string>>(["1"]);
+  const [activeKey, setActiveKey] = useState<string | Array<string>>(
+    activePanels || ["1", "2"]
+  );
   const handleDateSelect = (date: Dayjs) => {
     setDate(date);
     setActiveKey(["2"]);
@@ -52,7 +56,7 @@ export default function CalenderCarousalContainer({
     {
       key: "1",
       label: "Date",
-      children: CalendarCarousalComponenet ||<CalendarCarousal dates={dates} onClick={handleDateSelect} />,
+      children: CalendarCarousalComponent ||<CalendarCarousal dates={dates} onClick={handleDateSelect} />,
       extra: <div>{selected.date?.format("DD/MM/YYYY")}</div>,
     },
     {

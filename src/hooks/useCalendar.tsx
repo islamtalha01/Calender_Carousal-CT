@@ -2,11 +2,11 @@ import { useState, useContext, createContext, ReactNode } from "react";
 import { getDatesList } from "../utils/Date.utils";
 import { formatDuration, getavgDuration } from "../utils/Duration.utils";
 import { ConfigProvider } from "antd";
-import { DateType, selectedSlot,Formats,ClosedDate,closedHours } from "../common/types/calendar.types";
+import { DateType, selectedSlot,Formats,ClosedDate,closedHours, CardBreakpoint } from "../common/types/calendar.types";
 import { Dayjs } from "dayjs";
-import { MAX_Duration,MIN_Duration,INTERVAL_STEP,FORMATS,ClosedDates,closedHrs } from "../common/constants/constanst";
+import { MAX_Duration,MIN_Duration,INTERVAL_STEP,FORMATS,ClosedDates,closedHrs,CARD_BREAKPOINT } from "../common/constants/constanst";
 import closedDatesArray from "../data/data";
-
+import useBreakpoint from "antd/es/grid/hooks/useBreakpoint"
 type CalendarContext = {
   dates: Array<DateType>;
   setDate: (date: Dayjs) => void;
@@ -19,10 +19,10 @@ type CalendarContext = {
   formats?: Formats
   minDuration?: number
   maxDuration?: number
-  // cards?: CardBreakpoint
+  cards?: CardBreakpoint
   unavailableDates?: Array<ClosedDate>
   unavailableHours?: closedHours
-
+  cardCount:number,
 };
 type CalendarProviderprop = {
   children: ReactNode;
@@ -31,21 +31,23 @@ type CalendarProviderprop = {
   formats?: Formats
   minDuration?: number
   maxDuration?: number
-  // cards?: CardBreakpoint
+  cards?:CardBreakpoint
   unavailableDates?: Array<ClosedDate>
-  unavailableHours?: closedHours
+  unavailableHours?: closedHours,
+ 
 
   // theme?: CalendarTheme
 };
 
 const CalendarContext = createContext<CalendarContext | undefined>(undefined);
 
-export function CalendarProvider({ children,datesList,intervalSize,formats,minDuration,maxDuration,unavailableDates,unavailableHours}: CalendarProviderprop) {
+export function CalendarProvider({ children,datesList,intervalSize,formats,minDuration,maxDuration,unavailableDates,unavailableHours,cards}: CalendarProviderprop) {
   const [selected, setSelectedSlot] = useState<selectedSlot>({
     date: null,
     time: null,
     duration: getavgDuration(30, 60),
   });
+  const breakpoint = useBreakpoint()
   const setDate = (date: Dayjs) => {
     setSelectedSlot({ ...selected, date });
     console.log(selected);
@@ -77,6 +79,17 @@ export function CalendarProvider({ children,datesList,intervalSize,formats,minDu
         setDuration(selected.duration);
       }
     };
+    
+
+    let cardCount = 3
+  
+    /* istanbul ignore next -- @preserve */
+    if (breakpoint.xxl) cardCount = CARD_BREAKPOINT.xxl
+    else if (breakpoint.xl) cardCount = CARD_BREAKPOINT.xl
+    else if (breakpoint.lg) cardCount = CARD_BREAKPOINT.lg
+    else if (breakpoint.md) cardCount = CARD_BREAKPOINT.md
+    else if (breakpoint.sm) cardCount = CARD_BREAKPOINT.sm
+    else if (breakpoint.xs) cardCount = CARD_BREAKPOINT.xs
   const ContextValues: CalendarContext = {
     setDate,
     setTime,
@@ -89,9 +102,10 @@ export function CalendarProvider({ children,datesList,intervalSize,formats,minDu
     formats: formats || FORMATS,
     minDuration: minDuration || MIN_Duration,
     maxDuration: maxDuration || MAX_Duration,
-    // cards: cards || Constants.CARD_BREAKPOINT,
+    cards:  CARD_BREAKPOINT,
     unavailableDates: closedDatesArray || ClosedDates,
-    unavailableHours:  unavailableHours|| closedHrs
+    unavailableHours:  unavailableHours|| closedHrs,
+    cardCount:cardCount
     // styles: theme?.custom || Constants.CALENDAR_THEME.custom,
     // intervalSize?: 
  

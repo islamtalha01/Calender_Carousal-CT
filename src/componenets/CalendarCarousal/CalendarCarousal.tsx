@@ -17,7 +17,7 @@ export default function CalendarCarousal({
   onClick,
 }: CalenderCarouselProps) {
   const { token } = useToken();
-
+  const {cardCount}=useCalendar()
   const carouselRef = useRef<CarouselRef>(null);
   useCarousalScroll(carouselRef);
 
@@ -27,7 +27,9 @@ export default function CalendarCarousal({
       infinite={false}
       arrows={true}
       style={{ maxWidth: "100vw" }}
-      slidesPerRow={3}
+      // slidesPerRow={3}
+      slidesPerRow={cardCount}
+      dots={false}
     >
       {dates.map((data) => (
         <Row>
