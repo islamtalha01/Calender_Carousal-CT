@@ -106,7 +106,7 @@ export function CalendarProvider({ children,datesList,intervalSize,formats,minDu
     unavailableDates: closedDatesArray || ClosedDates,
     unavailableHours:  unavailableHours|| closedHrs,
     cardCount:cardCount
-    // styles: theme?.custom || Constants.CALENDAR_THEME.custom,
+    styles: theme?.custom || Constants.CALENDAR_THEME.custom,
     // intervalSize?: 
  
   };

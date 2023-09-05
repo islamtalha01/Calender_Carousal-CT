@@ -44,9 +44,9 @@ export const ClosedDates:ClosedDate[]=[
 export const closedHrs:closedHours = { start: 2, end: 4 };
 export const CARD_BREAKPOINT: CardBreakpoint = {
   xs: 1,
-  sm: 4,
-  md: 6,
-  lg: 8,
-  xl: 10,
-  xxl: 14,
+  sm: 2,
+  md: 4,
+  lg: 6,
+  xl: 8,
+  xxl: 10,
 }
