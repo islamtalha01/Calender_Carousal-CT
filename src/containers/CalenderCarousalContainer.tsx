@@ -16,13 +16,23 @@ const { useToken } = theme;
 type CalenderCarouselContainerProps = {
   dates: Array<DateType>;
   setTime: (time: Dayjs | null) => void;
+  activePanels?: string | Array<string>;
+  CalendarCarousalComponenet?: React.ReactNode;
+  timeComponent?: React.ReactNode;
+  durationComponent?: React.ReactNode;
 };
 
-const closedHrs: closedHours = { start: 5, end: 6 };
+const closedHrs: closedHours = { start: 11, end: 12 };
 
 export default function CalenderCarousalContainer({
   dates,
   setTime,
+  CalendarCarousalComponenet,
+  timeComponent,
+  durationComponent,
+ 
+
+
 }: CalenderCarouselContainerProps) {
   const { token } = useToken();
   const { setDate, selected, onclickIncrement, onclickDecrement } =
@@ -42,14 +52,14 @@ export default function CalenderCarousalContainer({
     {
       key: "1",
       label: "Date",
-      children: <CalendarCarousal dates={dates} onClick={handleDateSelect} />,
+      children: CalendarCarousalComponenet ||<CalendarCarousal dates={dates} onClick={handleDateSelect} />,
       extra: <div>{selected.date?.format("DD/MM/YYYY")}</div>,
     },
     {
       key: "2",
       label: "Time",
 
-      children: (
+      children:  timeComponent ||(
         <TimeComponent
           onclick={handleTimePick}
           compute={() => getDisabledTime(closedHrs)}
@@ -65,7 +75,7 @@ export default function CalenderCarousalContainer({
       key: "3",
       label: "Duration",
       children: null,
-      extra: (
+      extra: durationComponent ||(
         <DurationComponent
           value={formatDuration(selected.duration)}
           onclickIncrement={() => onclickIncrement(offsetValue)}

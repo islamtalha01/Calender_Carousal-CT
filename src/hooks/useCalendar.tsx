@@ -4,7 +4,7 @@ import { formatDuration, getavgDuration } from "../utils/Duration.utils";
 import { ConfigProvider } from "antd";
 import { DateType, selectedSlot,Formats,ClosedDate,closedHours } from "../common/types/calendar.types";
 import { Dayjs } from "dayjs";
-import { MAX_Duration,MIN_Duration } from "../common/constants/constanst";
+import { MAX_Duration,MIN_Duration,INTERVAL_STEP,FORMATS,ClosedDates,closedHrs } from "../common/constants/constanst";
 import closedDatesArray from "../data/data";
 
 type CalendarContext = {
@@ -85,14 +85,16 @@ export function CalendarProvider({ children,datesList,intervalSize,formats,minDu
     setDuration,
     onclickIncrement:onclickIncrement,
     onclickDecrement:onclickDecrement,
-
-  //   intervalSize?: ,
-  //   formats?: ,
-  //   minDuration?: ,
-  //   maxDuration?: ,
-  // // cards?: CardBreakpoint
-  //   unavailableDates?:
-  //   unavailableHours?: 
+    intervalSize: intervalSize || INTERVAL_STEP,
+    formats: formats || FORMATS,
+    minDuration: minDuration || MIN_Duration,
+    maxDuration: maxDuration || MAX_Duration,
+    // cards: cards || Constants.CARD_BREAKPOINT,
+    unavailableDates: closedDatesArray || ClosedDates,
+    unavailableHours:  unavailableHours|| closedHrs
+    // styles: theme?.custom || Constants.CALENDAR_THEME.custom,
+    // intervalSize?: 
+ 
   };
 
   return (
