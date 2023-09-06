@@ -3,7 +3,7 @@ import { Collapse } from "antd";
 import CalendarCarousal from "../componenets/CalendarCarousal";
 import DurationComponent from "../componenets/DurationComponent/DurationComponent";
 import TimeComponent from "../componenets/TimeComponent/TImeComponent";
-import { DateType, closedHours } from "../common/types/calendar.types";
+import { closedHours } from "../common/types/calendar.types";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
 import { getFormattedTime, getDisabledTime } from "../utils/Time.utils";
@@ -11,14 +11,11 @@ import { getFormattedTime, getDisabledTime } from "../utils/Time.utils";
 import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
 import { formatDuration } from "../utils/Duration.utils";
-import useBreakpoint from "antd/es/grid/hooks/useBreakpoint"
-import { createDateToken } from "../utils/theme.utils";
+import { createDateToken } from "../utils/theme.utils.ts";
 
 const { Text } = Typography;
 const { useToken } = theme;
 type CalenderCarouselContainerProps = {
-  
-  setTime: (time: Dayjs | null) => void;
   activePanels?: string | Array<string>;
   CalendarCarousalComponent?: React.ReactNode;
   timeComponent?: React.ReactNode;
@@ -28,18 +25,21 @@ type CalenderCarouselContainerProps = {
 const closedHrs: closedHours = { start: 11, end: 12 };
 
 export default function CalenderCarousalContainer({
-  
-  setTime,
   CalendarCarousalComponent,
   timeComponent,
   durationComponent,
-  activePanels
-
-
-}:CalenderCarouselContainerProps) {
+  activePanels,
+}: CalenderCarouselContainerProps) {
   const { token } = useToken();
-  const { setDate, selected, onclickIncrement, onclickDecrement,styles,dates } =
-    useCalendar();
+  const {
+    setDate,
+    selected,
+    onclickIncrement,
+    onclickDecrement,
+    styles,
+    dates,
+    setTime,
+  } = useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
     activePanels || ["1", "2"]
   );
@@ -57,25 +57,29 @@ export default function CalenderCarousalContainer({
     {
       key: "1",
       label: "Date",
-      children: CalendarCarousalComponent ||(
-      <ConfigProvider theme={{
-        token:createDateToken(styles,token)}}>
-      
-       
-          <CalendarCarousal dates={dates} onClick={handleDateSelect} />,
-      </ConfigProvider>),
-     
+      children: CalendarCarousalComponent || (
+        <ConfigProvider
+          theme={{
+            token: createDateToken(styles, token),
+          }}
+        >
+          <CalendarCarousal dates={dates} onClick={handleDateSelect} />
+        </ConfigProvider>
+      ),
+
       extra: <Text>{selected.date?.format("DD/MM/YYYY")}</Text>,
     },
     {
       key: "2",
       label: "Time",
 
-      children:  timeComponent ||(
-        <TimeComponent
-          onclick={handleTimePick}
-          compute={() => getDisabledTime(closedHrs)}
-        />
+      children: timeComponent || (
+        <ConfigProvider>
+          <TimeComponent
+            onclick={handleTimePick}
+            compute={() => getDisabledTime(closedHrs)}
+          />
+        </ConfigProvider>
       ),
       extra: (
         <Text style={{ fontSize: token.fontSizeLG }}>
@@ -87,12 +91,14 @@ export default function CalenderCarousalContainer({
       key: "3",
       label: "Duration",
       children: null,
-      extra: durationComponent ||(
-        <DurationComponent
-          value={formatDuration(selected.duration)}
-          onclickIncrement={() => onclickIncrement(offsetValue)}
-          onClickDecrement={() => onclickDecrement(offsetValue)}
-        />
+      extra: durationComponent || (
+        <ConfigProvider theme={{}}>
+          <DurationComponent
+            value={formatDuration(selected.duration)}
+            onclickIncrement={() => onclickIncrement(offsetValue)}
+            onClickDecrement={() => onclickDecrement(offsetValue)}
+          />
+        </ConfigProvider>
       ),
     },
   ];
@@ -102,6 +108,7 @@ export default function CalenderCarousalContainer({
       activeKey={activeKey}
       items={items}
       expandIconPosition="end"
+      style={{ backgroundColor: token.colorBgLayout }}
     />
   );
 }

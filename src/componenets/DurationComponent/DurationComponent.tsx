@@ -1,6 +1,7 @@
-import { Button, Typography, Space } from "antd";
+import { Button, Typography, Space,theme } from "antd";
 const { Text } = Typography;
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+const {useToken}=theme
 
 type Durationprops = {
   value: string;
@@ -13,7 +14,7 @@ export default function DurationComponent({
   onclickIncrement,
 }: Durationprops) {
  
-
+  const{token}=useToken()
   return (
     <>
       <Space align="center">
@@ -23,7 +24,7 @@ export default function DurationComponent({
           icon={<PlusOutlined />}
           onClick={onclickIncrement}
         ></Button>
-        <Text>{value}</Text>
+        <Text style={{  color: token.colorTextSecondary,}}>{value}</Text>
         <Button
           type="default"
           shape="circle"

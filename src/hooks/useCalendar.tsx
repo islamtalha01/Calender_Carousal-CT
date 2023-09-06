@@ -1,6 +1,7 @@
 import { useState, useContext, createContext, ReactNode } from "react";
 import { getDatesList } from "../utils/Date.utils";
 import { formatDuration, getavgDuration } from "../utils/Duration.utils";
+
 import { ConfigProvider } from "antd";
 import {
   DateType,
@@ -23,7 +24,8 @@ import {
 import closedDatesArray from "../data/data";
 import useBreakpoint from "antd/es/grid/hooks/useBreakpoint";
 import { CalendarTheme, CustomStyles } from "../common/types/theme.type";
-import { AliasToken } from "antd/es/theme/internal";
+import { createThemeAlgorithm } from "../utils/theme.utils";
+
 type CalendarContext = {
   dates: Array<DateType>  | undefined;
   setDate: (date: Dayjs) => void;
@@ -140,7 +142,7 @@ export function CalendarProvider({
   };
 
   return (
-    <ConfigProvider>
+    <ConfigProvider  theme={{ algorithm:createThemeAlgorithm(theme) }} >
       <CalendarContext.Provider value={ContextValues}>
         {children}
       </CalendarContext.Provider>
