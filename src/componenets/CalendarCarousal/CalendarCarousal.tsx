@@ -1,5 +1,5 @@
 import { Carousel, Row, Col, theme } from "antd";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Dayjs } from "dayjs";
 import DateCard from "../DateCard/DateCard";
 import { DateType } from "../../common/types/calendar.types";
@@ -17,7 +17,7 @@ export default function CalendarCarousal({
   onClick,
 }: CalenderCarouselProps) {
   const { token } = useToken();
-  const {cardCount}=useCalendar()
+  const { cardCount } = useCalendar();
   const carouselRef = useRef<CarouselRef>(null);
   useCarousalScroll(carouselRef);
 
@@ -27,12 +27,11 @@ export default function CalendarCarousal({
       infinite={false}
       arrows={true}
       style={{ maxWidth: "100vw" }}
-   
       slidesPerRow={cardCount}
       dots={false}
     >
       {dates?.map((data) => (
-        <Row >
+        <Row>
           <Col
             style={{
               paddingLeft: token.paddingXS,
