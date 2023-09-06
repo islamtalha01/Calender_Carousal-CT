@@ -5,11 +5,12 @@ import useCalendar from './hooks/useCalendar'
 function App() {
   
     const{dates,setTime}=useCalendar()
+    console.log(dates)
 
   return (
     <>
     
-    <CalenderCarousalContainer dates={dates}  setTime={setTime}/>
+    <CalenderCarousalContainer   setTime={setTime}/>
    
     
     

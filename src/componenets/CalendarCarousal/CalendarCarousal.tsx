@@ -9,7 +9,7 @@ import { useCalendar, useCarousalScroll } from "../../hooks";
 const { useToken } = theme;
 
 type CalenderCarouselProps = {
-  dates: Array<DateType>;
+  dates: Array<DateType> | undefined;
   onClick: (date: Dayjs) => void;
 };
 export default function CalendarCarousal({
@@ -27,12 +27,12 @@ export default function CalendarCarousal({
       infinite={false}
       arrows={true}
       style={{ maxWidth: "100vw" }}
-      // slidesPerRow={3}
+   
       slidesPerRow={cardCount}
       dots={false}
     >
-      {dates.map((data) => (
-        <Row>
+      {dates?.map((data) => (
+        <Row >
           <Col
             style={{
               paddingLeft: token.paddingXS,

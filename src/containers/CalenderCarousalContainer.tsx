@@ -1,4 +1,4 @@
-import { CollapseProps, Typography, theme } from "antd";
+import { CollapseProps, ConfigProvider, Typography, theme } from "antd";
 import { Collapse } from "antd";
 import CalendarCarousal from "../componenets/CalendarCarousal";
 import DurationComponent from "../componenets/DurationComponent/DurationComponent";
@@ -12,11 +12,12 @@ import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
 import { formatDuration } from "../utils/Duration.utils";
 import useBreakpoint from "antd/es/grid/hooks/useBreakpoint"
+import { createDateToken } from "../utils/theme.utils";
 
 const { Text } = Typography;
 const { useToken } = theme;
 type CalenderCarouselContainerProps = {
-  dates: Array<DateType>;
+  
   setTime: (time: Dayjs | null) => void;
   activePanels?: string | Array<string>;
   CalendarCarousalComponent?: React.ReactNode;
@@ -27,7 +28,7 @@ type CalenderCarouselContainerProps = {
 const closedHrs: closedHours = { start: 11, end: 12 };
 
 export default function CalenderCarousalContainer({
-  dates,
+  
   setTime,
   CalendarCarousalComponent,
   timeComponent,
@@ -37,7 +38,7 @@ export default function CalenderCarousalContainer({
 
 }:CalenderCarouselContainerProps) {
   const { token } = useToken();
-  const { setDate, selected, onclickIncrement, onclickDecrement } =
+  const { setDate, selected, onclickIncrement, onclickDecrement,styles,dates } =
     useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
     activePanels || ["1", "2"]
@@ -56,8 +57,15 @@ export default function CalenderCarousalContainer({
     {
       key: "1",
       label: "Date",
-      children: CalendarCarousalComponent ||<CalendarCarousal dates={dates} onClick={handleDateSelect} />,
-      extra: <div>{selected.date?.format("DD/MM/YYYY")}</div>,
+      children: CalendarCarousalComponent ||(
+      <ConfigProvider theme={{
+        token:createDateToken(styles,token)}}>
+      
+       
+          <CalendarCarousal dates={dates} onClick={handleDateSelect} />,
+      </ConfigProvider>),
+     
+      extra: <Text>{selected.date?.format("DD/MM/YYYY")}</Text>,
     },
     {
       key: "2",
