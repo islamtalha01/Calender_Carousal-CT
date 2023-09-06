@@ -11,7 +11,7 @@ export default function DateCard(props: DateCardProps) {
   const { Text, Title } = Typography;
   const { useToken } = theme;
   const { token } = useToken();
-  const { headStyle, bodyStyle } = inLineStyles();
+  const { headStyleopen,headStyleclosed, bodyStyle } = inLineStyles();
 
   const handleCardClick = (): void => {
     if (!props.closed && props.onClick) {
@@ -24,7 +24,7 @@ export default function DateCard(props: DateCardProps) {
       title={props.date.format("MMMM")}
       style={{ width: "150px", textAlign: "center" }}
       size="small"
-      headStyle={headStyle}
+      headStyle={props.closed?headStyleclosed:headStyleopen}
       bodyStyle={bodyStyle}
       onClick={handleCardClick}
     >
@@ -50,3 +50,5 @@ export default function DateCard(props: DateCardProps) {
     </Card>
   );
 }
+
+

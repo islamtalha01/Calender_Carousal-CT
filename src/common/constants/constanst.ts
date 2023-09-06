@@ -1,5 +1,5 @@
-import { Formats } from "../types/calendar.types"
-
+import { ClosedDate, Formats, closedHours,CardBreakpoint } from "../types/calendar.types"
+import dayjs from "dayjs"
 /**
  * @constant
  * The default date format used for formatting dates.
@@ -34,3 +34,19 @@ export const FORMATS: Formats = {
 
 export const MIN_Duration:number= 30
 export const MAX_Duration:number= 180
+export const INTERVAL_STEP=1
+export const ClosedDates:ClosedDate[]=[
+  "Monday",                            // String representing day name
+  dayjs('2023-01-01'),                 // Dayjs object representing a date
+  "Wednesday",                         // String representing day name
+  dayjs('2023-01-02')                  // Dayjs object representing a date
+];
+export const closedHrs:closedHours = { start: 2, end: 4 };
+export const CARD_BREAKPOINT: CardBreakpoint = {
+  xs: 1,
+  sm: 2,
+  md: 4,
+  lg: 6,
+  xl: 8,
+  xxl: 10,
+}
