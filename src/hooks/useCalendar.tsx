@@ -46,6 +46,7 @@ type CalendarContext = {
 };
 type CalendarProviderprop = {
   children: ReactNode;
+
   datesList?: Array<DateType>;
   intervalSize?: number;
   formats?: Formats;
@@ -56,6 +57,8 @@ type CalendarProviderprop = {
   unavailableHours?: closedHours;
 
   theme?: CalendarTheme
+
+
 };
 
 const CalendarContext = createContext<CalendarContext | undefined>(undefined);
