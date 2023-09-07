@@ -1,14 +1,11 @@
 import { useState, useContext, createContext, ReactNode } from "react";
-import { getDatesList } from "../utils/Date.utils";
-import { formatDuration, getavgDuration } from "../utils/Duration.utils";
-
+import { getavgDuration } from "../utils/Duration.utils";
 import { ConfigProvider } from "antd";
 import {
-  DateType,
   selectedSlot,
   Formats,
-  ClosedDate,
-  closedHours,
+  unavailableDate,
+  unavailableHrs,
   CardBreakpoint,
 } from "../common/types/calendar.types";
 import { Dayjs } from "dayjs";
@@ -17,17 +14,15 @@ import {
   MIN_Duration,
   INTERVAL_STEP,
   FORMATS,
-  ClosedDates,
-  closedHrs,
+  UNAVAILABLE_DATES,
+  UNAVAILABLE_HOURS,
   CARD_BREAKPOINT,
 } from "../common/constants/constanst";
-import closedDatesArray from "../data/data";
 import useBreakpoint from "antd/es/grid/hooks/useBreakpoint";
 import { CalendarTheme, CustomStyles } from "../common/types/theme.type";
 import { createThemeAlgorithm } from "../utils/theme.utils";
 
 type CalendarContext = {
-  dates: Array<DateType>  | undefined;
   setDate: (date: Dayjs) => void;
   setTime: (time: Dayjs | null) => void;
   onclickIncrement: (value: number) => void;
@@ -38,34 +33,28 @@ type CalendarContext = {
   formats?: Formats;
   minDuration?: number;
   maxDuration?: number;
-  cards?: CardBreakpoint;
-  unavailableDates?: Array<ClosedDate>;
-  unavailableHours?: closedHours;
+  unavailableDates?: Array<unavailableDate>;
+  unavailableHours: unavailableHrs;
   cardCount: number;
   styles?: Partial<CustomStyles>;
 };
 type CalendarProviderprop = {
   children: ReactNode;
-
-  datesList?: Array<DateType>;
   intervalSize?: number;
   formats?: Formats;
   minDuration?: number;
   maxDuration?: number;
   cards?: CardBreakpoint;
-  unavailableDates?: Array<ClosedDate>;
-  unavailableHours?: closedHours;
-
-  theme?: CalendarTheme
-
-
+  unavailableDates?: Array<unavailableDate>;
+  unavailableHours?: unavailableHrs;
+  theme?: CalendarTheme;
 };
 
 const CalendarContext = createContext<CalendarContext | undefined>(undefined);
 
 export function CalendarProvider({
   children,
-  datesList,
+
   intervalSize,
   formats,
   minDuration,
@@ -73,7 +62,7 @@ export function CalendarProvider({
   unavailableDates,
   unavailableHours,
   cards,
-  theme
+  theme,
 }: CalendarProviderprop) {
   const [selected, setSelectedSlot] = useState<selectedSlot>({
     date: null,
@@ -114,17 +103,22 @@ export function CalendarProvider({
   };
   let cardCount = 3;
 
-  /* istanbul ignore next -- @preserve */
-  if (breakpoint.xxl) cardCount = CARD_BREAKPOINT.xxl;
-  else if (breakpoint.xl) cardCount = CARD_BREAKPOINT.xl;
-  else if (breakpoint.lg) cardCount = CARD_BREAKPOINT.lg;
-  else if (breakpoint.md) cardCount = CARD_BREAKPOINT.md;
-  else if (breakpoint.sm) cardCount = CARD_BREAKPOINT.sm;
-  else if (breakpoint.xs) cardCount = CARD_BREAKPOINT.xs;
+  cardCount = breakpoint.xxl
+    ? cards?.xxl || CARD_BREAKPOINT.xxl
+    : breakpoint.xl
+    ? cards?.xl || CARD_BREAKPOINT.xl
+    : breakpoint.lg
+    ? cards?.lg || CARD_BREAKPOINT.lg
+    : breakpoint.md
+    ? cards?.md || CARD_BREAKPOINT.md
+    : breakpoint.sm
+    ? cards?.sm || CARD_BREAKPOINT.sm
+    : cards?.xs || CARD_BREAKPOINT.xs;
+
+
   const ContextValues: CalendarContext = {
     setDate,
     setTime,
-    dates: datesList,
     selected,
     setDuration,
     onclickIncrement: onclickIncrement,
@@ -133,16 +127,15 @@ export function CalendarProvider({
     formats: formats || FORMATS,
     minDuration: minDuration || MIN_Duration,
     maxDuration: maxDuration || MAX_Duration,
-    cards: CARD_BREAKPOINT,
-    unavailableDates: closedDatesArray || ClosedDates,
-    unavailableHours: unavailableHours || closedHrs,
+    unavailableDates: unavailableDates || UNAVAILABLE_DATES,
+
+    unavailableHours: unavailableHours || UNAVAILABLE_HOURS,
     cardCount: cardCount,
-    styles: theme?.custom 
-    // intervalSize?:
+    styles: theme?.custom,
   };
 
   return (
-    <ConfigProvider  theme={{ algorithm:createThemeAlgorithm(theme) }} >
+    <ConfigProvider theme={{ algorithm: createThemeAlgorithm(theme) }}>
       <CalendarContext.Provider value={ContextValues}>
         {children}
       </CalendarContext.Provider>
