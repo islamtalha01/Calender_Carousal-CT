@@ -40,7 +40,7 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
 
 ## <a name="installation"></a>Installation
 
-You can install `react-calendar-carousel` using npm.
+You can install `Calendar-Carousel` using npm.
 
 ```sh
 npm i react-calendar-carousel --save
@@ -49,7 +49,7 @@ npm i react-calendar-carousel --save
 ## <a name="usage"></a>Usage
 
 ```typescript
-import { CalendarConfigProvider } from  "react-calendar-carousel"
+import { CalendarConfigProvider } from  "Calendar-Carousel"
 
 const App = () => {
   return (
@@ -63,12 +63,12 @@ export default App
 ```
 
 ```typescript
-import Calendar from  "react-calendar-carousel"
+import Calendar from  "Calendar-Carousel"
 
 const MyComponent = () => {
   return (
     {...}
-      <Calendar />
+      <CalenderCarousalContainer />
     {...}
   )
 }
@@ -78,7 +78,7 @@ export default MyComponent
 
 ## <a name="api"></a>API
 
-The `Calendar` component can be used by wrapping it in the `CalendarConfigProvider`, both imported from `react-calendar-carousel`. All of the calendar’s state management and date logic are bundled in `useCalendar` custom hook.
+The `CalenderCarousalContainer` component can be used by wrapping it in the `CalendarProvider`, both imported from `Calender-Carousel`. All of the calendar’s state management and date logic are bundled in `useCalendar` custom hook.
 
 ## <a name="components"></a>Components&nbsp;
 
@@ -86,14 +86,14 @@ The `Calendar` component can be used by wrapping it in the `CalendarConfigProvid
 
 | Prop         | Description                                                  | Type                                     | Default |
 | :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
-| dates        | The dates displayed in the Carousel                          | [IDate[]](#idate)                        | `Today` |
-| durationStep | The minutes by which duration should increase or decrease by | `number`                                 | `15`    |
+| datesRange   | The Range of dates displayed in the Carousel                 | [DateType[]](#idate)                     |`1 Week From CurrentDay`|
+| intervalSize | The minutes by which duration should increase or decrease by | `number`                                 | `5`    |
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | -       |
-| minDuration  | Lower threshold for the duration **(in minutes)**            | `number`                                 | `60`    |
+| minDuration  | Lower threshold for the duration **(in minutes)**            | `number`                                 | `30`    |
 | maxDuration  | Upper threshold for the duration **(in minutes)**            | `number`                                 | `180`   |
 | cards        | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       | -       |
-| closedDates  | Dates that should be closed                                  | `string` \| [Dayjs](https://day.js.org/) | -       |
-| closedHours  | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)  | -       |
+| unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) | -       |
+| unavailableHours  | Hours that should be closed                             | [ClosedHoursRange](#closed-hours-range)  | -       |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         | -       |
 
 ### <a name="calendar"></a>`Calendar`

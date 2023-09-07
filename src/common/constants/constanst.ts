@@ -26,7 +26,7 @@ export const FORMATS: Formats = {
 // } //Default Dates are of one week
 export const MIN_DURATION:number= 30
 export const MAX_DURATION:number= 180
-export const INTERVAL_STEP=1
+export const INTERVAL_STEP=5
 export const UNAVAILABLE_DATES:unavailableDate[]=[
   "Monday",                           
   "Wednesday",                      // String representing day name
