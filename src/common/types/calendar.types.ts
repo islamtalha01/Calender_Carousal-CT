@@ -1,4 +1,4 @@
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 export type DateType = {
   date: Dayjs;
@@ -6,7 +6,10 @@ export type DateType = {
 };
 
 export type unavailableDate = string | Dayjs;
-
+export type DateRange={
+  start:Dayjs,
+  end:Dayjs
+}
 export type selectedSlot = {
   date: Dayjs | null;
 

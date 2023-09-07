@@ -1,3 +1,4 @@
 import useCalendar from "./useCalendar";
 import useCarousalScroll from "./useCarousalScroll";
-export  {useCalendar,useCarousalScroll}
+import { CalendarProvider } from "./useCalendar";
+export  {useCalendar,useCarousalScroll,CalendarProvider}

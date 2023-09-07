@@ -6,11 +6,10 @@ import TimeComponent from "../componenets/TimeComponent/TImeComponent";
 import { unavailableHrs } from "../common/types/calendar.types";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
-import { getFormattedTime, getDisabledTime } from "../utils/Time.utils";
-import { getDatesList } from "../utils/Date.utils.ts";
+import { getFormattedTime, getDisabledTime } from "../utils/time.utils.ts";
 import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
-import { formatDuration } from "../utils/Duration.utils";
+import { formatDuration } from "../utils/duration.utils.ts";
 import { createDateToken,createDurationToken,createTimeToken } from "../utils/theme.utils.ts";
 const { Text } = Typography;
 const { useToken } = theme;
@@ -38,8 +37,8 @@ export default function CalenderCarousalContainer({
     onclickDecrement,
     styles,
     setTime,
-    unavailableDates, 
     unavailableHours,
+    DateList
 
   } = useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
@@ -65,7 +64,7 @@ export default function CalenderCarousalContainer({
             token: createDateToken( token,styles),
           }}
         >
-          <CalendarCarousal dates={getDatesList(7,unavailableDates)} onClick={handleDateSelect} />
+          <CalendarCarousal dates={DateList} onClick={handleDateSelect} />
         </ConfigProvider>
       ),
 
@@ -79,7 +78,7 @@ export default function CalenderCarousalContainer({
         <ConfigProvider theme={{token:createTimeToken(token,styles)}}> 
           <TimeComponent                    //add the seperate theme style.
             onclick={handleTimePick}
-            compute={() => getDisabledTime(unavailableHours)}
+            computeDisabledHours={() => getDisabledTime(unavailableHours)}
           />
         </ConfigProvider>
       ),
