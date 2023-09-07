@@ -3,8 +3,9 @@ import { CalendarTheme, CustomStyles } from "../common/types/theme.type";
 import { AliasToken } from "antd/es/theme/internal";
 
 export function createDateToken(
+  token: Partial<AliasToken>,
   styles: Partial<CustomStyles> | undefined,
-  token: Partial<AliasToken>
+ 
 ): Partial<AliasToken> {
   console.log(styles);
   return {
@@ -15,8 +16,9 @@ export function createDateToken(
 }
 
 export function createTimeToken(
+  
   token: Partial<AliasToken>,
-  styles?: Partial<CustomStyles>
+  styles?: Partial<CustomStyles> | undefined,
 ): Partial<AliasToken> {
   return {
     colorPrimary: styles?.colorTimePicker || token.colorPrimary,
@@ -46,6 +48,6 @@ export function createDurationToken(
  * @param {CalendarTheme | undefined} calendarTheme - The calendar theme object.
  * @returns {import("antd").CalendarThemeAlgorithm} The selected theme algorithm.
  */
-export function createThemeAlgorithm(calendarTheme?: CalendarTheme) {
-  return calendarTheme?.isDark ? theme.darkAlgorithm : theme.defaultAlgorithm;
+export function createThemeAlgorithm(Theme?: CalendarTheme) {
+  return Theme?.isDark ? theme.darkAlgorithm : theme.defaultAlgorithm;
 }
