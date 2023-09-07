@@ -11,7 +11,7 @@ import { getFormattedTime, getDisabledTime } from "../utils/Time.utils";
 import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
 import { formatDuration } from "../utils/Duration.utils";
-import { createDateToken } from "../utils/theme.utils.ts";
+import { createDateToken,createDurationToken,createTimeToken } from "../utils/theme.utils.ts";
 
 const { Text } = Typography;
 const { useToken } = theme;
@@ -41,7 +41,7 @@ export default function CalenderCarousalContainer({
     setTime,
   } = useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
-    activePanels || ["1", "2"]
+    activePanels || ["1"]
   );
   const handleDateSelect = (date: Dayjs) => {
     setDate(date);
@@ -60,7 +60,7 @@ export default function CalenderCarousalContainer({
       children: CalendarCarousalComponent || (
         <ConfigProvider
           theme={{
-            token: createDateToken(styles, token),
+            token: createDateToken( token,styles),
           }}
         >
           <CalendarCarousal dates={dates} onClick={handleDateSelect} />
@@ -74,8 +74,8 @@ export default function CalenderCarousalContainer({
       label: "Time",
 
       children: timeComponent || (
-        <ConfigProvider>
-          <TimeComponent
+        <ConfigProvider theme={{token:createTimeToken(token,styles)}}> 
+          <TimeComponent                    //add the seperate theme style.
             onclick={handleTimePick}
             compute={() => getDisabledTime(closedHrs)}
           />
@@ -92,8 +92,8 @@ export default function CalenderCarousalContainer({
       label: "Duration",
       children: null,
       extra: durationComponent || (
-        <ConfigProvider theme={{}}>
-          <DurationComponent
+        <ConfigProvider theme={{token:createDurationToken(token,styles)}}>
+          <DurationComponent                //add the seperate theme style.
             value={formatDuration(selected.duration)}
             onclickIncrement={() => onclickIncrement(offsetValue)}
             onClickDecrement={() => onclickDecrement(offsetValue)}
