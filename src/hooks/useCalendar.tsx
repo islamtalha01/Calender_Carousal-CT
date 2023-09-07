@@ -1,5 +1,5 @@
 import { useState, useContext, createContext, ReactNode } from "react";
-import { getavgDuration } from "../utils/Duration.utils";
+import { getAvgDuration } from "../utils/duration.utils";
 import { ConfigProvider } from "antd";
 import {
   selectedSlot,
@@ -7,54 +7,60 @@ import {
   unavailableDate,
   unavailableHrs,
   CardBreakpoint,
+  DateType,
+  DateRange,
 } from "../common/types/calendar.types";
 import { Dayjs } from "dayjs";
 import {
-  MAX_Duration,
-  MIN_Duration,
+  MAX_DURATION,
+  MIN_DURATION,
   INTERVAL_STEP,
   FORMATS,
   UNAVAILABLE_DATES,
   UNAVAILABLE_HOURS,
   CARD_BREAKPOINT,
+  DATERANGE,
 } from "../common/constants/constanst";
 import useBreakpoint from "antd/es/grid/hooks/useBreakpoint";
 import { CalendarTheme, CustomStyles } from "../common/types/theme.type";
 import { createThemeAlgorithm } from "../utils/theme.utils";
+import { getDatesList } from "../utils";
 
 type CalendarContext = {
-  setDate: (date: Dayjs) => void;
-  setTime: (time: Dayjs | null) => void;
-  onclickIncrement: (value: number) => void;
-  onclickDecrement: (value: number) => void;
-  selected: selectedSlot;
-  setDuration: (value: number) => void;
-  intervalSize?: number;
-  formats?: Formats;
-  minDuration?: number;
-  maxDuration?: number;
-  unavailableDates?: Array<unavailableDate>;
-  unavailableHours: unavailableHrs;
-  cardCount: number;
-  styles?: Partial<CustomStyles>;
+  DateList:Array<DateType>
+  setDate: (date: Dayjs) => void,
+  setTime: (time: Dayjs | null) => void,
+  onclickIncrement: (value: number) => void,
+  onclickDecrement: (value: number) => void,
+  selected: selectedSlot,
+  setDuration: (value: number) => void,
+  intervalSize?: number,
+  formats?: Formats,
+  minDuration?: number,
+  maxDuration?: number,
+  unavailableDates?: Array<unavailableDate>,
+  unavailableHours: unavailableHrs,
+  cardCount: number,
+  styles?: Partial<CustomStyles>,
 };
 type CalendarProviderprop = {
-  children: ReactNode;
-  intervalSize?: number;
-  formats?: Formats;
-  minDuration?: number;
-  maxDuration?: number;
-  cards?: CardBreakpoint;
-  unavailableDates?: Array<unavailableDate>;
-  unavailableHours?: unavailableHrs;
-  theme?: CalendarTheme;
+  children: ReactNode,
+  intervalSize?: number,
+  formats?: Formats,
+  minDuration?: number,
+  maxDuration?: number,
+  cards?: CardBreakpoint,
+  unavailableDates?: Array<unavailableDate>,
+  unavailableHours?: unavailableHrs,
+  theme?: CalendarTheme,
+  datesRange?:DateRange
 };
 
 const CalendarContext = createContext<CalendarContext | undefined>(undefined);
 
 export function CalendarProvider({
   children,
-
+  datesRange,
   intervalSize,
   formats,
   minDuration,
@@ -67,7 +73,7 @@ export function CalendarProvider({
   const [selected, setSelectedSlot] = useState<selectedSlot>({
     date: null,
     time: null,
-    duration: getavgDuration(30, 60),
+    duration: getAvgDuration(30, 60),
   });
   const breakpoint = useBreakpoint();
   const setDate = (date: Dayjs) => {
@@ -82,9 +88,9 @@ export function CalendarProvider({
   };
 
   const onclickIncrement = (offsetValue: number): void => {
-    console.log("hi");
+  
     const durationslot = selected.duration + offsetValue;
-    const threshold = MAX_Duration;
+    const threshold = MAX_DURATION;
     if (durationslot <= threshold) {
       setDuration(durationslot);
     } else {
@@ -93,10 +99,10 @@ export function CalendarProvider({
   };
   const onclickDecrement = (offsetValue: number): void => {
     const durationslot = selected.duration - offsetValue;
-    const threshold = MIN_Duration;
+    const threshold = MIN_DURATION;
     if (durationslot >= threshold) {
       setDuration(durationslot);
-      console.log("decrement");
+     
     } else {
       setDuration(selected.duration);
     }
@@ -115,20 +121,21 @@ export function CalendarProvider({
     ? cards?.sm || CARD_BREAKPOINT.sm
     : cards?.xs || CARD_BREAKPOINT.xs;
 
-
+   console.log(datesRange)
   const ContextValues: CalendarContext = {
+    
+    DateList:datesRange?getDatesList(datesRange,unavailableDates):getDatesList(DATERANGE,UNAVAILABLE_DATES),
     setDate,
     setTime,
     selected,
     setDuration,
-    onclickIncrement: onclickIncrement,
-    onclickDecrement: onclickDecrement,
+    onclickIncrement,
+    onclickDecrement,
     intervalSize: intervalSize || INTERVAL_STEP,
     formats: formats || FORMATS,
-    minDuration: minDuration || MIN_Duration,
-    maxDuration: maxDuration || MAX_Duration,
+    minDuration: minDuration || MIN_DURATION,
+    maxDuration: maxDuration || MAX_DURATION,
     unavailableDates: unavailableDates || UNAVAILABLE_DATES,
-
     unavailableHours: unavailableHours || UNAVAILABLE_HOURS,
     cardCount: cardCount,
     styles: theme?.custom,

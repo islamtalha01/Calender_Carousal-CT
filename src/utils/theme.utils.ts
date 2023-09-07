@@ -26,12 +26,7 @@ export function createTimeToken(
   };
 }
 
-/**
- * Generates a token object for customizing duration-related components.
- * @param {Partial<AliasToken>} token - The base token object.
- * @param {Partial<CustomStyles> | undefined} styles - Custom styles to override token values.
- * @returns {Partial<AliasToken>} The generated token object.
- */
+
 export function createDurationToken(
   token: Partial<AliasToken>,
   styles?: Partial<CustomStyles>
@@ -42,12 +37,7 @@ export function createDurationToken(
   };
 }
 
-/**
- * Retrieves the appropriate theme algorithm based on the calendar theme (dark or light).
- * If no calendar theme is provided, the default algorithm is used.
- * @param {CalendarTheme | undefined} calendarTheme - The calendar theme object.
- * @returns {import("antd").CalendarThemeAlgorithm} The selected theme algorithm.
- */
+
 export function createThemeAlgorithm(Theme?: CalendarTheme) {
   return Theme?.isDark ? theme.darkAlgorithm : theme.defaultAlgorithm;
 }

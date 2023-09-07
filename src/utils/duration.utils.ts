@@ -1,10 +1,10 @@
-import { MAX_Duration,MIN_Duration } from "../common/constants/constanst"
-import { DurationRange,closedHours } from "../common/types/calendar.types"
+import { MAX_DURATION,MIN_DURATION } from "../common/constants/constanst"
 
-export const getavgDuration=(min:number,max:number):number=>
+
+export const getAvgDuration=(min:number,max:number):number=>
 {
-   min=min? min:MIN_Duration;
-   max=max? max:MAX_Duration;
+   min=min? min:MIN_DURATION;
+   max=max? max:MAX_DURATION;
    return Math.floor((min + max) / 2)
 }
 export const formatDuration=(value:number)=>
