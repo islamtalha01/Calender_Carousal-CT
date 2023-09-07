@@ -1,7 +1,7 @@
 {
-  "name": "calender-carousal",
+  "name": "calender-carousal-( React with TS)",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,9 @@
     "antd-style": "^3.4.4",
     "dayjs": "^1.11.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "vite-plugin-dts": "^3.5.3"
   },
   "devDependencies": {
     "@types/antd": "^1.0.0",

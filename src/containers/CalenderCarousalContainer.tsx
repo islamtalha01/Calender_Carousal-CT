@@ -3,16 +3,15 @@ import { Collapse } from "antd";
 import CalendarCarousal from "../componenets/CalendarCarousal";
 import DurationComponent from "../componenets/DurationComponent/DurationComponent";
 import TimeComponent from "../componenets/TimeComponent/TImeComponent";
-import { closedHours } from "../common/types/calendar.types";
+import { unavailableHrs } from "../common/types/calendar.types";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
 import { getFormattedTime, getDisabledTime } from "../utils/Time.utils";
-
+import { getDatesList } from "../utils/Date.utils.ts";
 import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
 import { formatDuration } from "../utils/Duration.utils";
 import { createDateToken,createDurationToken,createTimeToken } from "../utils/theme.utils.ts";
-
 const { Text } = Typography;
 const { useToken } = theme;
 type CalenderCarouselContainerProps = {
@@ -22,9 +21,10 @@ type CalenderCarouselContainerProps = {
   durationComponent?: React.ReactNode;
 };
 
-const closedHrs: closedHours = { start: 11, end: 12 };
+
 
 export default function CalenderCarousalContainer({
+  
   CalendarCarousalComponent,
   timeComponent,
   durationComponent,
@@ -37,8 +37,10 @@ export default function CalenderCarousalContainer({
     onclickIncrement,
     onclickDecrement,
     styles,
-    dates,
     setTime,
+    unavailableDates, 
+    unavailableHours,
+
   } = useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
     activePanels || ["1"]
@@ -63,7 +65,7 @@ export default function CalenderCarousalContainer({
             token: createDateToken( token,styles),
           }}
         >
-          <CalendarCarousal dates={dates} onClick={handleDateSelect} />
+          <CalendarCarousal dates={getDatesList(7,unavailableDates)} onClick={handleDateSelect} />
         </ConfigProvider>
       ),
 
@@ -77,7 +79,7 @@ export default function CalenderCarousalContainer({
         <ConfigProvider theme={{token:createTimeToken(token,styles)}}> 
           <TimeComponent                    //add the seperate theme style.
             onclick={handleTimePick}
-            compute={() => getDisabledTime(closedHrs)}
+            compute={() => getDisabledTime(unavailableHours)}
           />
         </ConfigProvider>
       ),
@@ -112,3 +114,6 @@ export default function CalenderCarousalContainer({
     />
   );
 }
+
+
+const closedHrs: unavailableHrs = { start: 11, end: 12 };
