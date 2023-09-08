@@ -51,7 +51,7 @@ export default function CalenderCarousalContainer({
     setTime(time);
     setActiveKey([]);
   };
-  const offsetValue: number = 1;
+  
 
   const items: CollapseProps["items"] = [
     {
