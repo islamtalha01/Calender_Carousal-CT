@@ -65,7 +65,7 @@ export default App
 ```typescript
 import Calendar from  "Calendar-Carousel"
 
-const MyComponent = () => {
+const TestComponent = () => {
   return (
     {...}
       <CalenderCarousalContainer />
@@ -73,7 +73,7 @@ const MyComponent = () => {
   )
 }
 
-export default MyComponent
+export default TestComponent
 ```
 
 ## <a name="api"></a>API
@@ -256,7 +256,7 @@ export type DateRange= {
   
 }
 ```
-## <a name="built-with"></a>Built With
+## <a name="built-with"></a>Built Using
 
 - React + TypeScript using [Vite](https://vitejs.dev/)
 - [Dayjs](https://day.js.org/)
