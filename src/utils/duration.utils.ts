@@ -6,7 +6,7 @@ export const getMeanDuration=(min:number,max:number):number=>
    
    return Math.floor((min + max) / 2)
 }
-export const formatDuration=(value:number)=>
+export const formatedDuration=(value:number)=>
 {
     const hours:number=Math.floor((value/60))
     const min:number=value%60

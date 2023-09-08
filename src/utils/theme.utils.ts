@@ -7,7 +7,7 @@ export function createDateToken(
   styles: Partial<CustomStyles> | undefined,
  
 ): Partial<AliasToken> {
-  console.log(styles);
+  
   return {
     colorText: styles?.colorCardHeaderText || token.colorText,
     colorPrimary: styles?.colorCardHeader || token.colorPrimary,

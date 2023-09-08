@@ -30,8 +30,8 @@ export default function CalendarCarousal({
       slidesPerRow={cardCount}
       dots={false}
     >
-      {dates?.map((data) => (
-        <Row>
+      {dates?.map((data,index) => (
+        <Row key={index}>
           <Col
             style={{
               paddingLeft: token.paddingXS,

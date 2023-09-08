@@ -28,13 +28,15 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
       - [unavailableHrs](#unavailableHrs)
       - [Selected](#selected)
       - [CalendarTheme](#calendar-theme)
+      - [DateRange](#date-Range)
         - [AliasToken](#alias-token)
         - [CustomStyles](#custom-styles)
     - [Utils](#utils)
-      - [getDates](#get-dates)
-      - [getDurationInHours](#get-duration-in-hours)
+      - [getDatesList](#get-Dates-List)
+      - [getMeanDuration](#get-Mean-Duration)
       - [getFormattedDate](#get-formatted-date)
-      - [getFormattedTime](#get-formatted-time)
+      - [getUnavailableTime](#get-Uavailable-Time)
+      - [formatedDuration](formated-Duration)
   - [Built With](#built-with)
   - [License](#license)
 
@@ -199,7 +201,15 @@ type CalendarTheme = {
   custom?: Partial<CustomStyles>
 }
 ```
+### <a name="date-Range"></a>`DateRange`
 
+```typescript
+export type DateRange= {
+  start: Dayjs 
+  end: Dayjs 
+  
+}
+```
 #### <a name="alias-token"></a>`AliasToken`
 
 `general` styles are applied using _Ant Design tokens_. More info [here](https://ant.design/docs/react/customize-theme#seedtoken). _The general styles are inherited if a custom property is not provided_.
@@ -237,7 +247,7 @@ Get a list of dates consisiting of the Range you provided as props.
 | :--- | :--- | :--- |
 | min | Minimum Value of Duration in min| `number`
 | max | Maximum Value of Duration in min| `number`
-### <a name="format-duration"></a>`formatDuration`
+### <a name="formated-Duration"></a>`formatedDuration`
 
 _returns:_ `string`<br />
 Convert minutes into hour representation.
@@ -246,7 +256,7 @@ Convert minutes into hour representation.
 | minutes | The duration in minutes | `number`
 
 
-### <a name="get-formatted-time"></a>`getFormattedTime`
+### <a name="get-Formatted-Time"></a>`getFormattedTime`
 
 _returns:_ `string`<br />
 Convert time to a formatted string.
@@ -255,24 +265,15 @@ Convert time to a formatted string.
 | time | The time to format | [Dayjs](https://day.js.org/) \| `null`
 | format | The format to return | `string`
 
-### <a name="get-formatted-time"></a>`getUnavailableTime`
+### <a name="get-Uavailable-Time"></a>`getUnavailableTime`
 
-_returns:_ `string`<br />
+_returns:_ `[number]`<br />
 Convert time to a formatted string.
 | Param | Description | Type |
 | :--- | :--- | :--- |
 | {Unavailable Hours} (#UnavailableHrs) | UnavailableHrs | `null`
-| format | The format to return | `string`
 
-### <a name="DateRange"></a>`DateRange`
 
-```typescript
-export type DateRange= {
-  start: Dayjs 
-  end: Dayjs 
-  
-}
-```
 ## <a name="built-with"></a>Built Using
 
 - React + TypeScript using [Vite](https://vitejs.dev/)
