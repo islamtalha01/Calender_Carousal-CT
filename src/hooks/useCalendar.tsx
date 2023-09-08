@@ -124,7 +124,7 @@ export function CalendarProvider({
  
   const ContextValues: CalendarContext = {
     
-    dateList:datesRange?getDatesList(datesRange,unavailableDates):getDatesList(DATERANGE,UNAVAILABLE_DATES),
+    dateList:datesRange?getDatesList(datesRange,unavailableDates||UNAVAILABLE_DATES):getDatesList(DATERANGE,UNAVAILABLE_DATES),
     setDate,
     setTime,
     selected,
