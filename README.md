@@ -36,7 +36,8 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
       - [getMeanDuration](#get-Mean-Duration)
       - [getFormattedDate](#get-formatted-date)
       - [getUnavailableTime](#get-Uavailable-Time)
-      - [formattedDuration](formatted-Duration)
+      - [formattedDuration](#formatted-Duration)
+      - [getFormattedTime](#get-Formatted-Time)
   - [Built With](#built-with)
   - [License](#license)
 
