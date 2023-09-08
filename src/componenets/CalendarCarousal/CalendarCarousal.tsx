@@ -38,7 +38,7 @@ export default function CalendarCarousal({
               paddingRight: token.paddingXS,
             }}
           >
-            <DateCard date={data.date} closed={data.closed} onClick={onClick} />
+            <DateCard date={data.date} unavailable={data.unavailable} onClick={onClick} />
           </Col>
         </Row>
       ))}

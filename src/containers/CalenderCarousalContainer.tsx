@@ -115,4 +115,3 @@ export default function CalenderCarousalContainer({
 }
 
 
-const closedHrs: unavailableHrs = { start: 11, end: 12 };

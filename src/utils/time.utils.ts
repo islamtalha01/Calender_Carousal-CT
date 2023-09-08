@@ -8,8 +8,8 @@ const getFormattedTime = (time: Dayjs | null, format: string): string => {
 }
 
 /**
- * Convert a closed hours range to an array of hours.
- * @param {ClosedHoursRange} range - The range of disabled hours.
+ * Convert a unavailable hours range to an array of hours.
+ * @param {unavailableHoursRange} range - The range of disabled hours.
  * @returns {number[]} - An array of disabled hours.
  * @example {start: 1, end: 4} => [1, 2, 3, 4]
  */

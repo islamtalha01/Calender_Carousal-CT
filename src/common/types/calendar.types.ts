@@ -2,7 +2,7 @@ import dayjs, { Dayjs } from "dayjs";
 
 export type DateType = {
   date: Dayjs;
-  closed?: boolean;
+  unavailable?: boolean;
 };
 
 export type unavailableDate = string | Dayjs;
