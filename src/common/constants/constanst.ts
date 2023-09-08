@@ -1,6 +1,6 @@
 import dayjs from "dayjs"
-import { unavailableDate, Formats, unavailableHrs,CardBreakpoint, DateRange } from "../types/calendar.types"
-
+import { unavailableDate, Formats, unavailableHrs,CardBreakpoint, DateRange, } from "../types"
+import { CalendarTheme } from "../types"
 
 export const DATE_FORMAT: string = "DD MMMM YYYY"
 
@@ -40,4 +40,13 @@ export const CARD_BREAKPOINT: CardBreakpoint = {
   lg: 6,
   xl: 8,
   xxl: 10,
+}
+
+
+export const CALENDAR_THEME: CalendarTheme = {
+  isDark: true,
+  general: undefined,
+  custom: {
+    buttonBorderRadius: 20,colorCardHeaderText: "red"
+  },
 }

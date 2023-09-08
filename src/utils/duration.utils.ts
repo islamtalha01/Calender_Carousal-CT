@@ -1,10 +1,9 @@
-import { MAX_DURATION,MIN_DURATION } from "../common/constants/constanst"
+
 
 
 export const getAvgDuration=(min:number,max:number):number=>
 {
-   min=min? min:MIN_DURATION;
-   max=max? max:MAX_DURATION;
+   
    return Math.floor((min + max) / 2)
 }
 export const formatDuration=(value:number)=>

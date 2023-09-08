@@ -27,7 +27,7 @@ import { createThemeAlgorithm } from "../utils/theme.utils";
 import { getDatesList } from "../utils";
 
 type CalendarContext = {
-  DateList:Array<DateType>
+  dateList:Array<DateType>
   setDate: (date: Dayjs) => void,
   setTime: (time: Dayjs | null) => void,
   onclickIncrement: (value: number) => void,
@@ -73,7 +73,7 @@ export function CalendarProvider({
   const [selected, setSelectedSlot] = useState<selectedSlot>({
     date: null,
     time: null,
-    duration: getAvgDuration(30, 60),
+    duration: minDuration && maxDuration ?getAvgDuration(minDuration, maxDuration):getAvgDuration(MIN_DURATION,MAX_DURATION),
   });
   const breakpoint = useBreakpoint();
   const setDate = (date: Dayjs) => {
@@ -124,7 +124,7 @@ export function CalendarProvider({
    console.log(datesRange)
   const ContextValues: CalendarContext = {
     
-    DateList:datesRange?getDatesList(datesRange,unavailableDates):getDatesList(DATERANGE,UNAVAILABLE_DATES),
+    dateList:datesRange?getDatesList(datesRange,unavailableDates):getDatesList(DATERANGE,UNAVAILABLE_DATES),
     setDate,
     setTime,
     selected,

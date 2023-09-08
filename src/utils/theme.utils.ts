@@ -1,7 +1,7 @@
 import { theme } from "antd";
-import { CalendarTheme, CustomStyles } from "../common/types/theme.type";
+import { CalendarTheme, CustomStyles } from "../common/types";
 import { AliasToken } from "antd/es/theme/internal";
-
+import { CALENDAR_THEME } from "../common/constants/constanst";
 export function createDateToken(
   token: Partial<AliasToken>,
   styles: Partial<CustomStyles> | undefined,
@@ -39,5 +39,9 @@ export function createDurationToken(
 
 
 export function createThemeAlgorithm(Theme?: CalendarTheme) {
+  if(!Theme)
+  {
+    CALENDAR_THEME.isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
+  }
   return Theme?.isDark ? theme.darkAlgorithm : theme.defaultAlgorithm;
 }
