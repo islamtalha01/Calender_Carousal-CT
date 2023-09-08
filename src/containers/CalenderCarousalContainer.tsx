@@ -38,7 +38,7 @@ export default function CalenderCarousalContainer({
     styles,
     setTime,
     unavailableHours,
-    DateList
+    dateList
 
   } = useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
@@ -64,7 +64,7 @@ export default function CalenderCarousalContainer({
             token: createDateToken( token,styles),
           }}
         >
-          <CalendarCarousal dates={DateList} onClick={handleDateSelect} />
+          <CalendarCarousal dates={dateList} onClick={handleDateSelect} />
         </ConfigProvider>
       ),
 
