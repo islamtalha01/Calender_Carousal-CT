@@ -1,13 +1,13 @@
 # <a name="project-name"></a>calender-carousal-react-ts
 
-<a href="https://www.npmjs.com/package/Calendar-Carousel">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.0-blue" target="_blank" />
+<a href="https://www.npmjs.com/package/calender-carousal-package-react-ts">
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.5-blue" target="_blank" />
 </a>
 <a href="">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
 </a>
 <br /> <br /> 
-Calendar carousal is a mobile friendly component which give emphasis on selected date and time, you might have seen similar examples in booking web Apps where selected dates must remain visible at all times for good UX.
+The Calendar Carousel is a mobile-responsive element designed to highlight a chosen date and time. You may have encountered similar instances in booking web applications, where the selected dates are always kept visible to ensure a smooth user experience.
 
 ## <a name="table-of-contents"></a>Table of contents
 
@@ -26,33 +26,34 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
       - [Formats](#formats)
       - [CardBreakpoint](#card-breakpoint)
       - [unavailableHrs](#unavailableHrs)
+      - [unavailableDates](#unavailableHrs)
       - [Selected](#selected)
       - [CalendarTheme](#calendar-theme)
       - [DateRange](#date-Range)
-        - [AliasToken](#alias-token)
-        - [CustomStyles](#custom-styles)
+      - [CustomStyles](#custom-styles)
     - [Utils](#utils)
-      - [getDatesList](#get-Dates-List)
+      - [getDatesList](#get-dates-List)
       - [getMeanDuration](#get-Mean-Duration)
       - [getFormattedDate](#get-formatted-date)
       - [getUnavailableTime](#get-Uavailable-Time)
-      - [formattedDuration](formatted-Duration)
+      - [formattedDuration](#formatted-Duration)
+      - [getFormattedTime](#get-Formatted-Time)
   - [Built With](#built-with)
   - [License](#license)
 
 ## <a name="installation"></a>Installation
 
-You can install `Calendar-Carousel` using npm.
+You can install `calender-carousal-package-react-ts
+` using npm.
 
 ```sh
-npm i Calendar-Carousel --save
+npm i calender-carousal-package-react-ts
 ```
 
 ## <a name="usage"></a>Usage
 
 ```typescript
-import { CalendarProvider } from  "Calendar-Carousel"
-
+import { CalendarProvider } from 'calender-carousal-package-react-ts'
 const App = () => {
   return (
     <CalendarProvider>
@@ -65,7 +66,7 @@ export default App
 ```
 
 ```typescript
-import Calendar from  "Calendar-Carousel"
+import CalenderCarousalContainer from 'calender-carousal-package-react-ts'
 
 const TestComponent = () => {
   return (
@@ -94,8 +95,8 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | minDuration  | Lower threshold for the duration **(in minutes)**            | `number`                                 | `30`    |
 | maxDuration  | Upper threshold for the duration **(in minutes)**            | `number`                                 | `180`   |
 | cards        | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       | -       |
-| unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) | -       |
-| unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)  | -         |
+| unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) | -    `Sunday`   |
+| unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)  | -      `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         | -       |
 
 ### <a name="CalendarCarousalContainer"></a>`CalendarCarousalContainer`
@@ -181,7 +182,15 @@ export type unavailableHrs = {
   end: number;
 };
 ```
+### <a name="unavailable Dates"></a>`unavailableDate`
 
+Date that would be unavaible in Calendar
+```typescript
+
+export type unavailableDate, = {
+  string|Dayjs
+};
+```
 ### <a name="selected"></a>`Selected`
 
 ```typescript
@@ -210,9 +219,6 @@ export type DateRange= {
   
 }
 ```
-#### <a name="alias-token"></a>`AliasToken`
-
-`general` styles are applied using _Ant Design tokens_. More info [here](https://ant.design/docs/react/customize-theme#seedtoken). _The general styles are inherited if a custom property is not provided_.
 
 #### <a name="custom-styles"></a>`CustomStyles`
 
@@ -242,7 +248,7 @@ Get a list of dates consisiting of the Range you provided as props.
 ### <a name="get-Mean-Duration"></a>`getMeanDuration`
 
 _returns:_ `number`<br />
-Get a list of dates consisiting of the Range you provided as props.
+Get mean value for the Duration.
 | Param | Description | Type |
 | :--- | :--- | :--- |
 | min | Minimum Value of Duration in min| `number`
@@ -268,10 +274,10 @@ Convert time to a formatted string.
 ### <a name="get-Uavailable-Time"></a>`getUnavailableTime`
 
 _returns:_ `[number]`<br />
-Convert time to a formatted string.
+Get Unvailable  hours 
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| {Unavailable Hours} (#UnavailableHrs) | UnavailableHrs | `null`
+| {[Unavailable Hours](#unavailableHrs)} | Hours that are unavailable | `null`
 
 
 ## <a name="built-with"></a>Built Using
