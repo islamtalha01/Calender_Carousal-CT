@@ -1,7 +1,6 @@
 {
   "name": "calender-carousal-package-react-ts",
-
-  "version": "1.0.1",
+  "version": "1.0.4",
   "author": "Muhammad Talha",
   "type": "module",
   "license": "MIT",
@@ -30,7 +29,6 @@
   },
   "dependencies": {
     "antd": "^5.8.4",
-    "antd-style": "^3.4.4",
     "dayjs": "^1.11.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -60,5 +58,3 @@
     "carousel"
   ]
 }
-
-

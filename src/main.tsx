@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <CalendarProvider theme={{
     isDark: true,
     custom: { colorCardHeader: "#f96458", buttonBorderRadius: 10 },
-  }}  unavailableDates={[ "Saturday","Friday"]} unavailableHours= {{ start: 11, end: 12 }} datesRange={{start:dayjs('10-09-2023', "DD-MM-YYYY"),end:dayjs('10-11-2023', "DD-MM-YYYY")}} > 
+  }}   datesRange={{start:dayjs('10-09-2023', "DD-MM-YYYY"),end:dayjs('10-11-2023', "DD-MM-YYYY")}} > 
     <App />
   </CalendarProvider>
 
