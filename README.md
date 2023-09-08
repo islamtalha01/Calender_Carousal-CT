@@ -220,7 +220,7 @@ type CalendarTheme = {
 
 ## <a name="utils"></a>Utils
 
-### <a name="get-dates-List"></a>`getDatesList
+### <a name="get-dates-List"></a>`getDatesList`
 
 _returns:_ [DateType[]](#DateType)<br />
 Get a list of dates consisiting of the Range you provided as props.
@@ -229,6 +229,14 @@ Get a list of dates consisiting of the Range you provided as props.
 | Range | Range of Date you want to Display | `{DateRange}`(#DateRange)
 | unavaiableDates | Dates that should be closed | `string` \| [Dayjs](https://day.js.org/)
 
+### <a name="get-Mean-Duration"></a>`getMeanDuration`
+
+_returns:_ `number`<br />
+Get a list of dates consisiting of the Range you provided as props.
+| Param | Description | Type |
+| :--- | :--- | :--- |
+| min | Minimum Value of Duration in min| `number`
+| max | Maximum Value of Duration in min| `number`
 ### <a name="format-duration"></a>`formatDuration`
 
 _returns:_ `string`<br />
@@ -245,6 +253,15 @@ Convert time to a formatted string.
 | Param | Description | Type |
 | :--- | :--- | :--- |
 | time | The time to format | [Dayjs](https://day.js.org/) \| `null`
+| format | The format to return | `string`
+
+### <a name="get-formatted-time"></a>`getUnavailableTime`
+
+_returns:_ `string`<br />
+Convert time to a formatted string.
+| Param | Description | Type |
+| :--- | :--- | :--- |
+| {Unavailable Hours} (#UnavailableHrs) | UnavailableHrs | `null`
 | format | The format to return | `string`
 
 ### <a name="DateRange"></a>`DateRange`

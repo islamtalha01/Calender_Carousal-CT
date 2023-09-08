@@ -13,7 +13,7 @@ const getFormattedTime = (time: Dayjs | null, format: string): string => {
  * @returns {number[]} - An array of disabled hours.
  * @example {start: 1, end: 4} => [1, 2, 3, 4]
  */
-const getDisabledTime=({ start, end }: unavailableHrs) => {
+const getUnavailableTime=({ start, end }: unavailableHrs) => {
     const disabledHours: Array<number> = [];
    
     for (let i = start; i !== end; i = (i + 1) % 24) {
@@ -27,5 +27,5 @@ const getDisabledTime=({ start, end }: unavailableHrs) => {
     };
   };
 
-export { getFormattedTime, getDisabledTime }
+export { getFormattedTime, getUnavailableTime }
 
