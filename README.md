@@ -26,11 +26,11 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
       - [Formats](#formats)
       - [CardBreakpoint](#card-breakpoint)
       - [unavailableHrs](#unavailableHrs)
+      - [unavailableDates](#unavailableHrs)
       - [Selected](#selected)
       - [CalendarTheme](#calendar-theme)
       - [DateRange](#date-Range)
-        - [AliasToken](#alias-token)
-        - [CustomStyles](#custom-styles)
+      - [CustomStyles](#custom-styles)
     - [Utils](#utils)
       - [getDatesList](#get-Dates-List)
       - [getMeanDuration](#get-Mean-Duration)
@@ -181,7 +181,16 @@ export type unavailableHrs = {
   end: number;
 };
 ```
+### <a name="unavailable Dates"></a>`unavailableDates`
 
+Array of unavailable Date
+
+```typescript
+
+export type unavailableDate, = {
+  string|Dayjs
+};
+```
 ### <a name="selected"></a>`Selected`
 
 ```typescript
