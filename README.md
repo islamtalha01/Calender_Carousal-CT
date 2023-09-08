@@ -271,7 +271,7 @@ _returns:_ `[number]`<br />
 Get Unvailable  hours 
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| {Unavailable Hours}(#unavailableHrs) | UnavailableHrs | `null`
+| {[Unavailable Hours](#unavailableHrs)} | UnavailableHrs | `null`
 
 
 ## <a name="built-with"></a>Built Using
