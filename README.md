@@ -1,7 +1,7 @@
 # <a name="project-name"></a>calender-carousal-react-ts
 
-<a href="https://www.npmjs.com/package/Calendar-Carousel">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.0-blue" target="_blank" />
+<a href="https://www.npmjs.com/package/calender-carousal-package-react-ts">
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.1-blue" target="_blank" />
 </a>
 <a href="">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
@@ -42,10 +42,11 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
 
 ## <a name="installation"></a>Installation
 
-You can install `Calendar-Carousel` using npm.
+You can install `calender-carousal-package-react-ts
+` using npm.
 
 ```sh
-npm i Calendar-Carousel --save
+npm i calender-carousal-package-react-ts
 ```
 
 ## <a name="usage"></a>Usage
@@ -65,7 +66,7 @@ export default App
 ```
 
 ```typescript
-import Calendar from  "Calendar-Carousel"
+import CalenderCarousalContainer from 'calender-carousal-package-react-ts'
 
 const TestComponent = () => {
   return (
