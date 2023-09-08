@@ -7,7 +7,7 @@
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
 </a>
 <br /> <br /> 
-Calendar carousal is a mobile friendly component which give emphasis on selected date and time, you might have seen similar examples in booking web Apps where selected dates must remain visible at all times for good UX.
+The Calendar Carousel is a mobile-responsive element designed to highlight a chosen date and time. You may have encountered similar instances in booking web applications, where the selected dates are always kept visible to ensure a smooth user experience.
 
 ## <a name="table-of-contents"></a>Table of contents
 
