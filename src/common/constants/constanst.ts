@@ -28,11 +28,11 @@ export const MIN_DURATION:number= 30
 export const MAX_DURATION:number= 180
 export const INTERVAL_STEP=5
 export const UNAVAILABLE_DATES:unavailableDate[]=[
-  "Monday",                           
-  "Wednesday",                      // String representing day name
+                             
+  "Sunday",                      // String representing day name
                 // Dayjs object representing a date
 ];
-export const UNAVAILABLE_HOURS:unavailableHrs = { start: 2, end: 4 };
+export const UNAVAILABLE_HOURS:unavailableHrs = { start: 12, end: 14 };
 export const CARD_BREAKPOINT: CardBreakpoint = {
   xs: 1,
   sm: 2,

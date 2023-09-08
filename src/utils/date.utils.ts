@@ -17,7 +17,7 @@ function isDateUnavaiable(date:Dayjs,unavailableDates?:Array<unavailableDate>):b
 const getDatesList = (Range:DateRange, unavailableDates?: Array<unavailableDate>):Array<DateType> => {
   const dateList: Array<DateType> = []
   let currentDate = Range.start
- 
+  
   while(!currentDate?.isAfter(Range.end))
   {
     dateList.push({date:currentDate,unavailable:isDateUnavaiable(currentDate,unavailableDates)})
