@@ -1,7 +1,7 @@
-# <a name="project-name"></a>Calendar-Carousel
+# <a name="project-name"></a>calender-carousal-react-ts
 
 <a href="https://www.npmjs.com/package/Calendar-Carousel">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.1.7-blue" target="_blank" />
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.0-blue" target="_blank" />
 </a>
 <a href="">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
