@@ -81,7 +81,7 @@ export default TestComponent
 
 ## <a name="api"></a>API
 
-The `CalenderCarousalContainer` component can be used by wrapping it in the `CalendarProvider`, both imported from `Calender-Carousel`. All of the calendar’s state management and date logic are bundled in `useCalendar` custom hook.
+The `CalenderCarousalContainer` component can be used by wrapping it in the `CalendarProvider`, both imported from `calender-carousal-package-react-ts`. All of the calendar’s state management and date logic are bundled in `useCalendar` custom hook.
 
 ## <a name="components"></a>Components&nbsp;
 
