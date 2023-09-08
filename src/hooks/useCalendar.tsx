@@ -30,15 +30,15 @@ type CalendarContext = {
   dateList:Array<DateType>
   setDate: (date: Dayjs) => void,
   setTime: (time: Dayjs | null) => void,
-  onclickIncrement: (value: number) => void,
-  onclickDecrement: (value: number) => void,
+  onclickIncrement: (value: number ) => void,
+  onclickDecrement: (value: number ) => void,
   selected: selectedSlot,
   setDuration: (value: number) => void,
-  intervalSize?: number,
-  formats?: Formats,
-  minDuration?: number,
-  maxDuration?: number,
-  unavailableDates?: Array<unavailableDate>,
+  intervalSize: number,
+  formats: Formats,
+  minDuration: number,
+  maxDuration: number,
+  unavailableDates: Array<unavailableDate>,
   unavailableHours: unavailableHrs,
   cardCount: number,
   styles?: Partial<CustomStyles>,
@@ -90,16 +90,16 @@ export function CalendarProvider({
   const onclickIncrement = (offsetValue: number): void => {
   
     const durationslot = selected.duration + offsetValue;
-    const threshold = MAX_DURATION;
+    const threshold = maxDuration||MAX_DURATION;
     if (durationslot <= threshold) {
       setDuration(durationslot);
     } else {
       setDuration(selected.duration);
     }
   };
-  const onclickDecrement = (offsetValue: number): void => {
+  const onclickDecrement = (offsetValue :number): void => {
     const durationslot = selected.duration - offsetValue;
-    const threshold = MIN_DURATION;
+    const threshold = minDuration||MIN_DURATION;
     if (durationslot >= threshold) {
       setDuration(durationslot);
      
