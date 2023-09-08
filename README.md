@@ -210,9 +210,6 @@ export type DateRange= {
   
 }
 ```
-#### <a name="alias-token"></a>`AliasToken`
-
-`general` styles are applied using _Ant Design tokens_. More info [here](https://ant.design/docs/react/customize-theme#seedtoken). _The general styles are inherited if a custom property is not provided_.
 
 #### <a name="custom-styles"></a>`CustomStyles`
 
@@ -271,7 +268,7 @@ _returns:_ `[number]`<br />
 Get Unvailable  hours 
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| {[Unavailable Hours](#unavailableHrs)} | UnavailableHrs | `null`
+| {[Unavailable Hours](#unavailableHrs)} | Hours that are unavailable | `null`
 
 
 ## <a name="built-with"></a>Built Using
