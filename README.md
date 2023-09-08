@@ -1,7 +1,7 @@
 # <a name="project-name"></a>calender-carousal-react-ts
 
 <a href="https://www.npmjs.com/package/calender-carousal-package-react-ts">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.2-blue" target="_blank" />
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.4-blue" target="_blank" />
 </a>
 <a href="">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
@@ -268,10 +268,10 @@ Convert time to a formatted string.
 ### <a name="get-Uavailable-Time"></a>`getUnavailableTime`
 
 _returns:_ `[number]`<br />
-Convert time to a formatted string.
+Get Unvailable  hours 
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| {Unavailable Hours} (#UnavailableHrs) | UnavailableHrs | `null`
+| {Unavailable Hours}(#unavailableHrs) | UnavailableHrs | `null`
 
 
 ## <a name="built-with"></a>Built Using
