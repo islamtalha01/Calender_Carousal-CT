@@ -32,7 +32,7 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
       - [DateRange](#date-Range)
       - [CustomStyles](#custom-styles)
     - [Utils](#utils)
-      - [getDatesList](#get-Dates-List)
+      - [getDatesList](#get-dates-List)
       - [getMeanDuration](#get-Mean-Duration)
       - [getFormattedDate](#get-formatted-date)
       - [getUnavailableTime](#get-Uavailable-Time)
@@ -247,7 +247,7 @@ Get a list of dates consisiting of the Range you provided as props.
 ### <a name="get-Mean-Duration"></a>`getMeanDuration`
 
 _returns:_ `number`<br />
-Get a list of dates consisiting of the Range you provided as props.
+Get mean value for the Duration.
 | Param | Description | Type |
 | :--- | :--- | :--- |
 | min | Minimum Value of Duration in min| `number`
