@@ -1,7 +1,7 @@
 
 
 
-export const getAvgDuration=(min:number,max:number):number=>
+export const getMeanDuration=(min:number,max:number):number=>
 {
    
    return Math.floor((min + max) / 2)

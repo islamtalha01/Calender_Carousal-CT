@@ -6,7 +6,7 @@ import TimeComponent from "../componenets/TimeComponent/TImeComponent";
 import { unavailableHrs } from "../common/types/calendar.types";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
-import { getFormattedTime, getDisabledTime } from "../utils/time.utils.ts";
+import { getFormattedTime, getUnavailableTime} from "../utils/time.utils.ts";
 import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
 import { formatDuration } from "../utils/duration.utils.ts";
@@ -78,7 +78,7 @@ export default function CalenderCarousalContainer({
         <ConfigProvider theme={{token:createTimeToken(token,styles)}}> 
           <TimeComponent                    //add the seperate theme style.
             onclick={handleTimePick}
-            computeDisabledHours={() => getDisabledTime(unavailableHours)}
+            computeDisabledHours={() => getUnavailableTime(unavailableHours)}
           />
         </ConfigProvider>
       ),

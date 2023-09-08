@@ -1,5 +1,5 @@
 import { useState, useContext, createContext, ReactNode } from "react";
-import { getAvgDuration } from "../utils/duration.utils";
+import {getMeanDuration } from "../utils/duration.utils";
 import { ConfigProvider } from "antd";
 import {
   selectedSlot,
@@ -73,7 +73,7 @@ export function CalendarProvider({
   const [selected, setSelectedSlot] = useState<selectedSlot>({
     date: null,
     time: null,
-    duration: minDuration && maxDuration ?getAvgDuration(minDuration, maxDuration):getAvgDuration(MIN_DURATION,MAX_DURATION),
+    duration: minDuration && maxDuration ?getMeanDuration(minDuration, maxDuration):getMeanDuration(MIN_DURATION,MAX_DURATION),
   });
   const breakpoint = useBreakpoint();
   const setDate = (date: Dayjs) => {
