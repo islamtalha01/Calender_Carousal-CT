@@ -1,4 +1,4 @@
-# <a name="project-name"></a>Calendar-Carousel
+# <a name="project-name"></a>calender-carousal-react-ts
 
 <a href="https://www.npmjs.com/package/Calendar-Carousel">
   <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.0-blue" target="_blank" />
