@@ -36,7 +36,7 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
       - [getMeanDuration](#get-Mean-Duration)
       - [getFormattedDate](#get-formatted-date)
       - [getUnavailableTime](#get-Uavailable-Time)
-      - [formatedDuration](formated-Duration)
+      - [formattedDuration](formatted-Duration)
   - [Built With](#built-with)
   - [License](#license)
 
@@ -247,7 +247,7 @@ Get a list of dates consisiting of the Range you provided as props.
 | :--- | :--- | :--- |
 | min | Minimum Value of Duration in min| `number`
 | max | Maximum Value of Duration in min| `number`
-### <a name="formated-Duration"></a>`formatedDuration`
+### <a name="formatted-Duration"></a>`formattedDuration`
 
 _returns:_ `string`<br />
 Convert minutes into hour representation.

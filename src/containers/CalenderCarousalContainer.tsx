@@ -3,13 +3,12 @@ import { Collapse } from "antd";
 import CalendarCarousal from "../componenets/CalendarCarousal";
 import DurationComponent from "../componenets/DurationComponent/DurationComponent";
 import TimeComponent from "../componenets/TimeComponent/TImeComponent";
-import { unavailableHrs } from "../common/types/calendar.types";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
 import { getFormattedTime, getUnavailableTime} from "../utils/time.utils.ts";
 import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
-import { formatedDuration } from "../utils/duration.utils.ts";
+import { formattedDuration } from "../utils/duration.utils.ts";
 import { createDateToken,createDurationToken,createTimeToken } from "../utils/theme.utils.ts";
 const { Text } = Typography;
 const { useToken } = theme;
@@ -38,7 +37,7 @@ export default function CalenderCarousalContainer({
     styles,
     setTime,
     unavailableHours,
-    dateList
+    dateList,intervalSize
 
   } = useCalendar();
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
@@ -95,9 +94,9 @@ export default function CalenderCarousalContainer({
       extra: durationComponent || (
         <ConfigProvider theme={{token:createDurationToken(token,styles)}}>
           <DurationComponent                //add the seperate theme style.
-            value={formatedDuration(selected.duration)}
-            onclickIncrement={() => onclickIncrement(offsetValue)}
-            onClickDecrement={() => onclickDecrement(offsetValue)}
+            value={formattedDuration(selected.duration)}
+            onclickIncrement={() => onclickIncrement(intervalSize)}
+            onClickDecrement={() => onclickDecrement(intervalSize)}
           />
         </ConfigProvider>
       ),
