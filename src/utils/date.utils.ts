@@ -4,23 +4,23 @@ import isToday from "dayjs/plugin/isToday"
 dayjs.extend(isToday)
 
 
-function isDateClosed(date:Dayjs,ClosedDates?:Array<unavailableDate>):boolean
+function isDateUnavaiable(date:Dayjs,unavailableDates?:Array<unavailableDate>):boolean
 {
     const dayName=date.format("dddd")
-    if(ClosedDates?.includes(dayName) ||ClosedDates?.some((closedDate)=>{dayjs(closedDate).isSame(date,"day")}))
+    if(unavailableDates?.includes(dayName) ||unavailableDates?.some((unavailableDates)=>{dayjs(unavailableDates).isSame(date,"day")}))
     return true
    
     return false
 }
 
 
-const getDatesList = (Range:DateRange, closedDates?: Array<unavailableDate>):Array<DateType> => {
+const getDatesList = (Range:DateRange, unavailableDates?: Array<unavailableDate>):Array<DateType> => {
   const dateList: Array<DateType> = []
   let currentDate = Range.start
   console.log(currentDate)
   while(!currentDate?.isAfter(Range.end))
   {
-    dateList.push({date:currentDate,closed:isDateClosed(currentDate,closedDates)})
+    dateList.push({date:currentDate,unavailable:isDateUnavaiable(currentDate,unavailableDates)})
     currentDate=currentDate.add(1,'day')
 
   }

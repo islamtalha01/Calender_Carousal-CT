@@ -18,7 +18,7 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
   - [API](#api)
     - [Components](#components)
       - [CalendarProvider](#calendarprovider)
-      - [Calendar](#calendar)
+      - [CalendarCarousalContainer](#CalendarCarousalContainer)
     - [Hooks](#hooks)
       - [useCalendar](#use-calendar)
     - [Custom Types](#custom-types)
@@ -96,7 +96,7 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)  | -         |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         | -       |
 
-### <a name="calendar"></a>`Calendar`
+### <a name="CalendarCarousalContainer"></a>`CalendarCarousalContainer`
 
 | Prop              | Description                                         | Type                 | Default      |
 | :---------------- | :-------------------------------------------------- | :------------------- | :----------- |
@@ -136,7 +136,7 @@ Date entry with its associated information.
 ```typescript
 type DateType = {
   date: Dayjs
-  closed?: boolean
+  unavailable?: boolean
 }
 ```
 
@@ -227,7 +227,7 @@ Get a list of dates consisiting of the Range you provided as props.
 | Param | Description | Type |
 | :--- | :--- | :--- |
 | Range | Range of Date you want to Display | `{DateRange}`(#DateRange)
-| closedDates | Dates that should be closed | `string` \| [Dayjs](https://day.js.org/)
+| unavaiableDates | Dates that should be closed | `string` \| [Dayjs](https://day.js.org/)
 
 ### <a name="format-duration"></a>`formatDuration`
 
