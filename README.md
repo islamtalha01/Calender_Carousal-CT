@@ -94,8 +94,8 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | minDuration  | Lower threshold for the duration **(in minutes)**            | `number`                                 | `30`    |
 | maxDuration  | Upper threshold for the duration **(in minutes)**            | `number`                                 | `180`   |
 | cards        | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       | -       |
-| unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) | -       |
-| unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)  | -         |
+| unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) | -    `Sunday`   |
+| unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)  | -      `12 AM TO 2AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         | -       |
 
 ### <a name="CalendarCarousalContainer"></a>`CalendarCarousalContainer`
