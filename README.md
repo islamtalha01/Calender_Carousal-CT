@@ -181,10 +181,9 @@ export type unavailableHrs = {
   end: number;
 };
 ```
-### <a name="unavailable Dates"></a>`unavailableDates`
+### <a name="unavailable Dates"></a>`unavailableDate`
 
-Array of unavailable Date
-
+Date that would be unavaible in Calendar
 ```typescript
 
 export type unavailableDate, = {
