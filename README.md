@@ -52,8 +52,7 @@ npm i calender-carousal-package-react-ts
 ## <a name="usage"></a>Usage
 
 ```typescript
-import { CalendarProvider } from  "Calendar-Carousel"
-
+import { CalendarProvider } from 'calender-carousal-package-react-ts'
 const App = () => {
   return (
     <CalendarProvider>
