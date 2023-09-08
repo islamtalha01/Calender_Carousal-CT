@@ -1,7 +1,7 @@
 {
-  "name": "calender-carousal-react-ts",
+  "name": "calender-carousal-package-react-ts",
 
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Muhammad Talha",
   "type": "module",
   "license": "MIT",
