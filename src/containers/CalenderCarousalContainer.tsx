@@ -9,7 +9,7 @@ import { useCalendar } from "../hooks";
 import { getFormattedTime, getUnavailableTime} from "../utils/time.utils.ts";
 import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
-import { formatDuration } from "../utils/duration.utils.ts";
+import { formatedDuration } from "../utils/duration.utils.ts";
 import { createDateToken,createDurationToken,createTimeToken } from "../utils/theme.utils.ts";
 const { Text } = Typography;
 const { useToken } = theme;
@@ -95,7 +95,7 @@ export default function CalenderCarousalContainer({
       extra: durationComponent || (
         <ConfigProvider theme={{token:createDurationToken(token,styles)}}>
           <DurationComponent                //add the seperate theme style.
-            value={formatDuration(selected.duration)}
+            value={formatedDuration(selected.duration)}
             onclickIncrement={() => onclickIncrement(offsetValue)}
             onClickDecrement={() => onclickDecrement(offsetValue)}
           />

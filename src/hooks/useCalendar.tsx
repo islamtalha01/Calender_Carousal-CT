@@ -121,7 +121,7 @@ export function CalendarProvider({
     ? cards?.sm || CARD_BREAKPOINT.sm
     : cards?.xs || CARD_BREAKPOINT.xs;
 
-   console.log(datesRange)
+ 
   const ContextValues: CalendarContext = {
     
     dateList:datesRange?getDatesList(datesRange,unavailableDates):getDatesList(DATERANGE,UNAVAILABLE_DATES),

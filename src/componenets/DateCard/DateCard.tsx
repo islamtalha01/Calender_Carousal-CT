@@ -3,6 +3,7 @@ import { Dayjs } from "dayjs";
 import inLineStyles from "./inLineStyles";
 type DateCardProps = {
   date: Dayjs;
+ 
   unavailable?: boolean;
   onClick: (newDate: Dayjs) => void;
 };
@@ -20,6 +21,7 @@ export default function DateCard(props: DateCardProps) {
   };
   return (
     <Card
+     
       hoverable={props.unavailable ? false : true}
       title={props.date.format("MMMM")}
       style={{ width: "150px", textAlign: "center" }}
