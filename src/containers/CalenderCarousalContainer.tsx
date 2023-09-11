@@ -75,7 +75,7 @@ export default function CalenderCarousalContainer({
 
       children: timeComponent || (
         <ConfigProvider theme={{token:createTimeToken(token,styles)}}> 
-          <TimeComponent                    //add the seperate theme style.
+          <TimeComponent               
             onclick={handleTimePick}
             computeDisabledHours={() => getUnavailableTime(unavailableHours)}
           />
