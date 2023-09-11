@@ -1,11 +1,11 @@
-import { Carousel, Row, Col, theme } from "antd";
+import { Carousel, Row, Col, theme, Button } from "antd";
 import { useRef } from "react";
 import { Dayjs } from "dayjs";
 import DateCard from "../DateCard/DateCard";
 import { DateType } from "../../common/types/calendar.types";
 import { CarouselRef } from "antd/es/carousel";
 import { useCalendar, useCarousalScroll } from "../../hooks";
-
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 const { useToken } = theme;
 
 type CalenderCarouselProps = {
@@ -22,26 +22,53 @@ export default function CalendarCarousal({
   useCarousalScroll(carouselRef);
 
   return (
-    <Carousel
-      ref={carouselRef}
-      infinite={false}
-      arrows={true}
-      style={{ maxWidth: "100vw" }}
-      slidesPerRow={cardCount}
-      dots={false}
-    >
-      {dates?.map((data,index) => (
-        <Row key={index}>
-          <Col
-            style={{
-              paddingLeft: token.paddingXS,
-              paddingRight: token.paddingXS,
-            }}
-          >
-            <DateCard date={data.date} unavailable={data.unavailable} onClick={onClick} />
-          </Col>
-        </Row>
-      ))}
-    </Carousel>
+    <Row align={"middle"}>
+      <Col lg={1} md={2} sm={3} xs={4}>
+        <Button
+          data-testid="btn-carousal"
+          onClick={() => carouselRef.current?.prev()}
+          // disabled={disabled}
+          size="large"
+          icon={<LeftOutlined />}
+        />
+      </Col>
+      <Col lg={22} md={20} sm={18} xs={16}>
+        <Carousel
+          ref={carouselRef}
+          infinite={false}
+          arrows={false}
+          style={{ maxWidth: "100vw" }}
+          slidesPerRow={cardCount}
+          dots={false}
+        >
+          {dates?.map((data, index) => (
+            <Row key={index}>
+              <Col
+                style={{
+                  paddingLeft: token.paddingXS,
+                  paddingRight: token.paddingXS,
+                }}
+              >
+                <DateCard
+                  date={data.date}
+                  unavailable={data.unavailable}
+                  onClick={onClick}
+                />
+              </Col>
+            </Row>
+          ))}
+        </Carousel>
+      </Col>
+
+      <Col lg={1} md={2} sm={3} xs={4}>
+        <Button
+          data-testid="btn-carousal"
+          onClick={() => carouselRef.current?.next()}
+          // disabled={disabled}
+          size="large"
+          icon={<RightOutlined />}
+        />
+      </Col>
+    </Row>
   );
 }
