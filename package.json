@@ -1,6 +1,6 @@
 {
   "name": "calender-carousal-package-react-ts",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Muhammad Talha",
   "type": "module",
   "license": "MIT",
@@ -23,12 +23,16 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build ",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^6.1.3",
+    "@types/jsdom": "^21.1.2",
     "antd": "^5.8.4",
+    "D": "^1.0.0",
     "dayjs": "^1.11.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -36,9 +40,9 @@
     "vite-plugin-dts": "^3.5.3"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
     "@types/antd": "^1.0.0",
     "@types/express": "^4.17.17",
-    "@types/jest": "^29.5.4",
     "@types/lodash": "^4.14.197",
     "@types/mongoose": "^5.11.97",
     "@types/react": "^18.2.21",
@@ -49,8 +53,11 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "jest": "^29.6.4",
+    "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vitest": "^0.34.4"
   },
   "keywords": [
     "calendar-carousel-react-ts",

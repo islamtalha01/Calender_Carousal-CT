@@ -21,7 +21,7 @@ export default function DateCard(props: DateCardProps) {
   };
   return (
     <Card
-     
+      data-testid="datecard" 
       hoverable={props.unavailable ? false : true}
       title={props.date.format("MMMM")}
       style={{ width: "150px", textAlign: "center" }}

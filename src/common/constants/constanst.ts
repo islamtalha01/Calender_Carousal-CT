@@ -36,10 +36,10 @@ export const UNAVAILABLE_HOURS:unavailableHrs = { start: 12, end: 14 };
 export const CARD_BREAKPOINT: CardBreakpoint = {
   xs: 1,
   sm: 2,
-  md: 4,
-  lg: 6,
-  xl: 8,
-  xxl: 10,
+  md: 3,
+  lg: 5,
+  xl: 7,
+  xxl: 9,
 }
 
 
