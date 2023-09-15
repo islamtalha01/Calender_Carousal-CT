@@ -90,9 +90,9 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | Prop         | Description                                                  | Type                                     | Default |
 | :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
 | datesRange   | The Range of dates displayed in the Carousel                 | [DateType[]](#DateType)                  |`1 Week From CurrentDay`|
-| intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | span is `15` & Unit is "Min" <br> You can choose any span value with any  
+| intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | span is `15` & Unit is "Min" <br> You can choose any span value with any <br>
 |              |                                                              |                                          | of the <br> avaiable units (Hrs,Mins & Days)
-|              |                                                              |                                          ||
+
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      |  Default Formats are <br> Dates :  "DD MM YYYY" <br>Clock :   "12h"
 | minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | span is `30`   Default Unit is "Mins"  |
 | maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   |  span is `30`   Default Unit is "Mins" |
