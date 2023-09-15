@@ -95,7 +95,7 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  `"DD MM YYYY"` <br>Clock :  `"12h"` <br> Time : `"hh:mm A"`
 | minDuration  | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`Duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
 | maxDuration  | Upper threshold for the duration **(in Minutes,Hours & Days)**            |[`Duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
-| cardsBreakPoints      | Numbers of cards per screen to be displayed in Carousal       | [CardBreakPoint](#card-breakpoint)       | [Default Values of Card Break Points](#defaul-card-breakpoints-values)
+| cardsBreakPoints      | Numbers of cards per screen to be displayed in Carousal       | [CardBreakPoint](#card-breakpoint)       | [](#defaul-card-breakpoints-values)
 | unavailableDates  |You can Either give List of Unavailable Dates <br> or a Callback which will specifies the <br> dates that cannot be selected|[UnavailableDate[]](#unavailable-Dates)  \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
 | unavailableHours  | Hours that should be closed  in Time Picker                           | [UnavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
