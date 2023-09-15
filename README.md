@@ -90,14 +90,14 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | Prop         | Description                                                  | Type                                     | Default |
 | :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
 | datesRange   | The Range of dates displayed in the Carousel                 | [DateType[]](#DateType)                  |`1 Week From CurrentDay`|
-| intervalStep | The Time Span by which duration should increase or decrease  | [`duration`](#Duration)                  | Value of span is `15` & Unit is "Min" <br> You can choose any span <br> value with<br> avaiable units (Hrs,Mins & Days).
+| intervalStep | The Time Span by which duration should increase or decrease  | [`duration`](#Duration)                  | Value of span is `15` & Unit is `"Min"` <br> You can choose any span <br> value with<br> avaiable units `(Hrs,Mins & Days)`.
 |              |                                                              |                                          ||
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  `"DD MM YYYY"` <br>Clock :  `"12h"` <br> Time : `"hh:mm A"`
 | minDuration  | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
 | maxDuration  | Upper threshold for the duration **(in Minutes,Hours & Days)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
-| cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
-| unavailableDates  |You can Either give List of Clode Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected|[unavailableDate[]](#unavailable-Dates)  \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
-| unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
+| cardsBreakPoints      | Numbers of cards per screen to be displayed in Carousal       | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
+| unavailableDates  |You can Either give List of Unavailable Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected|[unavailableDate[]](#unavailable-Dates)  \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
+| unavailableHours  | Hours that should be closed  in Time Picker                           | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
 
 ### <a name="CalendarCarousalContainer"></a>`CalendarCarousalContainer`
@@ -105,9 +105,9 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | Prop              | Description                                         | Type                 | Default      |
 | :---------------- | :-------------------------------------------------- | :------------------- | :----------- |
 | activePanels      | What panels should initially be opened              | `string \| string[]` | `['1']` |
-| dateComponent     | Component that will replace the **card carousel**   | `ReactNode`          | -            |
-| timeComponent     | Component that will replace the **time picker**     | `ReactNode`          | -            |
-| durationComponent | Component that will replace the **duration setter** | `ReactNode`          | -            |
+| dateComponent     | Component that will replace the **card carousel**   | `ReactNode`          |              |
+| timeComponent     | Component that will replace the **time picker**     | `ReactNode`          |             |
+| durationComponent | Component that will replace the **duration setter** | `ReactNode`          |             |
 
 ## <a name="hooks"></a>Hooks&nbsp;
 
@@ -127,7 +127,7 @@ This custom hook provides access to all the state values of the package, along w
 | formats          | The display format for date, time, and clock                 | [Formats](#formats)                      |
 | minDuration      | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
 | maxDuration      | Upper threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
-| cards            | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       |
+| cardsBreakPoints            |Numbers of cards per screen to be displayed in Carousal                   | [CardBreakpoint](#card-breakpoint)       |
 | unavailableDates      | You can Either give List of Clode Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected| [unavailableDate[]](#unavailable-Dates) \|`(date: Dayjs) => boolean` |
 | unavailableHours      | Hours that should be closed                             | [`unavailableHrs`](#unavailableHrs)  |
 
