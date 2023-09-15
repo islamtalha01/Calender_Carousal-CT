@@ -25,8 +25,8 @@ The Calendar Carousel is a mobile-responsive element designed to highlight a cho
       - [DateType](#DateType)
       - [Formats](#formats)
       - [CardBreakpoint](#card-breakpoint)
-      - [unavailableHrs](#unavailableHrs)
-      - [unavailableDates](#unavailable-Dates)
+      - [UnavailableHrs](#unavailableHrs)
+      - [UnavailableDates](#unavailable-Dates)
       - [Selected](#selected)
       - [CalendarTheme](#calendar-theme)
       - [DateRange](#date-Range)
@@ -96,7 +96,7 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | minDuration  | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`Duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
 | maxDuration  | Upper threshold for the duration **(in Minutes,Hours & Days)**            |[`Duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
 | cardsBreakPoints      | Numbers of cards per screen to be displayed in Carousal       | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
-| unavailableDates  |You can Either give List of Unavailable Dates <br> or a Callback which will specifies the <br> dates that cannot be selected|[unavailableDate[]](#unavailable-Dates)  \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
+| unavailableDates  |You can Either give List of Unavailable Dates <br> or a Callback which will specifies the <br> dates that cannot be selected|[UnavailableDate[]](#unavailable-Dates)  \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
 | unavailableHours  | Hours that should be closed  in Time Picker                           | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
 
@@ -128,7 +128,7 @@ This custom hook provides access to all the state values of the package, along w
 | minDuration      | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`Duration`](#Duration)                    |
 | maxDuration      | Upper threshold for the duration **(in Minutes,Hours & Days)**            | [`Duration`](#Duration)                    |
 | cardsBreakPoints            |Numbers of cards per screen to be displayed in Carousal                   | [CardBreakpoint](#card-breakpoint)       |
-| unavailableDates      | You can Either give List of Clode Dates <br> or a Callback which will specifies the <br> dates that cannot be selected| [unavailableDate[]](#unavailable-Dates) \|`(date: Dayjs) => boolean` |
+| unavailableDates      | You can Either give List of Clode Dates <br> or a Callback which will specifies the <br> dates that cannot be selected| [UnavailableDate[]](#unavailable-Dates) \|`(date: Dayjs) => boolean` |
 | unavailableHours      | Hours that should be closed  in Time Picker                           | [`unavailableHrs`](#unavailableHrs)  |
 
 ## <a name="custom-types"></a>Custom Types
@@ -190,12 +190,12 @@ export type unavailableHrs = {
   end: number;
 };
 ```
-### <a name="unavailable-Dates"></a>`unavailableDate`
+### <a name="unavailable-Dates"></a>`UnavailableDate`
 
 Date that would be unavaible in Calendar
 ```typescript
 
-export type unavailableDate, = {
+export type UnavailableDate, = {
   string|Dayjs
 };
 ```
