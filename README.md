@@ -92,9 +92,9 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | datesRange   | The Range of dates displayed in the Carousel                 | [DateType[]](#DateType)                  |`1 Week From CurrentDay`|
 | intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | Value of span is `15` & Unit is "Min" <br> You can choose any span <br> value with<br> avaiable units (Hrs,Mins & Days).
 |              |                                                              |                                          ||
-| formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  "DD MM YYYY" <br>Clock :  "12h" <br> Time : "hh:mm A"
-| minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is "Mins"  |
-| maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is "Mins"  |
+| formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  `"DD MM YYYY"` <br>Clock :  `"12h"` <br> Time : `"hh:mm A"`
+| minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
+| maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
 | cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
 | unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) |    `Sunday`   |
 | unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
@@ -241,7 +241,7 @@ export type DateRange= {
 | cardGap | Gap between the date cards in the carousel | `number`
 | buttonBorderRadius | Border radius of buttons that update duration | `number`
 
-### <a name="defaul-card-breakpoints-values"></a>`Default CardBreakpoints Values `
+### <a name="defaul-card-breakpoints-values"></a>`Default Card Breakpoints Values`
 
 Default number of cards to display per slide based on the different screen sizes.
 
