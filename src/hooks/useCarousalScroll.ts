@@ -26,7 +26,7 @@ function useCarousalScroll(Ref: React.MutableRefObject<CarouselRef | null>)
         
               setTimeout(() => {
                 scrolling = false
-              }, 300) 
+              }, 400) 
             }
         
             carouselContainer.addEventListener("wheel", scrollHandler)

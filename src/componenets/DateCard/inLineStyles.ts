@@ -24,7 +24,11 @@ function inLineStyles() {
   const bodyStyle: React.CSSProperties = {
     color: token.colorTextSecondary,
   };
-  return { headStyleopen, bodyStyle, headStyleclosed };
+  const cardStyle:React.CSSProperties = {
+    width:"150px",textAlign:"center"
+  }
+ 
+  return { headStyleopen, bodyStyle, headStyleclosed,cardStyle };
 }
 
 export default inLineStyles;

@@ -1,6 +1,4 @@
-export const getMeanDuration = (min: number, max: number): number => {
-  return Math.floor((min + max) / 2);
-};
+
 export const formattedDuration = (value: number) => {
   const hours: number = Math.floor(value / 60);
   const min: number = value % 60;
@@ -9,3 +7,26 @@ export const formattedDuration = (value: number) => {
 
   return `${formatedHours}:${formatedMin}`;
 };
+
+type duration=
+{
+  span:number,unit:string,
+}
+export const getMeanDuration=(minDuration:duration,maxDuration:duration):number=>
+{
+   let meanDuration=0;
+  if(minDuration.unit==="Mins")
+  {
+    meanDuration=Math.floor((minDuration.span + maxDuration.span) / 2);
+  }
+  else if(minDuration.unit==="Hrs")
+  {
+   
+    meanDuration = ((minDuration.span + maxDuration.span)*60) / 2;
+  }
+  else if(minDuration.unit==="Days"){
+    meanDuration = ((minDuration.span + maxDuration.span) *60*24 )/ 2;
+  }
+
+  return meanDuration
+}

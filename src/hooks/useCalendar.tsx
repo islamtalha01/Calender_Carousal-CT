@@ -1,5 +1,5 @@
 import { useState, useContext, createContext, ReactNode } from "react";
-import {getMeanDuration } from "../utils/duration.utils";
+import { getMeanDuration } from "../utils/duration.utils";
 import { ConfigProvider } from "antd";
 import {
   selectedSlot,
@@ -20,129 +20,158 @@ import {
   UNAVAILABLE_HOURS,
   CARD_BREAKPOINT,
   DATERANGE,
+  unavailableDatesCallback,
 } from "../common/constants/constanst";
 import useBreakpoint from "antd/es/grid/hooks/useBreakpoint";
 import { CalendarTheme, CustomStyles } from "../common/types/theme.type";
 import { createThemeAlgorithm } from "../utils/theme.utils";
 import { getDatesList } from "../utils";
-
-type CalendarContext = {
-  dateList:Array<DateType>
-  setDate: (date: Dayjs) => void,
-  setTime: (time: Dayjs | null) => void,
-  onclickIncrement: (value: number ) => void,
-  onclickDecrement: (value: number ) => void,
-  selected: selectedSlot,
-  setDuration: (value: number) => void,
-  intervalSize: number,
-  formats: Formats,
-  minDuration: number,
-  maxDuration: number,
-  unavailableDates: Array<unavailableDate>,
-  unavailableHours: unavailableHrs,
-  cardCount: number,
-  styles?: Partial<CustomStyles>,
+type duration = {
+  span: number;
+  unit: string;
 };
+type CalendarContext = {
+  unavailableDates: Array<unavailableDate> | unavailableDatesCallback;
+  unavailableHours: unavailableHrs;
+  cardCount: number;
+  styles?: Partial<CustomStyles>;
+  setDate: (date: Dayjs) => void;
+  setTime: (time: Dayjs | null) => void;
+  handleDecrementClick: (value: duration) => void;
+  handleIncrementClick: (value: duration) => void;
+  setDuration: (value: number) => void;
+  dateList: Array<DateType>;
+
+  selected: selectedSlot;
+
+  intervalStep: duration;
+  formats: Formats;
+};
+
 type CalendarProviderprop = {
-  children: ReactNode,
-  intervalSize?: number,
-  formats?: Formats,
-  minDuration?: number,
-  maxDuration?: number,
-  cards?: CardBreakpoint,
-  unavailableDates?: Array<unavailableDate>,
-  unavailableHours?: unavailableHrs,
-  theme?: CalendarTheme,
-  datesRange?:DateRange
+  children: ReactNode;
+  unavailableDates?: Array<unavailableDate> | unavailableDatesCallback;
+  unavailableHours?: unavailableHrs;
+  theme?: CalendarTheme;
+  datesRange?: DateRange;
+  intervalStep?: duration;
+  formats?: Formats;
+  minDuration?: duration;
+  maxDuration?: duration;
+
+  cardsBreakpoints?: CardBreakpoint;
 };
 
 const CalendarContext = createContext<CalendarContext | undefined>(undefined);
 
 export function CalendarProvider({
   children,
+  unavailableDates,
+  unavailableHours,
   datesRange,
-  intervalSize,
+  intervalStep,
   formats,
   minDuration,
   maxDuration,
-  unavailableDates,
-  unavailableHours,
-  cards,
+
+  cardsBreakpoints,
   theme,
 }: CalendarProviderprop) {
-  const [selected, setSelectedSlot] = useState<selectedSlot>({
+  const [selected, setSelected] = useState<selectedSlot>({
     date: null,
     time: null,
-    duration: minDuration && maxDuration ?getMeanDuration(minDuration, maxDuration):getMeanDuration(MIN_DURATION,MAX_DURATION),
+    duration:
+      minDuration && maxDuration
+        ? getMeanDuration(minDuration, maxDuration)
+        : getMeanDuration(MIN_DURATION, MAX_DURATION), //fix this with constants
   });
+
   const breakpoint = useBreakpoint();
   const setDate = (date: Dayjs) => {
-    setSelectedSlot({ ...selected, date });
+    setSelected({ ...selected, date });
     console.log(selected);
   };
   const setTime = (time: Dayjs | null) => {
-    setSelectedSlot({ ...selected, time });
+    setSelected({ ...selected, time });
   };
   const setDuration = (duration: number) => {
-    setSelectedSlot({ ...selected, duration });
+    setSelected({ ...selected, duration });
   };
 
-  const onclickIncrement = (offsetValue: number): void => {
-  
-    const durationslot = selected.duration + offsetValue;
-    const threshold = maxDuration||MAX_DURATION;
-    if (durationslot <= threshold) {
-      setDuration(durationslot);
+  const handleIncrementClick = (offsetValue: duration): void => {
+    const newDuration = selected.duration + offsetValue.span;
+
+    let threshold = 0;
+
+    if (maxDuration?.unit) {
+      if (maxDuration.unit === "Mins") {
+        threshold = maxDuration.span;
+      } else if (maxDuration?.unit === "Hrs") {
+        threshold = maxDuration.span * 60;
+      } else if (maxDuration?.unit === "Days") {
+        threshold = maxDuration.span * 24 * 60;
+      }
     } else {
-      setDuration(selected.duration);
+      threshold = MAX_DURATION.span;
     }
+    setDuration(Math.min(newDuration, threshold));
   };
-  const onclickDecrement = (offsetValue :number): void => {
-    const durationslot = selected.duration - offsetValue;
-    const threshold = minDuration||MIN_DURATION;
-    if (durationslot >= threshold) {
-      setDuration(durationslot);
-     
+  const handleDecrementClick = (offsetValue: duration): void => {
+    const newDuration = selected.duration - offsetValue.span;
+
+    let threshold = 0;
+    if (minDuration?.unit) {
+      if (minDuration.unit === "Mins") {
+        threshold = minDuration.span;
+      } else if (minDuration?.unit === "Hrs") {
+        threshold = minDuration.span * 60;
+      } else if (minDuration?.unit === "Days") {
+        threshold = minDuration.span * 24 * 60;
+      }
     } else {
-      setDuration(selected.duration);
+      threshold = MIN_DURATION.span;
     }
+    setDuration(Math.max(newDuration, threshold));
   };
-  let cardCount = 3;
+
+  let cardCount = 1;
 
   cardCount = breakpoint.xxl
-    ? cards?.xxl || CARD_BREAKPOINT.xxl
+    ? cardsBreakpoints?.xxl || CARD_BREAKPOINT.xxl
     : breakpoint.xl
-    ? cards?.xl || CARD_BREAKPOINT.xl
+    ? cardsBreakpoints?.xl || CARD_BREAKPOINT.xl
     : breakpoint.lg
-    ? cards?.lg || CARD_BREAKPOINT.lg
+    ? cardsBreakpoints?.lg || CARD_BREAKPOINT.lg
     : breakpoint.md
-    ? cards?.md || CARD_BREAKPOINT.md
+    ? cardsBreakpoints?.md || CARD_BREAKPOINT.md
     : breakpoint.sm
-    ? cards?.sm || CARD_BREAKPOINT.sm
-    : cards?.xs || CARD_BREAKPOINT.xs;
+    ? cardsBreakpoints?.sm || CARD_BREAKPOINT.sm
+    : cardsBreakpoints?.xs || CARD_BREAKPOINT.xs;
 
- 
   const ContextValues: CalendarContext = {
-    
-    dateList:datesRange?getDatesList(datesRange,unavailableDates||UNAVAILABLE_DATES):getDatesList(DATERANGE,UNAVAILABLE_DATES),
-    setDate,
-    setTime,
+    dateList: datesRange
+      ? getDatesList(datesRange, unavailableDates || UNAVAILABLE_DATES)
+      : getDatesList(DATERANGE, UNAVAILABLE_DATES),
+
     selected,
-    setDuration,
-    onclickIncrement,
-    onclickDecrement,
-    intervalSize: intervalSize || INTERVAL_STEP,
+    intervalStep: intervalStep || INTERVAL_STEP,
     formats: formats || FORMATS,
-    minDuration: minDuration || MIN_DURATION,
-    maxDuration: maxDuration || MAX_DURATION,
+
     unavailableDates: unavailableDates || UNAVAILABLE_DATES,
     unavailableHours: unavailableHours || UNAVAILABLE_HOURS,
     cardCount: cardCount,
     styles: theme?.custom,
+    setDate,
+    setTime,
+    setDuration,
+    handleIncrementClick,
+    handleDecrementClick,
   };
 
   return (
-    <ConfigProvider theme={{ algorithm: createThemeAlgorithm(theme) }}>
+    <ConfigProvider
+      theme={{ algorithm: createThemeAlgorithm(theme), token: theme?.general }}
+    >
       <CalendarContext.Provider value={ContextValues}>
         {children}
       </CalendarContext.Provider>
@@ -150,14 +179,14 @@ export function CalendarProvider({
   );
 }
 const useCalendar = () => {
-  const context = useContext(CalendarContext);
+  const calendarContext = useContext(CalendarContext);
 
-  if (!context) {
+  if (!calendarContext) {
     throw new Error(
       "Calendarprovider must wrap the component in which useCalendar is used"
     );
   }
-  return context;
+  return calendarContext;
 };
 
 export default useCalendar;

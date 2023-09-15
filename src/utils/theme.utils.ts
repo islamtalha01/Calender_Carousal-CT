@@ -41,7 +41,7 @@ export function createDurationToken(
 export function createThemeAlgorithm(Theme?: CalendarTheme) {
   if(!Theme)
   {
-    CALENDAR_THEME.isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
+    return CALENDAR_THEME.isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
   }
   return Theme?.isDark ? theme.darkAlgorithm : theme.defaultAlgorithm;
 }

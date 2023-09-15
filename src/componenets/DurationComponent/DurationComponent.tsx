@@ -5,13 +5,13 @@ const {useToken}=theme
 
 type Durationprops = {
   value: string;
-  onClickDecrement: () => void;
-  onclickIncrement: () => void;
+  handleIncrementClick: () => void;
+  handleDecrementClick: () => void;
 };
 export default function DurationComponent({
   value,
-  onClickDecrement,
-  onclickIncrement,
+  handleIncrementClick,
+  handleDecrementClick,
 }: Durationprops) {
  
   const{token}=useToken()
@@ -21,15 +21,18 @@ export default function DurationComponent({
         <Button
           type="default"
           shape="circle"
+          size="large"
           icon={<PlusOutlined />}
-          onClick={onclickIncrement}
+          onClick={handleIncrementClick}
+        
         ></Button>
-        <Text style={{  color: token.colorTextSecondary,}}>{value}</Text>
+        <Text style={{  fontSize: token.fontSizeLG}}>{value}</Text>
         <Button
           type="default"
           shape="circle"
           icon={<MinusOutlined />}
-          onClick={onClickDecrement}
+          onClick={handleDecrementClick}
+          size="large"
         ></Button>
       </Space>
     </>
