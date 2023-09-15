@@ -96,7 +96,7 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | minDuration  | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
 | maxDuration  | Upper threshold for the duration **(in Minutes,Hours & Days)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
 | cardsBreakPoints      | Numbers of cards per screen to be displayed in Carousal       | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
-| unavailableDates  |You can Either give List of Unavailable Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected|[unavailableDate[]](#unavailable-Dates)  \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
+| unavailableDates  |You can Either give List of Unavailable Dates <br> or a Callback which will specifies the <br> dates that cannot be selected|[unavailableDate[]](#unavailable-Dates)  \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
 | unavailableHours  | Hours that should be closed  in Time Picker                           | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
 
@@ -128,8 +128,8 @@ This custom hook provides access to all the state values of the package, along w
 | minDuration      | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
 | maxDuration      | Upper threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
 | cardsBreakPoints            |Numbers of cards per screen to be displayed in Carousal                   | [CardBreakpoint](#card-breakpoint)       |
-| unavailableDates      | You can Either give List of Clode Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected| [unavailableDate[]](#unavailable-Dates) \|`(date: Dayjs) => boolean` |
-| unavailableHours      | Hours that should be closed                             | [`unavailableHrs`](#unavailableHrs)  |
+| unavailableDates      | You can Either give List of Clode Dates <br> or a Callback which will specifies the <br> dates that cannot be selected| [unavailableDate[]](#unavailable-Dates) \|`(date: Dayjs) => boolean` |
+| unavailableHours      | Hours that should be closed  in Time Picker                           | [`unavailableHrs`](#unavailableHrs)  |
 
 ## <a name="custom-types"></a>Custom Types
 
