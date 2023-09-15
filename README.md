@@ -81,7 +81,7 @@ export default TestComponent
 
 ## <a name="api"></a>API
 
-The `CalenderCarousalContainer` component can be used by wrapping it in the `CalendarProvider`, both imported from `calender-carousal-package-react-ts`. All of the calendar’s state management and date logic are bundled in `useCalendar` custom hook.
+The `CalenderCarousalContainer` component can be used by wrapping it in the `CalendarProvider`, both imported from `Calender-Carousel`. All of the calendar’s state management and date logic are bundled in `useCalendar` custom hook.
 
 ## <a name="components"></a>Components&nbsp;
 
@@ -90,22 +90,13 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | Prop         | Description                                                  | Type                                     | Default |
 | :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
 | datesRange   | The Range of dates displayed in the Carousel                 | [DateType[]](#DateType)                  |`1 Week From CurrentDay`|
-| intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | span is `15` & Unit is "Min" 
-|              |                                                              |                                          | You can choose any span value with any of the 
-|              |                                                              |                                          | avaiable units (Hrs,Mins & Days)     
-| formats      | The display format for date, time, and clock                 | [Formats](#formats)                      |      
-                                                                                                                              Default Formats are
-                                                                                                                              Dates :  "DD MM YYYY"
-                                                                                                                              Time  :  "hh:mm a"
-                                                                                                                              Clock :   "12h"
-                                                                                                                        
-                                                                                                                      
+| intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | span is `15` & Unit is "Min" <br> You can choose any span value with any  
+|              |                                                              |                                          | of the <br> avaiable units (Hrs,Mins & Days)
+|              |                                                              |                                          ||
+| formats      | The display format for date, time, and clock                 | [Formats](#formats)                      |  Default Formats are <br> Dates :  "DD MM YYYY" <br>Clock :   "12h"
 | minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | span is `30`   Default Unit is "Mins"  |
 | maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   |  span is `30`   Default Unit is "Mins" |
-| cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       |   
-                                                                                                                         
-                                                                                                                        
-      
+| cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       | 
 | unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) |    `Sunday`   |
 | unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
