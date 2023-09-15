@@ -96,7 +96,7 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | minDuration  | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
 | maxDuration  | Upper threshold for the duration **(in Minutes,Hours & Days)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
 | cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
-| unavailableDates  |You can Either give List of Clode Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected|`string` \|`[Dayjs]`(https://day.js.org/) \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
+| unavailableDates  |You can Either give List of Clode Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected|`string` \|[Dayjs](https://day.js.org/) \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
 | unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
 
