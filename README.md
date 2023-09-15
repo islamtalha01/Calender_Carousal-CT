@@ -272,8 +272,8 @@ _returns:_ `number`<br />
 Get mean value for the Duration.
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| min | Minimum Value of Duration in min| `number`
-| max | Maximum Value of Duration in min| `number`
+| minDuration | Minimum Value of Duration in min| `duration`
+| maxDuration | Maximum Value of Duration in min| `duration`
 ### <a name="formatted-Duration"></a>`formattedDuration`
 
 _returns:_ `string`<br />
