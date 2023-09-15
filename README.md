@@ -90,7 +90,7 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | Prop         | Description                                                  | Type                                     | Default |
 | :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
 | datesRange   | The Range of dates displayed in the Carousel                 | [DateType[]](#DateType)                  |`1 Week From CurrentDay`|
-| intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | Value of span is `15` & Unit is "Min" <br> You can choose any span <br> value with<br> avaiable units (Hrs,Mins & Days).
+| intervalStep | The Time Span by which duration should increase or decrease  | [`duration`](#Duration)                  | Value of span is `15` & Unit is "Min" <br> You can choose any span <br> value with<br> avaiable units (Hrs,Mins & Days).
 |              |                                                              |                                          ||
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  `"DD MM YYYY"` <br>Clock :  `"12h"` <br> Time : `"hh:mm A"`
 | minDuration  | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
@@ -123,7 +123,7 @@ This custom hook provides access to all the state values of the package, along w
 | handleIncrementClick | Function to increase the selected duration               | `(offsetValue:  duration) =>  number`    |
 | handleDecrementClick | Function to decrease the selected duration               | `(offsetValue:  duration) =>  number`    |
 | dateList         | The dates displayed in the carousel                          | [DateType[]](#DateType)                  |
-| intervalStep     | The minutes by which duration should increase or decrease by | `number`                                 |
+| intervalStep     | The Time Span by which duration should increase or decrease  |[`duration`](#Duration)                              |
 | formats          | The display format for date, time, and clock                 | [Formats](#formats)                      |
 | minDuration      | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
 | maxDuration      | Upper threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
