@@ -93,8 +93,8 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | span is `15` & Unit is "Min" <br> You can choose any span <br> value with any of the <br> avaiable units (Hrs,Mins & Days).
 |              |                                                              |                                          ||
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  "DD MM YYYY" <br>Clock :   "12h"
-| minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | span is `30`   Default Unit is "Mins"  |
-| maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   |  span is `30`   Default Unit is "Mins" |
+| minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is "Mins"  |
+| maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is "Mins"  |
 | cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       | 
 | unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) |    `Sunday`   |
 | unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
@@ -241,7 +241,19 @@ export type DateRange= {
 | cardGap | Gap between the date cards in the carousel | `number`
 | buttonBorderRadius | Border radius of buttons that update duration | `number`
 
+### <a name="defaul-card-breakpoints-values"></a>`Default CardBreakpoints Values `
 
+Number of cards to display per slide based on the different screen sizes.
+
+```typescript
+export type CardBreakpoint = {
+  xs: number 
+  sm: number
+  md: number
+  xl: number
+  xxl: number
+}
+```
 ## <a name="utils"></a>Utils
 
 ### <a name="get-dates-List"></a>`getDatesList`
