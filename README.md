@@ -128,7 +128,7 @@ This custom hook provides access to all the state values of the package, along w
 | minDuration      | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
 | maxDuration      | Upper threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
 | cards            | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       |
-| unavailableDates      | You can Either give List of Clode Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected| [unavailableDate[]](#unavailable-Dates)  | `(date: Dayjs) => boolean` |
+| unavailableDates      | You can Either give List of Clode Dates <br> or a Callback which will speicifes the <br> dates that cannot be selected| [unavailableDate[]](#unavailable-Dates) \|`(date: Dayjs) => boolean` |
 | unavailableHours      | Hours that should be closed                             | [`unavailableHrs`](#unavailableHrs)  |
 
 ## <a name="custom-types"></a>Custom Types
