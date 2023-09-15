@@ -1,7 +1,7 @@
 # <a name="project-name"></a>calender-carousal-react-ts
 
 <a href="https://www.npmjs.com/package/calender-carousal-package-react-ts">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.5-blue" target="_blank" />
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.0.6-blue" target="_blank" />
 </a>
 <a href="">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
@@ -89,15 +89,26 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 
 | Prop         | Description                                                  | Type                                     | Default |
 | :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
-| datesRange   | The Range of dates displayed in the Carousel                 | [DateType[]](#DateType)               |`1 Week From CurrentDay`|
-| intervalSize | The minutes by which duration should increase or decrease by | `number`                                 | `5`     |
-| formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | -       |
-| minDuration  | Lower threshold for the duration **(in minutes)**            | `number`                                 | `30`    |
-| maxDuration  | Upper threshold for the duration **(in minutes)**            | `number`                                 | `180`   |
-| cards        | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       | -       |
-| unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) | -    `Sunday`   |
-| unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)  | -      `12 AM TO 2 AM`   |
-| theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         | -       |
+| datesRange   | The Range of dates displayed in the Carousel                 | [DateType[]](#DateType)                  |`1 Week From CurrentDay`|
+| intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | span is `15` & Unit is "Min" 
+|              |                                                              |                                          | You can choose any span value with any of the 
+|              |                                                              |                                          | avaiable units (Hrs,Mins & Days)     
+| formats      | The display format for date, time, and clock                 | [Formats](#formats)                      |      
+                                                                                                                              Default Formats are
+                                                                                                                              Dates :  "DD MM YYYY"
+                                                                                                                              Time  :  "hh:mm a"
+                                                                                                                              Clock :   "12h"
+                                                                                                                        
+                                                                                                                      
+| minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | span is `30`   Default Unit is "Mins"  |
+| maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   |  span is `30`   Default Unit is "Mins" |
+| cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       |   
+                                                                                                                         
+                                                                                                                        
+      
+| unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) |    `Sunday`   |
+| unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
+| theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
 
 ### <a name="CalendarCarousalContainer"></a>`CalendarCarousalContainer`
 
@@ -119,16 +130,16 @@ This custom hook provides access to all the state values of the package, along w
 | selected         | Selected date, time, and duration                            | [Selected](#selected)                    |
 | setDate          | Function to update the selected date                         | `(date:  Dayjs) =>  void`                |
 | setTime          | Function to update the selected time                         | `(time:  Dayjs) =>  void`                |
-| onclickIncrement | Function to increase the selected duration                   | `(offsetValue:  number) =>  number`      |
-| onclickDecrement | Function to decrease the selected duration                   | `(offsetValue:  number) =>  number`      |
-| dateList         | The dates displayed in the carousel                          | [DateType[]](#DateType)                        |
-| intervalSize     | The minutes by which duration should increase or decrease by | `number`                                 |
+| handleIncrementClick | Function to increase the selected duration               | `(offsetValue:  duration) =>  number`    |
+| handleDecrementClick | Function to decrease the selected duration               | `(offsetValue:  duration) =>  number`    |
+| dateList         | The dates displayed in the carousel                          | [DateType[]](#DateType)                  |
+| intervalStep     | The minutes by which duration should increase or decrease by | `number`                                 |
 | formats          | The display format for date, time, and clock                 | [Formats](#formats)                      |
-| minDuration      | Lower threshold for the duration **(in minutes)**            | `number`                                 |
-| maxDuration      | Upper threshold for the duration **(in minutes)**            | `number`                                 |
+| minDuration      | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                    |
+| maxDuration      | Upper threshold for the duration **(in minutes)**            | [`duration`](#Duration)                    |
 | cards            | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       |
-| unavailableDates      | Dates that should be closed                                  | `string` \| [Dayjs](https://day.js.org/) |
-| unavailableHours      | Hours that should be closed                                  | [unavailableHrs](#unavailableHrs)  |
+| unavailableDates      | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) |
+| unavailableHours      | Hours that should be closed                             | [`unavailableHrs`](#unavailableHrs)  |
 
 ## <a name="custom-types"></a>Custom Types
 
@@ -149,29 +160,36 @@ Display format for the date, time and allow the selection of `12` or `24` hour f
 
 ```ts
 type Formats = {
-  date: string /** @default "DD MM YYYY"*/
-  time: string /** @default "hh:mm a" */
-  clock: '12h' | '24h' /** @default "12h" */
+  date: string 
+  time: string 
+  clock: '12h' | '24h' 
 }
 ```
+### <a name="Duration"></a>`Duration Format`
 
+Duration format for the defining duration of time interval.
+
+```ts
+type duration = {
+  span: number;
+  unit: string;
+};
+```
 ### <a name="card-breakpoint"></a>`CardBreakpoint`
 
 Number of cards to display per slide based on the different screen sizes.
 
 ```typescript
 export type CardBreakpoint = {
-  xs: number /** @default 1 */
-  sm: number /** @default 2 */
-  md: number /** @default 4 */
-  lg: number /** @default 6 */
-  xl: number /** @default 8 */
-  xxl: number /** @default 10 */
- 
+  xs: number 
+  sm: number
+  md: number
+  xl: number
+  xxl: number
 }
 ```
 
-### <a name="unavailableHrs"></a>`unavailable Hours`
+### <a name="unavailableHrs"></a>`unavailableHrs`
 
 Range of unavailable hours, including `start` and `end`.
 
@@ -197,7 +215,7 @@ export type unavailableDate, = {
 export type Selected = {
   date: Dayjs | null
   time: Dayjs | null
-  duration: number /** @default average(MIN_DURATION, MAX_DURATION)*/
+  duration: number 
 }
 ```
 
@@ -289,3 +307,8 @@ Get Unvailable  hours
 ## <a name="built-with"></a>License
 
 Copyright © 2023 [Muhammad Talha](https://github.com/islamtalha01).<br />
+
+
+
+
+ 

@@ -6,10 +6,10 @@ export type DateType = {
 };
 
 export type unavailableDate = string | Dayjs;
-export type DateRange={
-  start:Dayjs,
-  end:Dayjs
-}
+export type DateRange = {
+  start: Dayjs;
+  end: Dayjs;
+} 
 export type selectedSlot = {
   date: Dayjs | null;
 
@@ -30,10 +30,7 @@ export type unavailableHrs = {
   end: number;
 };
 
-export type DurationRange = {
-  min: number;
-  max: number;
-};
+
 
 export type CardBreakpoint = {
   xs: number;

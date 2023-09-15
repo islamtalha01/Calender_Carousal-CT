@@ -13,7 +13,7 @@ export type CustomStyles =
 }
 export type CalendarTheme = {
     /**@default false */
-    isDark: boolean
+    isDark?: boolean
     general?: Partial<AliasToken>
     custom?: Partial<CustomStyles>
   }
