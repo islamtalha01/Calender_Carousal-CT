@@ -243,15 +243,16 @@ export type DateRange= {
 
 ### <a name="defaul-card-breakpoints-values"></a>`Default CardBreakpoints Values `
 
-Number of cards to display per slide based on the different screen sizes.
+Default Number of cards to display per slide based on the different screen sizes.
 
 ```typescript
-export type CardBreakpoint = {
-  xs: number 
-  sm: number
-  md: number
-  xl: number
-  xxl: number
+export const CARD_BREAKPOINT: CardBreakpoint = {
+  xs: 1,
+  sm: 2,
+  md: 3,
+  lg: 5,
+  xl: 7,
+  xxl: 9,
 }
 ```
 ## <a name="utils"></a>Utils
