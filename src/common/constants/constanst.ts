@@ -1,11 +1,17 @@
 import dayjs from "dayjs"
 import { unavailableDate, Formats, unavailableHrs,CardBreakpoint, DateRange, } from "../types"
 import { CalendarTheme } from "../types"
+import { Dayjs } from "dayjs"
 
+type duration=
+{
+  span:number,
+  unit:string,
+}
 export const DATE_FORMAT: string = "DD MMMM YYYY"
 
 
-export const TIME_FORMAT: string = "hh:mm a"
+export const TIME_FORMAT: string = "hh:mm A"
 
 
 export const CLOCK_FORMAT: "12h" | "24h" = "12h"
@@ -20,17 +26,24 @@ export const FORMATS: Formats = {
   time: TIME_FORMAT,
   clock: CLOCK_FORMAT,
 }
-// export const DATERANGE:DateRange={
-// start:,
-// end:
-// } //Default Dates are of one week
-export const MIN_DURATION:number= 30
-export const MAX_DURATION:number= 180
-export const INTERVAL_STEP=5
+
+export const MIN_DURATION:duration={ 
+  span:30,
+  unit:"Mins"
+}
+export const MAX_DURATION:duration={ 
+  span:180,
+  unit:"Mins"
+}
+export const INTERVAL_STEP:duration=
+{
+  span:15,
+  unit:"Mins"
+}
 export const UNAVAILABLE_DATES:unavailableDate[]=[
                              
-  "Sunday",                      // String representing day name
-                // Dayjs object representing a date
+  "Sunday",                     
+                
 ];
 export const UNAVAILABLE_HOURS:unavailableHrs = { start: 12, end: 14 };
 export const CARD_BREAKPOINT: CardBreakpoint = {
@@ -42,9 +55,9 @@ export const CARD_BREAKPOINT: CardBreakpoint = {
   xxl: 9,
 }
 
-
+export type unavailableDatesCallback = (day: Dayjs) => boolean |undefined;
 export const CALENDAR_THEME: CalendarTheme = {
-  isDark: true,
+  isDark: false,
   general: undefined,
   custom: {
     buttonBorderRadius: 20,colorCardHeaderText: "red"

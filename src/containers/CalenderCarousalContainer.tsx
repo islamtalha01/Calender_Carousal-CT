@@ -10,6 +10,7 @@ import { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
 import { formattedDuration } from "../utils/duration.utils.ts";
 import { createDateToken,createDurationToken,createTimeToken } from "../utils/theme.utils.ts";
+import { DownOutlined } from '@ant-design/icons'
 const { Text } = Typography;
 const { useToken } = theme;
 type CalenderCarouselContainerProps = {
@@ -32,14 +33,15 @@ export default function CalenderCarousalContainer({
   const {
     setDate,
     selected,
-    onclickIncrement,
-    onclickDecrement,
+    handleIncrementClick,
+    handleDecrementClick,
     styles,
     setTime,
     unavailableHours,
-    dateList,intervalSize
+    dateList,intervalStep
 
   } = useCalendar();
+  
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
     activePanels || ["1"]
   );
@@ -56,7 +58,7 @@ export default function CalenderCarousalContainer({
   const items: CollapseProps["items"] = [
     {
       key: "1",
-      label: "Date",
+      label: <Text style={{ fontSize: token.fontSizeLG,margin:token.marginLG }}>Date</Text>,
       children: CalendarCarousalComponent || (
         <ConfigProvider
           theme={{
@@ -67,11 +69,11 @@ export default function CalenderCarousalContainer({
         </ConfigProvider>
       ),
 
-      extra: <Text>{selected.date?.format("DD/MM/YYYY")}</Text>,
+      extra: <Text style={{ fontSize: token.fontSizeLG }}>{selected.date?.format("DD/MM/YYYY")}</Text>,
     },
     {
       key: "2",
-      label: "Time",
+      label: <Text style={{ fontSize: token.fontSizeLG,margin:token.marginLG }} >Time</Text>,
 
       children: timeComponent || (
         <ConfigProvider theme={{token:createTimeToken(token,styles)}}> 
@@ -89,14 +91,15 @@ export default function CalenderCarousalContainer({
     },
     {
       key: "3",
-      label: "Duration",
+      label: <Text style={{ fontSize: token.fontSizeLG ,margin:token.marginLG}}>Duration</Text>,
       children: null,
+      showArrow: false,
       extra: durationComponent || (
         <ConfigProvider theme={{token:createDurationToken(token,styles)}}>
-          <DurationComponent                //add the seperate theme style.
+          <DurationComponent                
             value={formattedDuration(selected.duration)}
-            onclickIncrement={() => onclickIncrement(intervalSize)}
-            onClickDecrement={() => onclickDecrement(intervalSize)}
+            handleIncrementClick={() =>  handleIncrementClick(intervalStep)}
+            handleDecrementClick={() =>  handleDecrementClick(intervalStep)}
           />
         </ConfigProvider>
       ),
@@ -107,6 +110,7 @@ export default function CalenderCarousalContainer({
       ghost
       activeKey={activeKey}
       items={items}
+      expandIcon={() => <DownOutlined  />}
       expandIconPosition="end"
       style={{ backgroundColor: token.colorBgLayout }}
     />

@@ -13,14 +13,23 @@ function isDateUnavaiable(date:Dayjs,unavailableDates?:Array<unavailableDate>):b
     return false
 }
 
+type unavailableDatesCallback = (day: Dayjs) => boolean|undefined;
 
-const getDatesList = (Range:DateRange, unavailableDates?: Array<unavailableDate>):Array<DateType> => {
+const getDatesList = (Range:DateRange, unavailableDates?: Array<unavailableDate>|unavailableDatesCallback):Array<DateType> => {
   const dateList: Array<DateType> = []
-  let currentDate = Range.start
+  let currentDate = Range.start 
   
   while(!currentDate?.isAfter(Range.end))
   {
+    if(typeof(unavailableDates)==="function")
+    {
+      dateList.push({date:currentDate,unavailable:unavailableDates(currentDate)})
+    }
+    
+
+  else if(Array.isArray(unavailableDates)){
     dateList.push({date:currentDate,unavailable:isDateUnavaiable(currentDate,unavailableDates)})
+  }
     currentDate=currentDate.add(1,'day')
 
   }

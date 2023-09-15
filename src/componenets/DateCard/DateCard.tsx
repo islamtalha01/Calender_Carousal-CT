@@ -12,8 +12,8 @@ export default function DateCard(props: DateCardProps) {
   const { Text, Title } = Typography;
   const { useToken } = theme;
   const { token } = useToken();
-  const { headStyleopen, headStyleclosed, bodyStyle } = inLineStyles();
-
+  const { headStyleopen, headStyleclosed, bodyStyle,cardStyle } = inLineStyles();
+  
   const handleCardClick = (): void => {
     if (!props.unavailable && props.onClick) {
       props.onClick(props.date);
@@ -24,7 +24,7 @@ export default function DateCard(props: DateCardProps) {
       data-testid="datecard" 
       hoverable={props.unavailable ? false : true}
       title={props.date.format("MMMM")}
-      style={{ width: "150px", textAlign: "center" }}
+      style={cardStyle}
       size="small"
       headStyle={props.unavailable ? headStyleclosed : headStyleopen}
       bodyStyle={bodyStyle}

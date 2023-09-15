@@ -15,10 +15,8 @@ describe('src/containers/CalenderCarousalContainer.tsx', () => {
   it('renders correctly with custom props', () => {
     const props = {
        datesRange:{start:dayjs('10-09-2023', "DD-MM-YYYY"),end:dayjs('10-11-2023', "DD-MM-YYYY")},
-      intervalSize: 30,
-      minDuration: 15,
-      maxDuration: 210,
-  
+       minDuration:{span:15 ,unit:"Hrs"},
+       maxDuration:{span:25 ,unit:"Hrs"} ,
       closedHours: { start: 17, end: 8 },
       theme: { isDark: true },
       formats: {

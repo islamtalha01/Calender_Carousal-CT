@@ -22,13 +22,13 @@ export default function CalendarCarousal({
   useCarousalScroll(carouselRef);
 
   return (
-    <Row align={"middle"}>
+    <Row align={"middle"} style={{ margin: token.marginLG }}>
       <Col lg={1} md={2} sm={3} xs={4}>
         <Button
           data-testid="btn-carousal"
           onClick={() => carouselRef.current?.prev()}
-          // disabled={disabled}
           size="large"
+          shape="circle"
           icon={<LeftOutlined />}
         />
       </Col>
@@ -42,11 +42,10 @@ export default function CalendarCarousal({
           dots={false}
         >
           {dates?.map((data, index) => (
-            <Row key={index}>
+            <Row key={index} style={{}}>
               <Col
                 style={{
-                  paddingLeft: token.paddingXS,
-                  paddingRight: token.paddingXS,
+                  padding: token.paddingXS,
                 }}
               >
                 <DateCard
@@ -64,8 +63,8 @@ export default function CalendarCarousal({
         <Button
           data-testid="btn-carousal"
           onClick={() => carouselRef.current?.next()}
-          // disabled={disabled}
           size="large"
+          shape="circle"
           icon={<RightOutlined />}
         />
       </Col>
