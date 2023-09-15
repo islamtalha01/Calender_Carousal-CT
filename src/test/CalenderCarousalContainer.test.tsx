@@ -17,7 +17,7 @@ describe('src/containers/CalenderCarousalContainer.tsx', () => {
        datesRange:{start:dayjs('10-09-2023', "DD-MM-YYYY"),end:dayjs('10-11-2023', "DD-MM-YYYY")},
        minDuration:{span:15 ,unit:"Hrs"},
        maxDuration:{span:25 ,unit:"Hrs"} ,
-      closedHours: { start: 17, end: 8 },
+  
       theme: { isDark: true },
       formats: {
         date: 'DD MMMM YY',

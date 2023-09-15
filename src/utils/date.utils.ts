@@ -1,10 +1,10 @@
 import dayjs, { Dayjs } from "dayjs"
-import { unavailableDate, DateType,DateRange } from '../common/types/calendar.types'
+import { UnavailableDate, DateType,DateRange } from '../common/types/calendar.types'
 import isToday from "dayjs/plugin/isToday"
 dayjs.extend(isToday)
 
 
-function isDateUnavaiable(date:Dayjs,unavailableDates?:Array<unavailableDate>):boolean
+function isDateUnavaiable(date:Dayjs,unavailableDates?:Array<UnavailableDate>):boolean
 {
     const dayName=date.format("dddd")
     if(unavailableDates?.includes(dayName) ||unavailableDates?.some((unavailableDates)=>{dayjs(unavailableDates).isSame(date,"day")}))
@@ -15,7 +15,7 @@ function isDateUnavaiable(date:Dayjs,unavailableDates?:Array<unavailableDate>):b
 
 type unavailableDatesCallback = (day: Dayjs) => boolean|undefined;
 
-const getDatesList = (Range:DateRange, unavailableDates?: Array<unavailableDate>|unavailableDatesCallback):Array<DateType> => {
+const getDatesList = (Range:DateRange, unavailableDates?: Array<UnavailableDate>|unavailableDatesCallback):Array<DateType> => {
   const dateList: Array<DateType> = []
   let currentDate = Range.start 
   

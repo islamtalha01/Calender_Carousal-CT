@@ -5,7 +5,7 @@ export type DateType = {
   unavailable?: boolean;
 };
 
-export type unavailableDate = string | Dayjs;
+export type UnavailableDate = string | Dayjs;
 export type DateRange = {
   start: Dayjs;
   end: Dayjs;
@@ -25,14 +25,14 @@ export type Formats = {
   clock: "12h" | "24h";
 };
 
-export type unavailableHrs = {
+export type UnavailableHrs = {
   start: number;
   end: number;
 };
 
 
 
-export type CardBreakpoint = {
+export type CardBreakPoint = {
   xs: number;
   sm: number;
   md: number;

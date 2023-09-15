@@ -1,9 +1,9 @@
 import dayjs from "dayjs"
-import { unavailableDate, Formats, unavailableHrs,CardBreakpoint, DateRange, } from "../types"
+import { UnavailableDate, Formats, UnavailableHrs,CardBreakPoint, DateRange, } from "../types"
 import { CalendarTheme } from "../types"
 import { Dayjs } from "dayjs"
 
-type duration=
+type Duration=
 {
   span:number,
   unit:string,
@@ -27,26 +27,26 @@ export const FORMATS: Formats = {
   clock: CLOCK_FORMAT,
 }
 
-export const MIN_DURATION:duration={ 
+export const MIN_DURATION:Duration={ 
   span:30,
   unit:"Mins"
 }
-export const MAX_DURATION:duration={ 
+export const MAX_DURATION:Duration={ 
   span:180,
   unit:"Mins"
 }
-export const INTERVAL_STEP:duration=
+export const INTERVAL_STEP:Duration=
 {
   span:15,
   unit:"Mins"
 }
-export const UNAVAILABLE_DATES:unavailableDate[]=[
+export const UNAVAILABLE_DATES:UnavailableDate[]=[
                              
   "Sunday",                     
                 
 ];
-export const UNAVAILABLE_HOURS:unavailableHrs = { start: 12, end: 14 };
-export const CARD_BREAKPOINT: CardBreakpoint = {
+export const UNAVAILABLE_HOURS:UnavailableHrs = { start: 12, end: 14 };
+export const CARD_BREAKPOINT: CardBreakPoint = {
   xs: 1,
   sm: 2,
   md: 3,
