@@ -95,7 +95,7 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  "DD MM YYYY" <br>Clock :   "12h"
 | minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is "Mins"  |
 | maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is "Mins"  |
-| cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       | 
+| cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
 | unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) |    `Sunday`   |
 | unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
@@ -243,7 +243,7 @@ export type DateRange= {
 
 ### <a name="defaul-card-breakpoints-values"></a>`Default CardBreakpoints Values `
 
-Default Number of cards to display per slide based on the different screen sizes.
+Default number of cards to display per slide based on the different screen sizes.
 
 ```typescript
 export const CARD_BREAKPOINT: CardBreakpoint = {
