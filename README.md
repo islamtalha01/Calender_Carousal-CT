@@ -24,7 +24,7 @@ The Calendar Carousel is a mobile-responsive element designed to highlight a cho
     - [Custom Types](#custom-types)
       - [DateType](#DateType)
       - [Formats](#formats)
-      - [CardBreakpoint](#card-breakpoint)
+      - [CardBreakPoint](#card-breakpoint)
       - [UnavailableHrs](#unavailableHrs)
       - [UnavailableDates](#unavailable-Dates)
       - [Selected](#selected)
@@ -95,7 +95,7 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  `"DD MM YYYY"` <br>Clock :  `"12h"` <br> Time : `"hh:mm A"`
 | minDuration  | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`Duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
 | maxDuration  | Upper threshold for the duration **(in Minutes,Hours & Days)**            |[`Duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
-| cardsBreakPoints      | Numbers of cards per screen to be displayed in Carousal       | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
+| cardsBreakPoints      | Numbers of cards per screen to be displayed in Carousal       | [CardBreakPoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
 | unavailableDates  |You can Either give List of Unavailable Dates <br> or a Callback which will specifies the <br> dates that cannot be selected|[UnavailableDate[]](#unavailable-Dates)  \|`(date: Dayjs) => boolean`| Default value is `Sunday`|
 | unavailableHours  | Hours that should be closed  in Time Picker                           | [UnavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         |        |
@@ -127,7 +127,7 @@ This custom hook provides access to all the state values of the package, along w
 | formats          | The display format for date, time, and clock                 | [Formats](#formats)                      |
 | minDuration      | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`Duration`](#Duration)                    |
 | maxDuration      | Upper threshold for the duration **(in Minutes,Hours & Days)**            | [`Duration`](#Duration)                    |
-| cardsBreakPoints            |Numbers of cards per screen to be displayed in Carousal                   | [CardBreakpoint](#card-breakpoint)       |
+| cardsBreakPoints            |Numbers of cards per screen to be displayed in Carousal                   | [CardBreakPoint](#card-breakpoint)       |
 | unavailableDates      | You can Either give List of Clode Dates <br> or a Callback which will specifies the <br> dates that cannot be selected| [UnavailableDate[]](#unavailable-Dates) \|`(date: Dayjs) => boolean` |
 | unavailableHours      | Hours that should be closed  in Time Picker                           | [`UnavailableHrs`](#unavailableHrs)  |
 
@@ -165,12 +165,12 @@ type Duration = {
   unit: string;
 };
 ```
-### <a name="card-breakpoint"></a>`CardBreakpoint`
+### <a name="card-breakpoint"></a>`CardBreakPoint`
 
 Number of cards to display per slide based on the different screen sizes.
 
 ```typescript
-export type CardBreakpoint = {
+export type CardBreakPoint = {
   xs: number 
   sm: number
   md: number
@@ -246,7 +246,7 @@ export type DateRange= {
 Default number of cards to display per slide based on the different screen sizes.
 
 ```typescript
-export const CARD_BREAKPOINT: CardBreakpoint = {
+export const CARD_BREAKPOINT: CardBreakPoint = {
   xs: 1,
   sm: 2,
   md: 3,
