@@ -1,11 +1,11 @@
 import { Dayjs } from "dayjs";
-import { unavailableHrs } from "../common/types/calendar.types";
+import { UnavailableHrs } from "../common/types/calendar.types";
 
 const getFormattedTime = (time: Dayjs | null, format: string): string => {
   return time?.format(format) || "";
 };
 
-const getUnavailableTime = ({ start, end }: unavailableHrs) => {
+const getUnavailableTime = ({ start, end }: UnavailableHrs) => {
   const disabledHours: Array<number> = [];
 
   for (let i = start; i !== end; i = (i + 1) % 24) {
