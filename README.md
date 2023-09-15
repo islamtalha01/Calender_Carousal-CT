@@ -93,8 +93,8 @@ The `CalenderCarousalContainer` component can be used by wrapping it in the `Cal
 | intervalStep | The minutes by which duration should increase or decrease by | [`duration`](#Duration)                  | Value of span is `15` & Unit is "Min" <br> You can choose any span <br> value with<br> avaiable units (Hrs,Mins & Days).
 |              |                                                              |                                          ||
 | formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | Default Formats are <br> Dates :  `"DD MM YYYY"` <br>Clock :  `"12h"` <br> Time : `"hh:mm A"`
-| minDuration  | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
-| maxDuration  | Upper threshold for the duration **(in minutes)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
+| minDuration  | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                  | Default value of span is `30` & Unit is `"Mins"`  | 
+| maxDuration  | Upper threshold for the duration **(in Minutes,Hours & Days)**            |[`duration`](#Duration)                   | Default value of span is `180` & Unit is `"Mins"`  |
 | cardsBreakponitns      | Numbers of cards per screen to be displayed        | [CardBreakpoint](#card-breakpoint)       | [Default Values of CardsBreakpoints](#defaul-card-breakpoints-values)
 | unavailableDates  | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) |    `Sunday`   |
 | unavailableHours  | Hours that should be closed                             | [unavailableHrs](#closed-hours-range)    |       `12 AM TO 2 AM`   |
@@ -125,8 +125,8 @@ This custom hook provides access to all the state values of the package, along w
 | dateList         | The dates displayed in the carousel                          | [DateType[]](#DateType)                  |
 | intervalStep     | The minutes by which duration should increase or decrease by | `number`                                 |
 | formats          | The display format for date, time, and clock                 | [Formats](#formats)                      |
-| minDuration      | Lower threshold for the duration **(in minutes)**            | [`duration`](#Duration)                    |
-| maxDuration      | Upper threshold for the duration **(in minutes)**            | [`duration`](#Duration)                    |
+| minDuration      | Lower threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
+| maxDuration      | Upper threshold for the duration **(in Minutes,Hours & Days)**            | [`duration`](#Duration)                    |
 | cards            | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       |
 | unavailableDates      | Dates that should be closed                             | `string` \| [Dayjs](https://day.js.org/) |
 | unavailableHours      | Hours that should be closed                             | [`unavailableHrs`](#unavailableHrs)  |
