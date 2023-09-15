@@ -6,7 +6,7 @@ import TimeComponent from "../componenets/TimeComponent/TImeComponent";
 import { useState } from "react";
 import { useCalendar } from "../hooks";
 import { getFormattedTime, getUnavailableTime} from "../utils/time.utils.ts";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { FORMATS } from "../common/constants/constanst";
 import { formattedDuration } from "../utils/duration.utils.ts";
 import { createDateToken,createDurationToken,createTimeToken } from "../utils/theme.utils.ts";
@@ -69,7 +69,7 @@ export default function CalenderCarousalContainer({
         </ConfigProvider>
       ),
 
-      extra: <Text style={{ fontSize: token.fontSizeLG }}>{selected.date?.format("DD/MM/YYYY")}</Text>,
+      extra: <Text style={{ fontSize: token.fontSizeLG }}> {selected.date ? selected.date?.format("DD/MM/YYYY") : "Today"}</Text>,
     },
     {
       key: "2",
@@ -85,7 +85,7 @@ export default function CalenderCarousalContainer({
       ),
       extra: (
         <Text style={{ fontSize: token.fontSizeLG }}>
-          {getFormattedTime(selected?.time, FORMATS.time)}
+          {selected.time?getFormattedTime(selected?.time, FORMATS.time):dayjs().format("hh:mm:a")}
         </Text>
       ),
     },

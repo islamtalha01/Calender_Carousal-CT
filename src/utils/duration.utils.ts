@@ -8,11 +8,11 @@ export const formattedDuration = (value: number) => {
   return `${formatedHours}:${formatedMin}`;
 };
 
-type duration=
+type Duration=
 {
   span:number,unit:string,
 }
-export const getMeanDuration=(minDuration:duration,maxDuration:duration):number=>
+export const getMeanDuration=(minDuration:Duration,maxDuration:Duration):number=>
 {
    let meanDuration=0;
   if(minDuration.unit==="Mins")
